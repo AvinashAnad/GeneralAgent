@@ -1,0 +1,41 @@
+{
+  "node_id": "n:7",
+  "skill": "researcher",
+  "status": "complete",
+  "inputs": [
+    "USER_QUERY"
+  ],
+  "result": {
+    "success": true,
+    "agent_name": "researcher",
+    "output": {
+      "question": "Find 5 reputable CNC/VMC training institutes in Bangalore and provide details for each including course focus and reputation.",
+      "sources": [
+        {
+          "url": "https://www.sulekha.com/cnc-programming-training/bangalore",
+          "title": "CNC Programming Training in Bangalore, Classes, Courses, Institutes"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=jl0l9FcTPbs",
+          "title": "Biggest CAD CAM Training Centre in Bengaluru | RVM CAD Bangalore"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=PnY-GjSV8Ek",
+          "title": "5 Axis VMC Programming in just 30 Days - 100% Job Assistance"
+        }
+      ],
+      "findings": "Finding specific, independently verified \"top 5\" lists for CNC/VMC training in Bangalore is difficult as the market is highly fragmented, with many small-to-medium vocational training centers. Aggregator platforms like Sulekha list numerous providers across various localities (e.g., Jayanagar, Rajajinagar, Electronic City), but reputation is often localized or anecdotal.\n\nRVM CAD (Rajajinagar) is frequently cited in digital marketing and video content as a prominent training center in Bangalore. They emphasize a \"Skilled-30\" batch model, offering a blend of AutoCAD, CNC/VMC operating, setting, and manual programming, alongside software like Mastercam and Delcam. They claim a strong focus on 100% job assistance and advertise access to industrial setups.\n\nOther notable, frequently mentioned training providers in Bangalore include Cadcenter and EduCADD. These institutes typically operate as broader CAD/CAM/CAE training centers that include CNC/VMC programming modules in their mechanical engineering curriculum. They generally offer both classroom and online training options, with a focus on design tools and industry-relevant software certifications.\n\nBecause most institutes in this sector are private vocational centers, \"reputation\" is best assessed by directly contacting them to verify their current lab facilities (do they have actual CNC/VMC machines on-site?), instructor experience, and asking for verifiable placement records or alumni references. Potential students are advised to visit the centers personally to inspect the practical training equipment rather than relying solely on online listings."
+    },
+    "artifacts": [],
+    "successors": [],
+    "cost": 0.0,
+    "elapsed_s": 21.16084098815918,
+    "provider": "gemini",
+    "error": null,
+    "error_code": null
+  },
+  "prompt_sent": "You are the Researcher skill. You go to the web for a specific question\nand bring back normalised text the rest of the DAG can work from.\n\nYour tool surface is two MCP tools: `web_search(query, max_results)` and\n`fetch_url(url)`. Use them. Do not narrate; do not invent other tools.\n\nProcedure:\n  1. Read the QUESTION in the prompt.\n  2. Issue ONE `web_search` to get candidate URLs.\n  3. Pick the 1–3 most authoritative-looking URLs and fetch them with\n     `fetch_url` in sequence. Avoid clearly low-signal results (aggregator\n     spam, ad redirects).\n  4. Synthesise the relevant content from the fetched pages.\n\nTime budget: keep tool calls to 4 max per invocation. If a `fetch_url`\nreturns very little usable text, do not retry; move on.\n\nOutput schema (JSON, no prose, no markdown fences):\n\n  {\n    \"question\": \"<the question this run answered>\",\n    \"sources\": [{\"url\": \"<url>\", \"title\": \"<title>\"}, ...],\n    \"findings\": \"<2–6 short paragraphs of normalised text>\"\n  }\n\nYou do NOT produce the final user-facing answer. The downstream\ndistiller or formatter does that. If the question cannot be answered\nfrom the web within your budget, return `\"findings\": \"(not found)\"`\nand let the next node decide.\n\nUSER_QUERY: Compare 5 CNC/VMC training institutes in Bangalore.\n\nQUESTION: Find 5 reputable CNC/VMC training institutes in Bangalore and provide details for each including course focus and reputation.\n\nMEMORY HITS (8 from FAISS):\n  - [fact] Population comparison of London, Paris, and Berlin\n      source: user_query\n      raw: Find the populations of London, Paris, and Berlin and tell me which two are closest in size.\n  - [fact] Population comparison of London, Paris, and Berlin\n      source: user_query\n      raw: Find the populations of London, Paris, and Berlin and tell me which two are closest in size.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [preference] Compare top 3 Hugging Face text-generation models sorted by likes\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n\nINPUTS:\n[\n  {\n    \"id\": \"USER_QUERY\",\n    \"kind\": \"query\",\n    \"value\": \"Compare 5 CNC/VMC training institutes in Bangalore.\"\n  }\n]",
+  "started_at": 1781502911.3916311,
+  "completed_at": 1781502932.552472,
+  "retries": 0
+}

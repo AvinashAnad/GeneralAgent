@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Visible Browser Replay Report s8-eed26724</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 0; color: #172033; background: #f6f7f9; }
+    header, section { max-width: 1120px; margin: 0 auto; padding: 24px; }
+    header { background: #172033; color: white; max-width: none; }
+    header div { max-width: 1120px; margin: 0 auto; }
+    h1 { margin: 0 0 8px; font-size: 30px; }
+    h2 { margin-top: 0; }
+    table { border-collapse: collapse; width: 100%; background: white; }
+    th, td { border: 1px solid #d9dee7; padding: 8px; text-align: left; vertical-align: top; }
+    th { background: #edf0f5; }
+    pre { background: #eef1f5; border-radius: 4px; padding: 12px; overflow: auto; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+    figure { margin: 0; background: white; border: 1px solid #d9dee7; padding: 10px; }
+    img { width: 100%; height: auto; border: 1px solid #ccd2dc; }
+    figcaption { margin-top: 8px; font-size: 13px; color: #4c566a; }
+  </style>
+</head>
+<body>
+  <header><div>
+    <h1>Visible Browser Replay Report</h1>
+    <p>Session: <strong>s8-eed26724</strong>. Path: <strong>blocked</strong>. Turns: <strong>0</strong>.</p>
+  </div></header>
+  <section><h2>1. Original User Goal</h2><p>Filter for price range under 80000 INR; extract the top 3 laptops including their model name, processor, RAM, and price.</p></section>
+  <section><h2>2. Planner DAG</h2><pre>{
+  &quot;nodes&quot;: [
+    {
+      &quot;id&quot;: &quot;user_goal&quot;,
+      &quot;label&quot;: &quot;User Goal&quot;
+    },
+    {
+      &quot;id&quot;: &quot;planner&quot;,
+      &quot;label&quot;: &quot;Planner&quot;
+    },
+    {
+      &quot;id&quot;: &quot;browser&quot;,
+      &quot;label&quot;: &quot;Browser Skill&quot;
+    },
+    {
+      &quot;id&quot;: &quot;blocked&quot;,
+      &quot;label&quot;: &quot;Browser path: blocked&quot;
+    },
+    {
+      &quot;id&quot;: &quot;report&quot;,
+      &quot;label&quot;: &quot;Visible Browser Replay Report&quot;
+    }
+  ],
+  &quot;edges&quot;: [
+    [
+      &quot;user_goal&quot;,
+      &quot;planner&quot;
+    ],
+    [
+      &quot;planner&quot;,
+      &quot;browser&quot;
+    ],
+    [
+      &quot;browser&quot;,
+      &quot;blocked&quot;
+    ],
+    [
+      &quot;blocked&quot;,
+      &quot;report&quot;
+    ]
+  ],
+  &quot;browser_node_metadata&quot;: {
+    &quot;label&quot;: &quot;b1&quot;,
+    &quot;url&quot;: &quot;https://www.croma.com/computers-tablets/laptops/c/bpc-0015&quot;,
+    &quot;goal&quot;: &quot;Filter for price range under 80000 INR; extract the top 3 laptops including their model name, processor, RAM, and price.&quot;
+  }
+}</pre></section>
+  <section><h2>3. Browser Path Chosen</h2><p>blocked</p></section>
+  <section><h2>4. Browser Actions Taken</h2><p>(none)</p></section>
+  <section><h2>5. Screenshots Or Page-State Logs</h2><div class="grid"><figure><img src="/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-eed26724/browser/browser_1781501931/a11y/turn_01_raw.png" alt="turn_01_raw"><figcaption>turn_01_raw</figcaption></figure>
+<figure><img src="/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-eed26724/browser/browser_1781501931/a11y/turn_02_raw.png" alt="turn_02_raw"><figcaption>turn_02_raw</figcaption></figure>
+<figure><img src="/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-eed26724/browser/browser_1781501931/a11y/turn_03_raw.png" alt="turn_03_raw"><figcaption>turn_03_raw</figcaption></figure>
+<figure><img src="/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-eed26724/browser/browser_1781501931/a11y/turn_04_raw.png" alt="turn_04_raw"><figcaption>turn_04_raw</figcaption></figure>
+<figure><img src="/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-eed26724/browser/browser_1781501931/a11y/turn_05_raw.png" alt="turn_05_raw"><figcaption>turn_05_raw</figcaption></figure>
+<figure><img src="/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-eed26724/browser/browser_1781501931/a11y/turn_06_raw.png" alt="turn_06_raw"><figcaption>turn_06_raw</figcaption></figure>
+<figure><img src="/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-eed26724/browser/browser_1781501931/a11y/turn_07_raw.png" alt="turn_07_raw"><figcaption>turn_07_raw</figcaption></figure>
+<figure><img src="/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-eed26724/browser/browser_1781501931/a11y/turn_08_raw.png" alt="turn_08_raw"><figcaption>turn_08_raw</figcaption></figure>
+<figure><img src="/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-eed26724/browser/browser_1781501931/a11y/turn_09_raw.png" alt="turn_09_raw"><figcaption>turn_09_raw</figcaption></figure>
+<figure><img src="/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-eed26724/browser/browser_1781501931/a11y/turn_10_raw.png" alt="turn_10_raw"><figcaption>turn_10_raw</figcaption></figure>
+<figure><img src="/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-eed26724/browser/browser_1781501931/a11y/turn_11_raw.png" alt="turn_11_raw"><figcaption>turn_11_raw</figcaption></figure>
+<figure><img src="/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-eed26724/browser/browser_1781501931/a11y/turn_12_raw.png" alt="turn_12_raw"><figcaption>turn_12_raw</figcaption></figure>
+<figure><img src="/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-eed26724/browser/browser_1781501931/vision/turn_01_marked.png" alt="turn_01_marked"><figcaption>turn_01_marked</figcaption></figure>
+<figure><img src="/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-eed26724/browser/browser_1781501931/vision/turn_01_raw.png" alt="turn_01_raw"><figcaption>turn_01_raw</figcaption></figure></div><h3>Page State Logs</h3><pre>[
+  {
+    &quot;url&quot;: &quot;https://www.croma.com/computers-tablets/laptops/c/bpc-0015&quot;,
+    &quot;final_url&quot;: null,
+    &quot;path&quot;: &quot;extract&quot;,
+    &quot;success&quot;: false,
+    &quot;error&quot;: &quot;all layers exhausted; last: step cap reached (12)&quot;,
+    &quot;content_chars&quot;: 0
+  }
+]</pre></section>
+  <section><h2>6. Extracted Data</h2><pre>{
+  &quot;url&quot;: &quot;https://www.croma.com/computers-tablets/laptops/c/bpc-0015&quot;,
+  &quot;final_url&quot;: null,
+  &quot;content&quot;: null,
+  &quot;error&quot;: &quot;all layers exhausted; last: step cap reached (12)&quot;,
+  &quot;error_code&quot;: &quot;interaction_failed&quot;
+}</pre></section>
+  <section><h2>7. Final Comparison Table</h2><pre>(no comparison table)</pre></section>
+  <section><h2>8. Turn Count And Cost Summary</h2><pre>{
+  &quot;turn_count&quot;: 0,
+  &quot;llm_calls&quot;: 0,
+  &quot;tokens_in&quot;: 0,
+  &quot;tokens_out&quot;: 0,
+  &quot;estimated_cost_usd&quot;: 0.0,
+  &quot;provider&quot;: &quot;&quot;
+}</pre></section>
+  <section><h2>Full DAG Nodes</h2><p>(none)</p></section>
+  <section><h2>Recovery Path</h2><p>(none)</p></section>
+  <section><h2>Browser Attempts</h2><p>(none)</p></section>
+  <section><h2>Final Answer</h2><pre></pre></section>
+  <section><h2>Query Analysis Markdown</h2><p>(none)</p></section>
+</body>
+</html>

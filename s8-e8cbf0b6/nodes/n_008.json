@@ -1,0 +1,35 @@
+{
+  "node_id": "n:8",
+  "skill": "distiller",
+  "status": "complete",
+  "inputs": [
+    "n:7"
+  ],
+  "result": {
+    "success": true,
+    "agent_name": "distiller",
+    "output": {
+      "fields": {
+        "institutes": [
+          "RVM CAD",
+          "Cadcenter",
+          "EduCADD"
+        ],
+        "location": "Bangalore",
+        "focus": "CNC/VMC programming, AutoCAD, Mastercam, Delcam"
+      },
+      "rationale": "The researcher identified RVM CAD, Cadcenter, and EduCADD as notable providers in Bangalore, noting that a definitive 'top 5' list is unavailable due to market fragmentation."
+    },
+    "artifacts": [],
+    "successors": [],
+    "cost": 0.0,
+    "elapsed_s": 1.0868959426879883,
+    "provider": "gemini",
+    "error": null,
+    "error_code": null
+  },
+  "prompt_sent": "You are the Distiller skill. You receive raw text (typically the\n`findings` of one or more Researcher nodes, or the `chunks` of a\nRetriever node) and produce a small structured record.\n\nYou make no tool calls. You do no web access. Everything you need is\nalready in the prompt under INPUTS.\n\nProcedure:\n  1. Identify what fields the user's question implies (people, dates,\n     numbers, comparisons, percentages, attributions).\n  2. Pull those fields out of the inputs.\n  3. Emit a compact JSON record. Fields with no evidence in the inputs\n     are omitted, not made up.\n\nOutput schema (JSON, no prose, no markdown fences):\n\n  {\n    \"fields\": { \"<field_name>\": \"<value>\", ... },\n    \"rationale\": \"<one short sentence saying which input supports each field>\"\n  }\n\nNotes:\n  - The fields dictionary is the load-bearing output; downstream\n    Formatter nodes read it.\n  - When the question is a comparison (`fastest growing`, `largest`),\n    emit a `comparison` key with `winner: <id>` and `reason: <short>`.\n  - When the question's evidence is missing, set `fields: {}` and put\n    the gap in `rationale`. Do not invent.\n\nA Critic node may run after you. Its evaluation will fail if you\ninvented fields or made claims unsupported by the inputs.\n\nMEMORY HITS (8 from FAISS):\n  - [fact] Population comparison of London, Paris, and Berlin\n      source: user_query\n      raw: Find the populations of London, Paris, and Berlin and tell me which two are closest in size.\n  - [fact] Population comparison of London, Paris, and Berlin\n      source: user_query\n      raw: Find the populations of London, Paris, and Berlin and tell me which two are closest in size.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [preference] Compare top 3 Hugging Face text-generation models sorted by likes\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n\nINPUTS:\n[\n  {\n    \"id\": \"n:7\",\n    \"kind\": \"upstream\",\n    \"skill\": \"researcher\",\n    \"output\": {\n      \"question\": \"Find 5 reputable CNC/VMC training institutes in Bangalore and provide details for each including course focus and reputation.\",\n      \"sources\": [\n        {\n          \"url\": \"https://www.sulekha.com/cnc-programming-training/bangalore\",\n          \"title\": \"CNC Programming Training in Bangalore, Classes, Courses, Institutes\"\n        },\n        {\n          \"url\": \"https://www.youtube.com/watch?v=jl0l9FcTPbs\",\n          \"title\": \"Biggest CAD CAM Training Centre in Bengaluru | RVM CAD Bangalore\"\n        },\n        {\n          \"url\": \"https://www.youtube.com/watch?v=PnY-GjSV8Ek\",\n          \"title\": \"5 Axis VMC Programming in just 30 Days - 100% Job Assistance\"\n        }\n      ],\n      \"findings\": \"Finding specific, independently verified \\\"top 5\\\" lists for CNC/VMC training in Bangalore is difficult as the market is highly fragmented, with many small-to-medium vocational training centers. Aggregator platforms like Sulekha list numerous providers across various localities (e.g., Jayanagar, Rajajinagar, Electronic City), but reputation is often localized or anecdotal.\\n\\nRVM CAD (Rajajinagar) is frequently cited in digital marketing and video content as a prominent training center in Bangalore. They emphasize a \\\"Skilled-30\\\" batch model, offering a blend of AutoCAD, CNC/VMC operating, setting, and manual programming, alongside software like Mastercam and Delcam. They claim a strong focus on 100% job assistance and advertise access to industrial setups.\\n\\nOther notable, frequently mentioned training providers in Bangalore include Cadcenter and EduCADD. These institutes typically operate as broader CAD/CAM/CAE training centers that include CNC/VMC programming modules in their mechanical engineering curriculum. They generally offer both classroom and online training options, with a focus on design tools and industry-relevant software certifications.\\n\\nBecause most institutes in this sector are private vocational centers, \\\"reputation\\\" is best assessed by directly contacting them to verify their current lab facilities (do they have actual CNC/VMC machines on-site?), instructor experience, and asking for verifiable placement records or alumni references. Potential students are advised to visit the centers personally to inspect the practical training equipment rather than relying solely on online listings.\"\n    }\n  }\n]",
+  "started_at": 1781502932.554605,
+  "completed_at": 1781502933.641502,
+  "retries": 0
+}

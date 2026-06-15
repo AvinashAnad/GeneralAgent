@@ -70,6 +70,10 @@ For blocked pages, a11y is still useful evidence: it can show that the rendered 
 
 No Browser node was used, so the browser cascade did not run.
 
+## Browser Layer Trace
+
+- Browser not used -> cascade did not run -> planner used researcher -> distiller/critic path handled structured extraction -> formatter produced final answer
+
 ## Final Comparison Table
 
 | Product | Details |
@@ -124,12 +128,12 @@ Other options in the city often include various private technical academies and 
   "gateway_ledger_cost_usd": 0.001013,
   "providers": [
     "gemini",
-    "groq"
+    "groq",
+    "local-session-reporter"
   ],
   "gateway_cost_by_agent": {
     "critic": [
       {
-        "agent": "critic",
         "provider": "groq",
         "calls": 4,
         "in_tok": 3447,
@@ -143,7 +147,6 @@ Other options in the city often include various private technical academies and 
     ],
     "distiller": [
       {
-        "agent": "distiller",
         "provider": "gemini",
         "calls": 4,
         "in_tok": 4962,
@@ -157,7 +160,6 @@ Other options in the city often include various private technical academies and 
     ],
     "formatter": [
       {
-        "agent": "formatter",
         "provider": "gemini",
         "calls": 1,
         "in_tok": 1315,
@@ -171,7 +173,6 @@ Other options in the city often include various private technical academies and 
     ],
     "planner": [
       {
-        "agent": "planner",
         "provider": "gemini",
         "calls": 5,
         "in_tok": 12692,
@@ -185,7 +186,6 @@ Other options in the city often include various private technical academies and 
     ],
     "researcher": [
       {
-        "agent": "researcher",
         "provider": "gemini",
         "calls": 11,
         "in_tok": 24649,

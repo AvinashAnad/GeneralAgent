@@ -1,0 +1,28 @@
+{
+  "node_id": "n:20",
+  "skill": "critic",
+  "status": "complete",
+  "inputs": [
+    "USER_QUERY",
+    "n:18"
+  ],
+  "result": {
+    "success": true,
+    "agent_name": "critic",
+    "output": {
+      "verdict": "fail",
+      "rationale": "The upstream output lists only three institutes while the query requests a comparison of five, and it lacks the additional details needed for a full comparison."
+    },
+    "artifacts": [],
+    "successors": [],
+    "cost": 0.0,
+    "elapsed_s": 0.8483231067657471,
+    "provider": "groq",
+    "error": null,
+    "error_code": null
+  },
+  "prompt_sent": "You are the Critic skill. You evaluate one upstream node's output and\nreturn pass-or-fail with a short rationale.\n\nYou make no tool calls. The upstream output and (when the orchestrator\nhas it) the inputs that node received both appear in the prompt.\n\nProcedure:\n  1. Read the UPSTREAM_OUTPUT.\n  2. Check it against the INPUTS that produced it.\n  3. Look for: fabricated fields, claims unsupported by the input,\n     contradictions, missing fields the input clearly contained.\n  4. Emit pass or fail.\n\nOutput schema (JSON, no prose, no markdown fences):\n\n  {\n    \"verdict\": \"pass\" | \"fail\",\n    \"rationale\": \"<one or two short sentences>\"\n  }\n\nWhen you emit `fail`, the orchestrator may invoke the Planner to\nrecover. Be specific in your rationale so the recovery plan can be\ntargeted. Do not fail for stylistic reasons; only fail when the\nupstream output is wrong, missing, or unsupported.\n\nUSER_QUERY: Compare 5 CNC/VMC training institutes in Bangalore.\n\nMEMORY HITS (8 from FAISS):\n  - [fact] Population comparison of London, Paris, and Berlin\n      source: user_query\n      raw: Find the populations of London, Paris, and Berlin and tell me which two are closest in size.\n  - [fact] Population comparison of London, Paris, and Berlin\n      source: user_query\n      raw: Find the populations of London, Paris, and Berlin and tell me which two are closest in size.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [preference] Compare top 3 Hugging Face text-generation models sorted by likes\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n\nINPUTS:\n[\n  {\n    \"id\": \"USER_QUERY\",\n    \"kind\": \"query\",\n    \"value\": \"Compare 5 CNC/VMC training institutes in Bangalore.\"\n  },\n  {\n    \"id\": \"n:18\",\n    \"kind\": \"upstream\",\n    \"skill\": \"distiller\",\n    \"output\": {\n      \"fields\": {\n        \"institutes\": [\n          {\n            \"name\": \"NTTF\",\n            \"placement_record\": \"98%+\",\n            \"focus\": \"hands-on precision machining\"\n          },\n          {\n            \"name\": \"RVM CAD\",\n            \"course_duration\": \"30-day batches\",\n            \"curriculum\": \"AutoCAD, manual programming, Mastercam, Delcam\",\n            \"placement_support\": \"100% job assistance\"\n          },\n          {\n            \"name\": \"Technologics\",\n            \"focus\": \"real-time industrial projects\",\n            \"placement_support\": \"100% placement assistance\"\n          }\n        ]\n      },\n      \"rationale\": \"The findings provide details for three reputable CNC/VMC training institutes in Bangalore, noting that data for five distinct institutes is not consistently available.\"\n    }\n  }\n]",
+  "started_at": 1781502973.6558878,
+  "completed_at": 1781502974.504211,
+  "retries": 0
+}

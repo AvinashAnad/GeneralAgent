@@ -1,0 +1,35 @@
+{
+  "node_id": "n:2",
+  "skill": "researcher",
+  "status": "complete",
+  "inputs": [],
+  "result": {
+    "success": true,
+    "agent_name": "researcher",
+    "output": {
+      "question": "Find 5 reputable CNC/VMC training institutes in Bangalore and provide details on their course offerings, duration, and placement support.",
+      "sources": [
+        {
+          "url": "https://gttc.karnataka.gov.in/4/bangalore-stu-01-stu-02/en",
+          "title": "Government Tool Room & Training Centre - Bangalore"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=Q7JSnrK5GM0",
+          "title": "RVM CAD Bangalore CNC/VMC Training"
+        }
+      ],
+      "findings": "The Government Tool Room & Training Centre (GTTC), Bangalore, is a highly reputable government-run institution offering structured courses in CNC and VMC. Their offerings include short-term courses (1 month) such as CNC Programming & Operation (Turning & Milling) and long-term programs (4–12 months) like CNC Machine Operator and Tool & Die Maker. Qualifications vary from SSLC to B.E./Diploma depending on the course complexity. GTTC is widely recognized for its extensive training infrastructure and established industry reputation.\n\nRVM CAD (Bangalore centre) is a prominent private training provider specializing in CNC/VMC programming. They offer a 'Skill-30' batch program, which includes training in AutoCAD, CNC/VMC setting, manual programming, and software like Mastercam and Delcam. The duration for these intensive courses is typically 30 days. They explicitly advertise 100% placement support and claim to have a full-scale research lab with 5-axis machines for practical training.\n\nWhile GTTC and RVM CAD are primary examples, many other vocational training centres in Bangalore operate in this domain. However, due to the prevalence of generic aggregator listings and inconsistent data for smaller private institutes, it is highly recommended that candidates verify placement records and hands-on machine availability personally at any centre. For high-reliability training, government-affiliated bodies like GTTC remain the benchmark for curriculum and industry-standard certifications in Karnataka."
+    },
+    "artifacts": [],
+    "successors": [],
+    "cost": 0.0,
+    "elapsed_s": 7.434618949890137,
+    "provider": "gemini",
+    "error": null,
+    "error_code": null
+  },
+  "prompt_sent": "You are the Researcher skill. You go to the web for a specific question\nand bring back normalised text the rest of the DAG can work from.\n\nYour tool surface is two MCP tools: `web_search(query, max_results)` and\n`fetch_url(url)`. Use them. Do not narrate; do not invent other tools.\n\nProcedure:\n  1. Read the QUESTION in the prompt.\n  2. Issue ONE `web_search` to get candidate URLs.\n  3. Pick the 1–3 most authoritative-looking URLs and fetch them with\n     `fetch_url` in sequence. Avoid clearly low-signal results (aggregator\n     spam, ad redirects).\n  4. Synthesise the relevant content from the fetched pages.\n\nTime budget: keep tool calls to 4 max per invocation. If a `fetch_url`\nreturns very little usable text, do not retry; move on.\n\nOutput schema (JSON, no prose, no markdown fences):\n\n  {\n    \"question\": \"<the question this run answered>\",\n    \"sources\": [{\"url\": \"<url>\", \"title\": \"<title>\"}, ...],\n    \"findings\": \"<2–6 short paragraphs of normalised text>\"\n  }\n\nYou do NOT produce the final user-facing answer. The downstream\ndistiller or formatter does that. If the question cannot be answered\nfrom the web within your budget, return `\"findings\": \"(not found)\"`\nand let the next node decide.\n\nQUESTION: Find 5 reputable CNC/VMC training institutes in Bangalore and provide details on their course offerings, duration, and placement support.\n\nMEMORY HITS (8 from FAISS):\n  - [fact] Population comparison of London, Paris, and Berlin\n      source: user_query\n      raw: Find the populations of London, Paris, and Berlin and tell me which two are closest in size.\n  - [fact] Population comparison of London, Paris, and Berlin\n      source: user_query\n      raw: Find the populations of London, Paris, and Berlin and tell me which two are closest in size.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [preference] Compare top 3 Hugging Face text-generation models sorted by likes\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n\nINPUTS:\n[]",
+  "started_at": 1781502894.328371,
+  "completed_at": 1781502901.7629912,
+  "retries": 0
+}

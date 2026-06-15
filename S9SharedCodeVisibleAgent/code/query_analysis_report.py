@@ -119,6 +119,10 @@ def _render_markdown(
         "",
         _cascade_table(payload),
         "",
+        "## Browser Layer Trace",
+        "",
+        _cascade_trace(payload),
+        "",
         "## Final Comparison Table",
         "",
         table_markdown,
@@ -325,6 +329,127 @@ def _cascade_table(payload: dict[str, Any]) -> str:
         },
     ]
     return _markdown_table(rows, ["Layer", "Role", "Observed Result"])
+
+
+def _cascade_trace(payload: dict[str, Any]) -> str:
+    attempts = payload.get("browser_attempts") or []
+    if not attempts:
+        return _non_browser_trace(payload)
+    lines = []
+    for attempt in attempts:
+        node_id = str(attempt.get("node_id") or "browser")
+        steps = _attempt_trace_steps(payload, attempt)
+        lines.append(f"- `{node_id}`: " + " -> ".join(steps))
+    recovery = _recovery_trace(payload)
+    if recovery:
+        lines.append(f"- Recovery: {recovery}")
+    return "\n".join(lines)
+
+
+def _non_browser_trace(payload: dict[str, Any]) -> str:
+    extracted = payload.get("extracted_data") or {}
+    pieces = ["Browser not used", "cascade did not run"]
+    if extracted.get("researcher_outputs"):
+        pieces.append("planner used researcher")
+    if extracted.get("distiller_outputs"):
+        pieces.append("distiller/critic path handled structured extraction")
+    if payload.get("final_answer"):
+        pieces.append("formatter produced final answer")
+    return "- " + " -> ".join(pieces)
+
+
+def _attempt_trace_steps(payload: dict[str, Any], attempt: dict[str, Any]) -> list[str]:
+    path = str(attempt.get("path") or "")
+    success = bool(attempt.get("success"))
+    error = str(attempt.get("error") or "").strip()
+    error_code = str(attempt.get("error_code") or "").strip()
+    node_id = str(attempt.get("node_id") or "")
+    metadata = _browser_metadata(payload, node_id)
+    counts = _evidence_counts(payload)
+
+    steps = ["extract attempted"]
+    if path == "extract" and success:
+        steps.append("extract succeeded")
+        steps.append("deterministic/a11y/vision not needed")
+        return steps
+    if error_code == "gateway_blocked":
+        steps.append("extract detected gateway block")
+    else:
+        steps.append("no useful content extracted")
+
+    selectors = metadata.get("selectors")
+    if path == "deterministic" and success:
+        steps.append("deterministic selectors succeeded")
+        steps.append("a11y/vision not needed")
+        return steps
+    if selectors:
+        steps.append("deterministic attempted; selectors did not complete the goal")
+    else:
+        steps.append("deterministic skipped/no selectors")
+
+    if path == "a11y" and success:
+        steps.append(f"a11y succeeded in {attempt.get('turns', 0)} turn(s)")
+        steps.append("vision not needed")
+        return steps
+    if counts["a11y"]:
+        steps.append(f"a11y attempted; captured {counts['a11y']} page-state screenshot(s)")
+    else:
+        steps.append("a11y evidence not recorded")
+
+    if path == "vision" and success:
+        steps.append(f"vision succeeded in {attempt.get('turns', 0)} turn(s)")
+        return steps
+    if counts["vision"]:
+        steps.append(f"vision attempted; captured {counts['vision']} screenshot artifact(s)")
+    else:
+        steps.append("vision not reached or not recorded")
+
+    if success:
+        steps.append(f"final browser state: {path}")
+    else:
+        final = "blocked"
+        if error_code:
+            final += f"/{error_code}"
+        if error:
+            final += f" ({error})"
+        steps.append(f"final browser state: {final}")
+    return steps
+
+
+def _browser_metadata(payload: dict[str, Any], node_id: str) -> dict[str, Any]:
+    for node in payload.get("full_dag_nodes") or []:
+        if str(node.get("node_id") or "") == node_id:
+            metadata = node.get("metadata") or {}
+            return metadata if isinstance(metadata, dict) else {}
+    return {}
+
+
+def _evidence_counts(payload: dict[str, Any]) -> dict[str, int]:
+    screenshots = (payload.get("screenshots_or_page_state_logs") or {}).get("screenshots") or []
+    labels = [str(s.get("label") or "") for s in screenshots]
+    return {
+        "a11y": sum(1 for label in labels if "a11y/" in label),
+        "vision": sum(1 for label in labels if "vision/" in label),
+    }
+
+
+def _recovery_trace(payload: dict[str, Any]) -> str:
+    recovery = payload.get("recovery_path") or []
+    if not recovery:
+        return ""
+    recovered = []
+    for item in recovery:
+        node = item.get("node_id", "planner")
+        target = item.get("recovers", "failed node")
+        reason = item.get("recovery_reason", "recovery")
+        recovered.append(f"{node} recovered {target} via {reason}")
+    extracted = payload.get("extracted_data") or {}
+    tail = []
+    if extracted.get("researcher_outputs"):
+        tail.append("researcher gathered replacement data")
+    if payload.get("final_answer"):
+        tail.append("formatter produced final answer")
+    return " -> ".join(recovered + tail)
 
 
 def _module_map_table() -> str:

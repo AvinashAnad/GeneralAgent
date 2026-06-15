@@ -1,0 +1,35 @@
+{
+  "node_id": "n:6",
+  "skill": "researcher",
+  "status": "complete",
+  "inputs": [],
+  "result": {
+    "success": true,
+    "agent_name": "researcher",
+    "output": {
+      "question": "What are the free and paid plan details for Cody by Sourcegraph?",
+      "sources": [
+        {
+          "url": "https://www.augmentcode.com/tools/sourcegraph-cody-vs-continue-enterprise-comparison",
+          "title": "Sourcegraph Cody vs Continue: Enterprise AI Coding Assistant"
+        },
+        {
+          "url": "https://sourcegraph.com/blog/cody-is-generally-available",
+          "title": "Sourcegraph Cody is generally available"
+        }
+      ],
+      "findings": "As of July 2025, Sourcegraph discontinued its standalone Cody Free and Cody Pro plans for individual developers. Cody is now positioned as an enterprise-only AI coding assistant.\n\nCody Enterprise remains fully supported and is available to organizations. Pricing for the enterprise tier is not publicly listed and requires a custom quote from the Sourcegraph sales team. The enterprise offering is integrated into the broader Sourcegraph platform and includes relevant security, compliance certifications, and enterprise-grade controls."
+    },
+    "artifacts": [],
+    "successors": [],
+    "cost": 0.0,
+    "elapsed_s": 44.81800389289856,
+    "provider": "gemini",
+    "error": null,
+    "error_code": null
+  },
+  "prompt_sent": "You are the Researcher skill. You go to the web for a specific question\nand bring back normalised text the rest of the DAG can work from.\n\nYour tool surface is two MCP tools: `web_search(query, max_results)` and\n`fetch_url(url)`. Use them. Do not narrate; do not invent other tools.\n\nProcedure:\n  1. Read the QUESTION in the prompt.\n  2. Issue ONE `web_search` to get candidate URLs.\n  3. Pick the 1–3 most authoritative-looking URLs and fetch them with\n     `fetch_url` in sequence. Avoid clearly low-signal results (aggregator\n     spam, ad redirects).\n  4. Synthesise the relevant content from the fetched pages.\n\nTime budget: keep tool calls to 4 max per invocation. If a `fetch_url`\nreturns very little usable text, do not retry; move on.\n\nOutput schema (JSON, no prose, no markdown fences):\n\n  {\n    \"question\": \"<the question this run answered>\",\n    \"sources\": [{\"url\": \"<url>\", \"title\": \"<title>\"}, ...],\n    \"findings\": \"<2–6 short paragraphs of normalised text>\"\n  }\n\nYou do NOT produce the final user-facing answer. The downstream\ndistiller or formatter does that. If the question cannot be answered\nfrom the web within your budget, return `\"findings\": \"(not found)\"`\nand let the next node decide.\n\nQUESTION: What are the free and paid plan details for Cody by Sourcegraph?\n\nMEMORY HITS (8 from FAISS):\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [preference] Compare top 3 Hugging Face text-generation models sorted by likes\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [tool_outcome] Compare top 3 Hugging Face text-generation models sorted by likes\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [tool_outcome] Comparison of 3 laptops under 80,000 INR from Croma\n      source: user_query\n      raw: Compare 3 laptops under ₹80,000 from Croma.\n\nINPUTS:\n[]",
+  "started_at": 1781502482.522988,
+  "completed_at": 1781502527.340992,
+  "retries": 0
+}

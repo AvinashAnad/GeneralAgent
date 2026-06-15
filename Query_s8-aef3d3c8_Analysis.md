@@ -54,6 +54,10 @@ For blocked pages, a11y is still useful evidence: it can show that the rendered 
 
 No Browser node was used, so the browser cascade did not run.
 
+## Browser Layer Trace
+
+- Browser not used -> cascade did not run -> planner used researcher -> formatter produced final answer
+
 ## Final Comparison Table
 
 | Tool | Free Plan | Paid Plan(s) | Key Notes |
@@ -114,12 +118,12 @@ Here is a comparison of five popular AI coding tools based on their current free
   "node_result_cost_usd": 0.0,
   "gateway_ledger_cost_usd": 0.0,
   "providers": [
-    "gemini"
+    "gemini",
+    "local-session-reporter"
   ],
   "gateway_cost_by_agent": {
     "formatter": [
       {
-        "agent": "formatter",
         "provider": "gemini",
         "calls": 1,
         "in_tok": 2876,
@@ -133,7 +137,6 @@ Here is a comparison of five popular AI coding tools based on their current free
     ],
     "planner": [
       {
-        "agent": "planner",
         "provider": "gemini",
         "calls": 1,
         "in_tok": 2512,
@@ -147,7 +150,6 @@ Here is a comparison of five popular AI coding tools based on their current free
     ],
     "researcher": [
       {
-        "agent": "researcher",
         "provider": "gemini",
         "calls": 10,
         "in_tok": 18045,

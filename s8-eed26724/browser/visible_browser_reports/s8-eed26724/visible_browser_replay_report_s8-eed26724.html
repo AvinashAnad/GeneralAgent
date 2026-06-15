@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Visible Browser Replay Report s8-eed26724</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 0; color: #172033; background: #f6f7f9; }
+    header, section { max-width: 1120px; margin: 0 auto; padding: 24px; }
+    header { background: #172033; color: white; max-width: none; }
+    header div { max-width: 1120px; margin: 0 auto; }
+    h1 { margin: 0 0 8px; font-size: 30px; }
+    h2 { margin-top: 0; }
+    table { border-collapse: collapse; width: 100%; background: white; }
+    th, td { border: 1px solid #d9dee7; padding: 8px; text-align: left; vertical-align: top; }
+    th { background: #edf0f5; }
+    pre { background: #eef1f5; border-radius: 4px; padding: 12px; overflow: auto; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+    figure { margin: 0; background: white; border: 1px solid #d9dee7; padding: 10px; }
+    img { width: 100%; height: auto; border: 1px solid #ccd2dc; }
+    figcaption { margin-top: 8px; font-size: 13px; color: #4c566a; }
+  </style>
+</head>
+<body>
+  <header><div>
+    <h1>Visible Browser Replay Report</h1>
+    <p>Session: <strong>s8-eed26724</strong>. Path: <strong>blocked</strong>. Turns: <strong>0</strong>.</p>
+  </div></header>
+  <section><h2>1. Original User Goal</h2><p>Compare 3 laptops under ₹80,000.</p></section>
+  <section><h2>2. Planner DAG</h2><pre>{
+  &quot;nodes&quot;: [
+    {
+      &quot;id&quot;: &quot;n:1&quot;,
+      &quot;label&quot;: &quot;planner&quot;,
+      &quot;status&quot;: &quot;complete&quot;,
+      &quot;success&quot;: true,
+      &quot;metadata&quot;: {}
+    },
+    {
+      &quot;id&quot;: &quot;n:2&quot;,
+      &quot;label&quot;: &quot;browser&quot;,
+      &quot;status&quot;: &quot;failed&quot;,
+      &quot;success&quot;: false,
+      &quot;metadata&quot;: {
+        &quot;label&quot;: &quot;b1&quot;,
+        &quot;url&quot;: &quot;https://www.croma.com/computers-tablets/laptops/c/bpc-0015&quot;,
+        &quot;goal&quot;: &quot;Filter for price range under 80000 INR; extract the top 3 laptops including their model name, processor, RAM, and price.&quot;
+      }
+    },
+    {
+      &quot;id&quot;: &quot;n:3&quot;,
+      &quot;label&quot;: &quot;distiller&quot;,
+      &quot;status&quot;: &quot;pending&quot;,
+      &quot;success&quot;: null,
+      &quot;metadata&quot;: {
+        &quot;label&quot;: &quot;d1&quot;,
+        &quot;question&quot;: &quot;Extract structured records for the 3 laptops: model_name, processor, ram, storage, and price.&quot;
+      }
+    },
+    {
+      &quot;id&quot;: &quot;n:4&quot;,
+      &quot;label&quot;: &quot;formatter&quot;,
+      &quot;status&quot;: &quot;pending&quot;,
+      &quot;success&quot;: null,
+      &quot;metadata&quot;: {
+        &quot;label&quot;: &quot;out&quot;
+      }
+    },
+    {
+      &quot;id&quot;: &quot;n:5&quot;,
+      &quot;label&quot;: &quot;planner&quot;,
+      &quot;status&quot;: &quot;complete&quot;,
+      &quot;success&quot;: true,
+      &quot;metadata&quot;: {
+        &quot;failure_report&quot;: &quot;node=n:2 skill=browser reason=upstream_failure error=all layers exhausted; last: step cap reached (12)&quot;,
+        &quot;recovers&quot;: &quot;n:2&quot;,
+        &quot;recovery_reason&quot;: &quot;upstream_failure&quot;,
+        &quot;prior_complete&quot;: []
+      }
+    },
+    {
+      &quot;id&quot;: &quot;n:6&quot;,
+      &quot;label&quot;: &quot;researcher&quot;,
+      &quot;status&quot;: &quot;complete&quot;,
+      &quot;success&quot;: true,
+      &quot;metadata&quot;: {
+        &quot;label&quot;: &quot;r1&quot;,
+        &quot;question&quot;: &quot;What are 3 highly rated laptops available in India under \u20b980,000 in 2024, including their key specifications and pros/cons?&quot;
+      }
+    },
+    {
+      &quot;id&quot;: &quot;n:7&quot;,
+      &quot;label&quot;: &quot;formatter&quot;,
+      &quot;status&quot;: &quot;complete&quot;,
+      &quot;success&quot;: true,
+      &quot;metadata&quot;: {
+        &quot;label&quot;: &quot;out&quot;
+      }
+    },
+    {
+      &quot;id&quot;: &quot;n:8&quot;,
+      &quot;label&quot;: &quot;session_reporter&quot;,
+      &quot;status&quot;: &quot;complete&quot;,
+      &quot;success&quot;: true,
+      &quot;metadata&quot;: {}
+    }
+  ],
+  &quot;edges&quot;: [
+    [
+      &quot;n:2&quot;,
+      &quot;n:3&quot;
+    ],
+    [
+      &quot;n:3&quot;,
+      &quot;n:4&quot;
+    ],
+    [
+      &quot;n:6&quot;,
+      &quot;n:7&quot;
+    ],
+    [
+      &quot;n:7&quot;,
+      &quot;n:8&quot;
+    ]
+  ]
+}</pre></section>
+  <section><h2>3. Browser Path Chosen</h2><p>blocked</p></section>
+  <section><h2>4. Browser Actions Taken</h2><p>(none)</p></section>
+  <section><h2>5. Screenshots Or Page-State Logs</h2><div class="grid"><figure><img src="/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-eed26724/browser/browser_1781501931/a11y/turn_01_raw.png" alt="a11y/turn_01_raw"><figcaption>a11y/turn_01_raw</figcaption></figure>
+<figure><img src="/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-eed26724/browser/browser_1781501931/a11y/turn_02_raw.png" alt="a11y/turn_02_raw"><figcaption>a11y/turn_02_raw</figcaption></figure>
+<figure><img src="/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-eed26724/browser/browser_1781501931/a11y/turn_03_raw.png" alt="a11y/turn_03_raw"><figcaption>a11y/turn_03_raw</figcaption></figure>
+<figure><img src="/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-eed26724/browser/browser_1781501931/a11y/turn_04_raw.png" alt="a11y/turn_04_raw"><figcaption>a11y/turn_04_raw</figcaption></figure>
+<figure><img src="/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-eed26724/browser/browser_1781501931/a11y/turn_05_raw.png" alt="a11y/turn_05_raw"><figcaption>a11y/turn_05_raw</figcaption></figure>
+<figure><img src="/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-eed26724/browser/browser_1781501931/a11y/turn_06_raw.png" alt="a11y/turn_06_raw"><figcaption>a11y/turn_06_raw</figcaption></figure>
+<figure><img src="/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-eed26724/browser/browser_1781501931/a11y/turn_07_raw.png" alt="a11y/turn_07_raw"><figcaption>a11y/turn_07_raw</figcaption></figure>
+<figure><img src="/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-eed26724/browser/browser_1781501931/a11y/turn_08_raw.png" alt="a11y/turn_08_raw"><figcaption>a11y/turn_08_raw</figcaption></figure>
+<figure><img src="/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-eed26724/browser/browser_1781501931/a11y/turn_09_raw.png" alt="a11y/turn_09_raw"><figcaption>a11y/turn_09_raw</figcaption></figure>
+<figure><img src="/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-eed26724/browser/browser_1781501931/a11y/turn_10_raw.png" alt="a11y/turn_10_raw"><figcaption>a11y/turn_10_raw</figcaption></figure>
+<figure><img src="/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-eed26724/browser/browser_1781501931/a11y/turn_11_raw.png" alt="a11y/turn_11_raw"><figcaption>a11y/turn_11_raw</figcaption></figure>
+<figure><img src="/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-eed26724/browser/browser_1781501931/a11y/turn_12_raw.png" alt="a11y/turn_12_raw"><figcaption>a11y/turn_12_raw</figcaption></figure>
+<figure><img src="/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-eed26724/browser/browser_1781501931/vision/turn_01_marked.png" alt="vision/turn_01_marked"><figcaption>vision/turn_01_marked</figcaption></figure>
+<figure><img src="/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-eed26724/browser/browser_1781501931/vision/turn_01_raw.png" alt="vision/turn_01_raw"><figcaption>vision/turn_01_raw</figcaption></figure></div><h3>Page State Logs</h3><pre>[
+  {
+    &quot;browser_node&quot;: &quot;n:2&quot;,
+    &quot;url&quot;: &quot;https://www.croma.com/computers-tablets/laptops/c/bpc-0015&quot;,
+    &quot;final_url&quot;: null,
+    &quot;path&quot;: &quot;blocked&quot;,
+    &quot;success&quot;: false,
+    &quot;error&quot;: &quot;all layers exhausted; last: step cap reached (12)&quot;,
+    &quot;turns&quot;: 0
+  }
+]</pre></section>
+  <section><h2>6. Extracted Data</h2><pre>{
+  &quot;browser_attempts&quot;: [
+    {
+      &quot;node_id&quot;: &quot;n:2&quot;,
+      &quot;status&quot;: &quot;failed&quot;,
+      &quot;success&quot;: false,
+      &quot;url&quot;: &quot;https://www.croma.com/computers-tablets/laptops/c/bpc-0015&quot;,
+      &quot;goal&quot;: &quot;Filter for price range under 80000 INR; extract the top 3 laptops including their model name, processor, RAM, and price.&quot;,
+      &quot;path&quot;: &quot;blocked&quot;,
+      &quot;turns&quot;: 0,
+      &quot;actions&quot;: [],
+      &quot;final_url&quot;: null,
+      &quot;error&quot;: &quot;all layers exhausted; last: step cap reached (12)&quot;,
+      &quot;error_code&quot;: &quot;interaction_failed&quot;,
+      &quot;report&quot;: {
+        &quot;html&quot;: &quot;/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-eed26724/browser/visible_browser_reports/s8-eed26724/visible_browser_replay_report_s8-eed26724.html&quot;,
+        &quot;json&quot;: &quot;/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-eed26724/browser/visible_browser_reports/s8-eed26724/visible_browser_replay_report_s8-eed26724.json&quot;,
+        &quot;artifact_dir&quot;: &quot;/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-eed26724/browser/visible_browser_reports/s8-eed26724&quot;,
+        &quot;session_id&quot;: &quot;s8-eed26724&quot;
+      }
+    }
+  ],
+  &quot;researcher_outputs&quot;: [
+    {
+      &quot;node_id&quot;: &quot;n:6&quot;,
+      &quot;question&quot;: &quot;What are 3 highly rated laptops available in India under \u20b980,000 in 2024, including their key specifications and pros/cons?&quot;,
+      &quot;sources&quot;: [
+        {
+          &quot;url&quot;: &quot;https://gadgetsnow.indiatimes.com/best-products/laptops/best-laptops-under-80000&quot;,
+          &quot;title&quot;: &quot;Best Laptops Under 80000&quot;
+        },
+        {
+          &quot;url&quot;: &quot;https://www.reddit.com/r/developersIndia/comments/1e39inp/can_anyone_please_recommend_laptop_between_7080k&quot;,
+          &quot;title&quot;: &quot;Can anyone please recommend laptop between 70-80K&quot;
+        }
+      ],
+      &quot;findings&quot;: &quot;For a budget of \u20b980,000 in India, the market offers a mix of entry-to-mid-range gaming laptops and premium thin-and-light productivity machines. Three notable options often recommended include the HP Victus, Lenovo LOQ, and Apple MacBook Air (M1/M2 variants depending on current market sales).\n\nThe HP Victus (typically priced around \u20b979,990) is a popular gaming-focused laptop. It usually features an Intel Core i5-13420H processor, 16GB RAM, 512GB SSD, and an NVIDIA GeForce RTX 4050 GPU. Its pros include strong gaming performance and a modern design, while potential cons include a bulky build (approx. 2.37 kg) and average battery life typical of gaming laptops.\n\nThe Lenovo LOQ series is frequently cited as a reliable alternative, often featuring Intel Core i5-13450HX or similar processors, 16GB RAM, and NVIDIA RTX 3050 6GB graphics. It is well-regarded for its build quality and 100% sRGB display options in some configurations, making it suitable for both gaming and content-related tasks. Users often prefer it for its balanced performance, though like the Victus, it is heavier than ultraportable laptops.\n\nThe Apple MacBook Air remains the top choice for productivity, portability, and battery life. While base prices can fluctuate, models like the M1 or M2 Air frequently retail near or slightly above the \u20b980,000 mark during sales. Its primary pros are its exceptional battery life, silent operation, and high-quality build. The main drawback is the 8GB base RAM on entry-level models, which may be limiting for heavy multitasking or professional creative workflows, and the lack of gaming compatibility compared to Windows-based machines.&quot;
+    }
+  ],
+  &quot;distiller_outputs&quot;: [
+    {
+      &quot;node_id&quot;: &quot;n:3&quot;,
+      &quot;output&quot;: {}
+    }
+  ],
+  &quot;formatter_outputs&quot;: [
+    {
+      &quot;node_id&quot;: &quot;n:4&quot;,
+      &quot;output&quot;: {}
+    },
+    {
+      &quot;node_id&quot;: &quot;n:7&quot;,
+      &quot;output&quot;: {
+        &quot;final_answer&quot;: &quot;Here is a comparison of three highly-rated laptops available in India for under \u20b980,000, catering to different user needs:\n\n| Feature | HP Victus | Lenovo LOQ | Apple MacBook Air (M1/M2) |\n| :--- | :--- | :--- | :--- |\n| **Best For** | Gaming performance | Balanced work &amp; gaming | Productivity &amp; portability |\n| **Processor** | Intel Core i5-13420H | Intel Core i5-13450HX | Apple M1/M2 Chip |\n| **Graphics** | NVIDIA RTX 4050 | NVIDIA RTX 3050 (6GB) | Integrated GPU |\n| **Pros** | Strong gaming power, modern design | Good build quality, 100% sRGB display options | Exceptional battery life, silent operation, premium build |\n| **Cons** | Bulky, average battery life | Heavier build | 8GB base RAM limit, not for gaming |\n\n**Summary:**\n1. **HP Victus:** Ideal if your priority is gaming performance within this budget. It offers a dedicated RTX 4050 GPU but comes with the trade-offs of a heavier chassis and shorter battery life.\n2. **Lenovo LOQ:** A versatile choice that balances gaming capabilities with a better display, making it suitable for both content creation and gaming.\n3. **Apple MacBook Air:** The gold standard for productivity and travel. It offers industry-leading battery life and build quality, though it is not designed for gaming and the base 8GB RAM may limit heavy professional multitasking.\n\nSources: [Gadgets Now](https://gadgetsnow.indiatimes.com/best-products/laptops/best-laptops-under-80000), [Reddit](https://www.reddit.com/r/developersIndia/comments/1e39inp/can_anyone_please_recommend_laptop_between_7080k)&quot;
+      }
+    }
+  ]
+}</pre></section>
+  <section><h2>7. Final Comparison Table</h2><table><thead><tr><th>Feature</th><th>HP Victus</th><th>Lenovo LOQ</th><th>Apple MacBook Air (M1/M2)</th></tr></thead><tbody><tr><td>**Best For**</td><td>Gaming performance</td><td>Balanced work &amp; gaming</td><td>Productivity &amp; portability</td></tr><tr><td>**Processor**</td><td>Intel Core i5-13420H</td><td>Intel Core i5-13450HX</td><td>Apple M1/M2 Chip</td></tr><tr><td>**Graphics**</td><td>NVIDIA RTX 4050</td><td>NVIDIA RTX 3050 (6GB)</td><td>Integrated GPU</td></tr><tr><td>**Pros**</td><td>Strong gaming power, modern design</td><td>Good build quality, 100% sRGB display options</td><td>Exceptional battery life, silent operation, premium build</td></tr><tr><td>**Cons**</td><td>Bulky, average battery life</td><td>Heavier build</td><td>8GB base RAM limit, not for gaming</td></tr></tbody></table></section>
+  <section><h2>8. Turn Count And Cost Summary</h2><pre>{
+  &quot;node_count&quot;: 8,
+  &quot;browser_attempt_count&quot;: 1,
+  &quot;browser_turn_count&quot;: 0,
+  &quot;completed_nodes&quot;: 5,
+  &quot;failed_nodes&quot;: 1,
+  &quot;llm_calls&quot;: 18,
+  &quot;tokens_in&quot;: 18831,
+  &quot;tokens_out&quot;: 2666,
+  &quot;estimated_cost_usd&quot;: 0.0,
+  &quot;node_result_cost_usd&quot;: 0.0,
+  &quot;gateway_ledger_cost_usd&quot;: 0.0,
+  &quot;providers&quot;: [
+    &quot;gemini&quot;,
+    &quot;local-session-reporter&quot;
+  ],
+  &quot;gateway_cost_by_agent&quot;: {
+    &quot;browser&quot;: [
+      {
+        &quot;provider&quot;: &quot;gemini&quot;,
+        &quot;calls&quot;: 13,
+        &quot;in_tok&quot;: 8618,
+        &quot;out_tok&quot;: 1111,
+        &quot;total_latency_ms&quot;: 36102,
+        &quot;total_retries&quot;: 0,
+        &quot;ok&quot;: 13,
+        &quot;errors&quot;: 0,
+        &quot;dollars&quot;: 0.0
+      }
+    ],
+    &quot;formatter&quot;: [
+      {
+        &quot;provider&quot;: &quot;gemini&quot;,
+        &quot;calls&quot;: 1,
+        &quot;in_tok&quot;: 1365,
+        &quot;out_tok&quot;: 445,
+        &quot;total_latency_ms&quot;: 2970,
+        &quot;total_retries&quot;: 0,
+        &quot;ok&quot;: 1,
+        &quot;errors&quot;: 0,
+        &quot;dollars&quot;: 0.0
+      }
+    ],
+    &quot;planner&quot;: [
+      {
+        &quot;provider&quot;: &quot;gemini&quot;,
+        &quot;calls&quot;: 2,
+        &quot;in_tok&quot;: 5066,
+        &quot;out_tok&quot;: 486,
+        &quot;total_latency_ms&quot;: 3686,
+        &quot;total_retries&quot;: 0,
+        &quot;ok&quot;: 2,
+        &quot;errors&quot;: 0,
+        &quot;dollars&quot;: 0.0
+      }
+    ],
+    &quot;researcher&quot;: [
+      {
+        &quot;provider&quot;: &quot;gemini&quot;,
+        &quot;calls&quot;: 2,
+        &quot;in_tok&quot;: 3782,
+        &quot;out_tok&quot;: 624,
+        &quot;total_latency_ms&quot;: 9956,
+        &quot;total_retries&quot;: 0,
+        &quot;ok&quot;: 2,
+        &quot;errors&quot;: 0,
+        &quot;dollars&quot;: 0.0
+      }
+    ]
+  }
+}</pre></section>
+  <section><h2>Full DAG Nodes</h2><table><thead><tr><th>node_id</th><th>skill</th><th>status</th><th>success</th><th>error_code</th><th>elapsed_s</th></tr></thead><tbody><tr><td>n:1</td><td>planner</td><td>complete</td><td>True</td><td>None</td><td>5.217192888259888</td></tr><tr><td>n:2</td><td>browser</td><td>failed</td><td>False</td><td>interaction_failed</td><td>74.11636400222778</td></tr><tr><td>n:3</td><td>distiller</td><td>pending</td><td>None</td><td>None</td><td>0.0</td></tr><tr><td>n:4</td><td>formatter</td><td>pending</td><td>None</td><td>None</td><td>0.0</td></tr><tr><td>n:5</td><td>planner</td><td>complete</td><td>True</td><td>None</td><td>1.4916489124298096</td></tr><tr><td>n:6</td><td>researcher</td><td>complete</td><td>True</td><td>None</td><td>15.86128830909729</td></tr><tr><td>n:7</td><td>formatter</td><td>complete</td><td>True</td><td>None</td><td>2.9807240962982178</td></tr><tr><td>n:8</td><td>session_reporter</td><td>complete</td><td>True</td><td>None</td><td>0.01702594757080078</td></tr></tbody></table></section>
+  <section><h2>Recovery Path</h2><table><thead><tr><th>node_id</th><th>skill</th><th>status</th><th>recovers</th><th>recovery_reason</th></tr></thead><tbody><tr><td>n:5</td><td>planner</td><td>complete</td><td>n:2</td><td>upstream_failure</td></tr></tbody></table></section>
+  <section><h2>Browser Attempts</h2><table><thead><tr><th>node_id</th><th>status</th><th>success</th><th>path</th><th>turns</th><th>url</th><th>error_code</th><th>error</th></tr></thead><tbody><tr><td>n:2</td><td>failed</td><td>False</td><td>blocked</td><td>0</td><td>https://www.croma.com/computers-tablets/laptops/c/bpc-0015</td><td>interaction_failed</td><td>all layers exhausted; last: step cap reached (12)</td></tr></tbody></table></section>
+  <section><h2>Final Answer</h2><pre>Here is a comparison of three highly-rated laptops available in India for under ₹80,000, catering to different user needs:
+
+| Feature | HP Victus | Lenovo LOQ | Apple MacBook Air (M1/M2) |
+| :--- | :--- | :--- | :--- |
+| **Best For** | Gaming performance | Balanced work &amp; gaming | Productivity &amp; portability |
+| **Processor** | Intel Core i5-13420H | Intel Core i5-13450HX | Apple M1/M2 Chip |
+| **Graphics** | NVIDIA RTX 4050 | NVIDIA RTX 3050 (6GB) | Integrated GPU |
+| **Pros** | Strong gaming power, modern design | Good build quality, 100% sRGB display options | Exceptional battery life, silent operation, premium build |
+| **Cons** | Bulky, average battery life | Heavier build | 8GB base RAM limit, not for gaming |
+
+**Summary:**
+1. **HP Victus:** Ideal if your priority is gaming performance within this budget. It offers a dedicated RTX 4050 GPU but comes with the trade-offs of a heavier chassis and shorter battery life.
+2. **Lenovo LOQ:** A versatile choice that balances gaming capabilities with a better display, making it suitable for both content creation and gaming.
+3. **Apple MacBook Air:** The gold standard for productivity and travel. It offers industry-leading battery life and build quality, though it is not designed for gaming and the base 8GB RAM may limit heavy professional multitasking.
+
+Sources: [Gadgets Now](https://gadgetsnow.indiatimes.com/best-products/laptops/best-laptops-under-80000), [Reddit](https://www.reddit.com/r/developersIndia/comments/1e39inp/can_anyone_please_recommend_laptop_between_7080k)</pre></section>
+  <section><h2>Query Analysis Markdown</h2><p><a href="/Users/avi/Documents/SessionNotes/Session9/Query_s8-eed26724_Analysis.md">Query_s8-eed26724_Analysis.md</a></p></section>
+</body>
+</html>

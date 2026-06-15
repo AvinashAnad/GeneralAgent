@@ -60,6 +60,10 @@ For blocked pages, a11y is still useful evidence: it can show that the rendered 
 | Vision | Screenshot set-of-marks fallback. | No vision evidence recorded. |
 | Final Browser State | Browser node outcome. | a11y |
 
+## Browser Layer Trace
+
+- `n:2`: extract attempted -> no useful content extracted -> deterministic skipped/no selectors -> a11y succeeded in 4 turn(s) -> vision not needed
+
 ## Final Comparison Table
 
 | Product | Details |
@@ -110,12 +114,12 @@ The top 3 text-generation models on Hugging Face, ranked by their number of like
   "gateway_ledger_cost_usd": 0.000328,
   "providers": [
     "gemini",
-    "groq"
+    "groq",
+    "local-session-reporter"
   ],
   "gateway_cost_by_agent": {
     "browser": [
       {
-        "agent": "browser",
         "provider": "gemini",
         "calls": 4,
         "in_tok": 7478,
@@ -129,7 +133,6 @@ The top 3 text-generation models on Hugging Face, ranked by their number of like
     ],
     "critic": [
       {
-        "agent": "critic",
         "provider": "groq",
         "calls": 1,
         "in_tok": 891,
@@ -143,7 +146,6 @@ The top 3 text-generation models on Hugging Face, ranked by their number of like
     ],
     "distiller": [
       {
-        "agent": "distiller",
         "provider": "gemini",
         "calls": 1,
         "in_tok": 3478,
@@ -157,7 +159,6 @@ The top 3 text-generation models on Hugging Face, ranked by their number of like
     ],
     "formatter": [
       {
-        "agent": "formatter",
         "provider": "gemini",
         "calls": 1,
         "in_tok": 944,
@@ -171,7 +172,6 @@ The top 3 text-generation models on Hugging Face, ranked by their number of like
     ],
     "planner": [
       {
-        "agent": "planner",
         "provider": "gemini",
         "calls": 1,
         "in_tok": 2512,

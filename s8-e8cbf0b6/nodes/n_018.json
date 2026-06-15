@@ -1,0 +1,46 @@
+{
+  "node_id": "n:18",
+  "skill": "distiller",
+  "status": "complete",
+  "inputs": [
+    "n:17"
+  ],
+  "result": {
+    "success": true,
+    "agent_name": "distiller",
+    "output": {
+      "fields": {
+        "institutes": [
+          {
+            "name": "NTTF",
+            "placement_record": "98%+",
+            "focus": "hands-on precision machining"
+          },
+          {
+            "name": "RVM CAD",
+            "course_duration": "30-day batches",
+            "curriculum": "AutoCAD, manual programming, Mastercam, Delcam",
+            "placement_support": "100% job assistance"
+          },
+          {
+            "name": "Technologics",
+            "focus": "real-time industrial projects",
+            "placement_support": "100% placement assistance"
+          }
+        ]
+      },
+      "rationale": "The findings provide details for three reputable CNC/VMC training institutes in Bangalore, noting that data for five distinct institutes is not consistently available."
+    },
+    "artifacts": [],
+    "successors": [],
+    "cost": 0.0,
+    "elapsed_s": 2.8123879432678223,
+    "provider": "gemini",
+    "error": null,
+    "error_code": null
+  },
+  "prompt_sent": "You are the Distiller skill. You receive raw text (typically the\n`findings` of one or more Researcher nodes, or the `chunks` of a\nRetriever node) and produce a small structured record.\n\nYou make no tool calls. You do no web access. Everything you need is\nalready in the prompt under INPUTS.\n\nProcedure:\n  1. Identify what fields the user's question implies (people, dates,\n     numbers, comparisons, percentages, attributions).\n  2. Pull those fields out of the inputs.\n  3. Emit a compact JSON record. Fields with no evidence in the inputs\n     are omitted, not made up.\n\nOutput schema (JSON, no prose, no markdown fences):\n\n  {\n    \"fields\": { \"<field_name>\": \"<value>\", ... },\n    \"rationale\": \"<one short sentence saying which input supports each field>\"\n  }\n\nNotes:\n  - The fields dictionary is the load-bearing output; downstream\n    Formatter nodes read it.\n  - When the question is a comparison (`fastest growing`, `largest`),\n    emit a `comparison` key with `winner: <id>` and `reason: <short>`.\n  - When the question's evidence is missing, set `fields: {}` and put\n    the gap in `rationale`. Do not invent.\n\nA Critic node may run after you. Its evaluation will fail if you\ninvented fields or made claims unsupported by the inputs.\n\nMEMORY HITS (8 from FAISS):\n  - [fact] Population comparison of London, Paris, and Berlin\n      source: user_query\n      raw: Find the populations of London, Paris, and Berlin and tell me which two are closest in size.\n  - [fact] Population comparison of London, Paris, and Berlin\n      source: user_query\n      raw: Find the populations of London, Paris, and Berlin and tell me which two are closest in size.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [preference] Compare top 3 Hugging Face text-generation models sorted by likes\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n\nINPUTS:\n[\n  {\n    \"id\": \"n:17\",\n    \"kind\": \"upstream\",\n    \"skill\": \"researcher\",\n    \"output\": {\n      \"question\": \"Find 5 reputable CNC/VMC training institutes in Bangalore, including details like course duration, curriculum focus, and placement support.\",\n      \"sources\": [\n        {\n          \"url\": \"https://www.nttftrg.com/precision-cnc-machinist-2\",\n          \"title\": \"NTTF - Precision CNC Machinist Training\"\n        },\n        {\n          \"url\": \"https://www.youtube.com/watch?v=PnY-GjSV8Ek\",\n          \"title\": \"RVM CAD - CNC/VMC Training and Placement\"\n        },\n        {\n          \"url\": \"http://www.startautomation.in/cnc-machine-program-training-bangalore.html\",\n          \"title\": \"Technologics - CNC Machine Programming Training\"\n        }\n      ],\n      \"findings\": \"Finding five distinct, highly reputable institutes with granular, comparative data is challenging as many providers operate as local vocational centers or internal industry training bodies. The most prominent options in Bangalore include NTTF (Nettur Technical Training Foundation), RVM CAD, and Technologics. NTTF is widely regarded as a premier technical training institution in India, offering structured, industry-aligned programs with a reported 98%+ placement record and a strong focus on hands-on precision machining.\\n\\nRVM CAD specializes in CAD/CAM and CNC/VMC programming, offering intensive short-term courses (e.g., 30-day batches). Their curriculum covers AutoCAD, manual programming, and software-based programming (Mastercam, Delcam). They emphasize 100% job assistance and operate with industrial-grade machines. Technologics provides training focused on real-time industrial projects, emphasizing hands-on practical experience in laboratories, and also claims 100% placement assistance.\\n\\nWhile specific, verified course durations and curriculum breakdowns for all five institutes are not consistently published in a single comparative format, training providers in Bangalore generally follow two models: long-term diploma-style vocational training (like NTTF) or short-term, skill-specific certification courses (like RVM CAD and Technologics). Prospective students are advised to contact these centers directly to verify current batch schedules, as most begin new cycles monthly.\"\n    }\n  }\n]",
+  "started_at": 1781502970.839848,
+  "completed_at": 1781502973.652236,
+  "retries": 0
+}

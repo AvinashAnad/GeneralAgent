@@ -1,0 +1,39 @@
+{
+  "node_id": "n:2",
+  "skill": "researcher",
+  "status": "complete",
+  "inputs": [],
+  "result": {
+    "success": true,
+    "agent_name": "researcher",
+    "output": {
+      "question": "What are the free and paid plan details for GitHub Copilot?",
+      "sources": [
+        {
+          "url": "https://docs.github.com/en/copilot/concepts/billing/individual-plans",
+          "title": "About individual GitHub Copilot plans and benefits"
+        },
+        {
+          "url": "https://docs.github.com/en/copilot/get-started/plans",
+          "title": "Plans for GitHub Copilot - GitHub Docs"
+        },
+        {
+          "url": "https://github.com/features/copilot/plans",
+          "title": "GitHub Copilot · Plans & pricing"
+        }
+      ],
+      "findings": "GitHub Copilot offers several tiers for individual developers, ranging from a free entry-level plan to advanced paid subscriptions. The Copilot Free plan is intended for personal use and includes up to 2,000 inline code completions and 50 chat requests per month. It is designed for developers to explore basic capabilities without a subscription.\n\nFor students, GitHub Copilot Student provides unlimited code completions and access to additional models at no cost, provided they are verified. Similarly, verified teachers and maintainers of popular open-source projects may be eligible for free access to the Copilot Pro plan.\n\nPaid plans for individuals include Copilot Pro ($10/month), Copilot Pro+ ($39/month), and Copilot Max ($100/month). These plans offer unlimited code completions in IDEs, increased chat and agent interaction limits, and varying levels of GitHub AI Credits for premium model access. Copilot Pro+ and Max are specifically targeted at power users requiring higher request limits and full access to advanced AI capabilities.\n\nFor organizations, GitHub offers Copilot Business ($19/user/month) and Copilot Enterprise ($39/user/month). These business-tier plans include organizational license management, policy controls, and IP indemnity, alongside monthly AI credit allowances to support team-wide usage."
+    },
+    "artifacts": [],
+    "successors": [],
+    "cost": 0.0,
+    "elapsed_s": 12.77384901046753,
+    "provider": "gemini",
+    "error": null,
+    "error_code": null
+  },
+  "prompt_sent": "You are the Researcher skill. You go to the web for a specific question\nand bring back normalised text the rest of the DAG can work from.\n\nYour tool surface is two MCP tools: `web_search(query, max_results)` and\n`fetch_url(url)`. Use them. Do not narrate; do not invent other tools.\n\nProcedure:\n  1. Read the QUESTION in the prompt.\n  2. Issue ONE `web_search` to get candidate URLs.\n  3. Pick the 1–3 most authoritative-looking URLs and fetch them with\n     `fetch_url` in sequence. Avoid clearly low-signal results (aggregator\n     spam, ad redirects).\n  4. Synthesise the relevant content from the fetched pages.\n\nTime budget: keep tool calls to 4 max per invocation. If a `fetch_url`\nreturns very little usable text, do not retry; move on.\n\nOutput schema (JSON, no prose, no markdown fences):\n\n  {\n    \"question\": \"<the question this run answered>\",\n    \"sources\": [{\"url\": \"<url>\", \"title\": \"<title>\"}, ...],\n    \"findings\": \"<2–6 short paragraphs of normalised text>\"\n  }\n\nYou do NOT produce the final user-facing answer. The downstream\ndistiller or formatter does that. If the question cannot be answered\nfrom the web within your budget, return `\"findings\": \"(not found)\"`\nand let the next node decide.\n\nQUESTION: What are the free and paid plan details for GitHub Copilot?\n\nMEMORY HITS (8 from FAISS):\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [preference] Compare top 3 Hugging Face text-generation models sorted by likes\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [tool_outcome] Compare top 3 Hugging Face text-generation models sorted by likes\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [tool_outcome] Comparison of 3 laptops under 80,000 INR from Croma\n      source: user_query\n      raw: Compare 3 laptops under ₹80,000 from Croma.\n\nINPUTS:\n[]",
+  "started_at": 1781502514.565574,
+  "completed_at": 1781502527.339424,
+  "retries": 0
+}

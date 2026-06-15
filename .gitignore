@@ -18,7 +18,7 @@ venv/
 *.sqlite3
 logs/
 usage.json
-state/
+# state/
 sandbox/
 artifacts/
 sessions/

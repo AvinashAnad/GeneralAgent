@@ -1,0 +1,43 @@
+{
+  "node_id": "n:5",
+  "skill": "researcher",
+  "status": "complete",
+  "inputs": [],
+  "result": {
+    "success": true,
+    "agent_name": "researcher",
+    "output": {
+      "question": "What are the free and paid plan details for Tabnine?",
+      "sources": [
+        {
+          "url": "https://checkthat.ai/brands/tabnine/pricing",
+          "title": "Tabnine Pricing: Plans, Costs & Hidden Fees"
+        },
+        {
+          "url": "https://aiflowreview.com/tabnine-review-2025",
+          "title": "Tabnine Review 2025 - AI Flow Review"
+        },
+        {
+          "url": "https://www.saasworthy.com/product/tabnine/pricing",
+          "title": "Tabnine Pricing & Plans (May 2026) | Compare Costs & Features - SaaSworthy"
+        },
+        {
+          "url": "https://www.eesel.ai/blog/tabnine/pricing",
+          "title": "A complete guide to Tabnine pricing in 2025 - eesel AI"
+        }
+      ],
+      "findings": "Tabnine's pricing model is primarily focused on professional and enterprise users, with limited consensus on the availability of a permanent free tier. Some sources indicate there is no public free tier, while others mention historical or limited \"Dev\" versions. For evaluation, Tabnine typically offers a free trial (often 90 days for Pro/Team features) to allow developers to test capabilities before committing to a paid subscription.\n\nPaid plans are generally structured by user per month, with costs typically starting around $39/user/month for team-oriented tiers. These plans are often billed annually and provide advanced features such as multi-line code completion, AI agents for documentation and review, and integration support.\n\nEnterprise plans are available for larger organizations, providing custom pricing. These tiers focus on security and compliance, offering options for VPC, on-premises, or air-gapped deployments, alongside SSO, IP indemnification, and custom model training to meet the needs of regulated industries and large teams.\n\nDue to the evolving nature of SaaS pricing, plan names and costs can vary significantly across different sources and time periods. Users are consistently advised to check the official Tabnine website for the most current tier structure, feature lists, and availability of trial periods."
+    },
+    "artifacts": [],
+    "successors": [],
+    "cost": 0.0,
+    "elapsed_s": 37.16242790222168,
+    "provider": "gemini",
+    "error": null,
+    "error_code": null
+  },
+  "prompt_sent": "You are the Researcher skill. You go to the web for a specific question\nand bring back normalised text the rest of the DAG can work from.\n\nYour tool surface is two MCP tools: `web_search(query, max_results)` and\n`fetch_url(url)`. Use them. Do not narrate; do not invent other tools.\n\nProcedure:\n  1. Read the QUESTION in the prompt.\n  2. Issue ONE `web_search` to get candidate URLs.\n  3. Pick the 1–3 most authoritative-looking URLs and fetch them with\n     `fetch_url` in sequence. Avoid clearly low-signal results (aggregator\n     spam, ad redirects).\n  4. Synthesise the relevant content from the fetched pages.\n\nTime budget: keep tool calls to 4 max per invocation. If a `fetch_url`\nreturns very little usable text, do not retry; move on.\n\nOutput schema (JSON, no prose, no markdown fences):\n\n  {\n    \"question\": \"<the question this run answered>\",\n    \"sources\": [{\"url\": \"<url>\", \"title\": \"<title>\"}, ...],\n    \"findings\": \"<2–6 short paragraphs of normalised text>\"\n  }\n\nYou do NOT produce the final user-facing answer. The downstream\ndistiller or formatter does that. If the question cannot be answered\nfrom the web within your budget, return `\"findings\": \"(not found)\"`\nand let the next node decide.\n\nQUESTION: What are the free and paid plan details for Tabnine?\n\nMEMORY HITS (8 from FAISS):\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [preference] Compare top 3 Hugging Face text-generation models sorted by likes\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [tool_outcome] Compare top 3 Hugging Face text-generation models sorted by likes\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [tool_outcome] Comparison of 3 laptops under 80,000 INR from Croma\n      source: user_query\n      raw: Compare 3 laptops under ₹80,000 from Croma.\n\nINPUTS:\n[]",
+  "started_at": 1781502490.178287,
+  "completed_at": 1781502527.340715,
+  "retries": 0
+}

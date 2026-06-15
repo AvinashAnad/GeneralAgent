@@ -1,0 +1,35 @@
+{
+  "node_id": "n:4",
+  "skill": "researcher",
+  "status": "complete",
+  "inputs": [],
+  "result": {
+    "success": true,
+    "agent_name": "researcher",
+    "output": {
+      "question": "What are the free and paid plan details for Claude Dev / Anthropic Claude?",
+      "sources": [
+        {
+          "url": "https://mem0.ai/blog/anthropic-claude-pricing",
+          "title": "Claude Pricing: Every Plan and API Cost (May 2026) - Mem0"
+        },
+        {
+          "url": "https://aionx.co/claude-ai-reviews/claude-pro-free-claude",
+          "title": "Claude Pro: vs free Claude - Complete Guide - AIonX"
+        }
+      ],
+      "findings": "Anthropic offers three primary tiers for individual users: Free, Pro, and Max. The Free plan is available at no cost and includes access to Claude models, Projects, Artifacts, app connectors, and web search, but is subject to daily usage limits that can be restrictive for heavy users. It does not provide access to advanced tools like Claude Code.\n\nClaude Pro costs $20/month, with an annual billing option that reduces the effective cost to $17/month. This tier provides significantly higher usage limits (approximately 5x the capacity of the free tier), priority processing, and access to advanced features including Claude Code (a terminal-based coding agent), file creation, code execution, and Google Workspace integrations.\n\nFor users requiring even higher capacity, Anthropic offers 'Max' tiers. The Max 5x plan costs $100/month and provides 5x the capacity of the Pro plan, while the Max 20x plan costs $200/month and offers 20x the capacity of the Pro plan. These are designed for heavy users, such as those running agent teams or sustained workloads, who wish to avoid the variable costs associated with pay-per-token API billing."
+    },
+    "artifacts": [],
+    "successors": [],
+    "cost": 0.0,
+    "elapsed_s": 49.93911695480347,
+    "provider": "gemini",
+    "error": null,
+    "error_code": null
+  },
+  "prompt_sent": "You are the Researcher skill. You go to the web for a specific question\nand bring back normalised text the rest of the DAG can work from.\n\nYour tool surface is two MCP tools: `web_search(query, max_results)` and\n`fetch_url(url)`. Use them. Do not narrate; do not invent other tools.\n\nProcedure:\n  1. Read the QUESTION in the prompt.\n  2. Issue ONE `web_search` to get candidate URLs.\n  3. Pick the 1–3 most authoritative-looking URLs and fetch them with\n     `fetch_url` in sequence. Avoid clearly low-signal results (aggregator\n     spam, ad redirects).\n  4. Synthesise the relevant content from the fetched pages.\n\nTime budget: keep tool calls to 4 max per invocation. If a `fetch_url`\nreturns very little usable text, do not retry; move on.\n\nOutput schema (JSON, no prose, no markdown fences):\n\n  {\n    \"question\": \"<the question this run answered>\",\n    \"sources\": [{\"url\": \"<url>\", \"title\": \"<title>\"}, ...],\n    \"findings\": \"<2–6 short paragraphs of normalised text>\"\n  }\n\nYou do NOT produce the final user-facing answer. The downstream\ndistiller or formatter does that. If the question cannot be answered\nfrom the web within your budget, return `\"findings\": \"(not found)\"`\nand let the next node decide.\n\nQUESTION: What are the free and paid plan details for Claude Dev / Anthropic Claude?\n\nMEMORY HITS (8 from FAISS):\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [preference] Compare top 3 Hugging Face text-generation models sorted by likes\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [tool_outcome] Compare top 3 Hugging Face text-generation models sorted by likes\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [tool_outcome] Comparison of 3 laptops under 80,000 INR from Croma\n      source: user_query\n      raw: Compare 3 laptops under ₹80,000 from Croma.\n\nINPUTS:\n[]",
+  "started_at": 1781502477.401316,
+  "completed_at": 1781502527.340433,
+  "retries": 0
+}

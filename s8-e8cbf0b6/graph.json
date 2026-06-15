@@ -1,0 +1,1096 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "skill": "planner",
+      "inputs": [
+        "USER_QUERY"
+      ],
+      "metadata": {},
+      "status": "complete",
+      "result": {
+        "success": true,
+        "agent_name": "planner",
+        "output": {
+          "rationale": "I need to identify 5 reputable CNC/VMC training institutes in Bangalore and gather details on each to perform a comparison.",
+          "nodes": [
+            {
+              "skill": "researcher",
+              "inputs": [],
+              "metadata": {
+                "label": "search",
+                "question": "Find 5 reputable CNC/VMC training institutes in Bangalore and provide details on their course offerings, duration, and placement support."
+              }
+            },
+            {
+              "skill": "distiller",
+              "inputs": [
+                "n:search"
+              ],
+              "metadata": {
+                "label": "distill",
+                "question": "Extract structured details for 5 CNC/VMC training institutes: Name, Key Courses, Duration, and Placement Support."
+              }
+            },
+            {
+              "skill": "formatter",
+              "inputs": [
+                "USER_QUERY",
+                "n:distill"
+              ],
+              "metadata": {
+                "label": "out"
+              }
+            }
+          ]
+        },
+        "artifacts": [],
+        "successors": [
+          {
+            "skill": "researcher",
+            "inputs": [],
+            "metadata": {
+              "label": "search",
+              "question": "Find 5 reputable CNC/VMC training institutes in Bangalore and provide details on their course offerings, duration, and placement support."
+            }
+          },
+          {
+            "skill": "distiller",
+            "inputs": [
+              "n:search"
+            ],
+            "metadata": {
+              "label": "distill",
+              "question": "Extract structured details for 5 CNC/VMC training institutes: Name, Key Courses, Duration, and Placement Support."
+            }
+          },
+          {
+            "skill": "formatter",
+            "inputs": [
+              "USER_QUERY",
+              "n:distill"
+            ],
+            "metadata": {
+              "label": "out"
+            }
+          }
+        ],
+        "cost": 0.0,
+        "elapsed_s": 7.483313798904419,
+        "provider": "gemini",
+        "error": null,
+        "error_code": null
+      },
+      "_result_typed": true,
+      "id": "n:1"
+    },
+    {
+      "skill": "researcher",
+      "inputs": [],
+      "metadata": {
+        "label": "search",
+        "question": "Find 5 reputable CNC/VMC training institutes in Bangalore and provide details on their course offerings, duration, and placement support."
+      },
+      "status": "complete",
+      "result": {
+        "success": true,
+        "agent_name": "researcher",
+        "output": {
+          "question": "Find 5 reputable CNC/VMC training institutes in Bangalore and provide details on their course offerings, duration, and placement support.",
+          "sources": [
+            {
+              "url": "https://gttc.karnataka.gov.in/4/bangalore-stu-01-stu-02/en",
+              "title": "Government Tool Room & Training Centre - Bangalore"
+            },
+            {
+              "url": "https://www.youtube.com/watch?v=Q7JSnrK5GM0",
+              "title": "RVM CAD Bangalore CNC/VMC Training"
+            }
+          ],
+          "findings": "The Government Tool Room & Training Centre (GTTC), Bangalore, is a highly reputable government-run institution offering structured courses in CNC and VMC. Their offerings include short-term courses (1 month) such as CNC Programming & Operation (Turning & Milling) and long-term programs (4\u201312 months) like CNC Machine Operator and Tool & Die Maker. Qualifications vary from SSLC to B.E./Diploma depending on the course complexity. GTTC is widely recognized for its extensive training infrastructure and established industry reputation.\n\nRVM CAD (Bangalore centre) is a prominent private training provider specializing in CNC/VMC programming. They offer a 'Skill-30' batch program, which includes training in AutoCAD, CNC/VMC setting, manual programming, and software like Mastercam and Delcam. The duration for these intensive courses is typically 30 days. They explicitly advertise 100% placement support and claim to have a full-scale research lab with 5-axis machines for practical training.\n\nWhile GTTC and RVM CAD are primary examples, many other vocational training centres in Bangalore operate in this domain. However, due to the prevalence of generic aggregator listings and inconsistent data for smaller private institutes, it is highly recommended that candidates verify placement records and hands-on machine availability personally at any centre. For high-reliability training, government-affiliated bodies like GTTC remain the benchmark for curriculum and industry-standard certifications in Karnataka."
+        },
+        "artifacts": [],
+        "successors": [],
+        "cost": 0.0,
+        "elapsed_s": 7.434618949890137,
+        "provider": "gemini",
+        "error": null,
+        "error_code": null
+      },
+      "_result_typed": true,
+      "id": "n:2"
+    },
+    {
+      "skill": "distiller",
+      "inputs": [
+        "n:2"
+      ],
+      "metadata": {
+        "label": "distill",
+        "question": "Extract structured details for 5 CNC/VMC training institutes: Name, Key Courses, Duration, and Placement Support."
+      },
+      "status": "complete",
+      "result": {
+        "success": true,
+        "agent_name": "distiller",
+        "output": {
+          "fields": {
+            "institutes": [
+              {
+                "name": "Government Tool Room & Training Centre (GTTC)",
+                "key_courses": "CNC Programming & Operation (Turning & Milling), CNC Machine Operator, Tool & Die Maker",
+                "duration": "1 month (short-term), 4-12 months (long-term)",
+                "placement_support": "Not explicitly stated"
+              },
+              {
+                "name": "RVM CAD",
+                "key_courses": "AutoCAD, CNC/VMC setting, manual programming, Mastercam, Delcam",
+                "duration": "30 days",
+                "placement_support": "100% placement support"
+              }
+            ]
+          },
+          "rationale": "The input provided details for only two institutes (GTTC and RVM CAD), leaving the requested information for three additional institutes missing."
+        },
+        "artifacts": [],
+        "successors": [],
+        "cost": 0.0,
+        "elapsed_s": 2.904078960418701,
+        "provider": "gemini",
+        "error": null,
+        "error_code": null
+      },
+      "_result_typed": true,
+      "id": "n:3"
+    },
+    {
+      "skill": "formatter",
+      "inputs": [
+        "USER_QUERY",
+        "n:3"
+      ],
+      "metadata": {
+        "label": "out"
+      },
+      "status": "skipped",
+      "id": "n:4"
+    },
+    {
+      "skill": "critic",
+      "inputs": [
+        "USER_QUERY",
+        "n:3"
+      ],
+      "metadata": {
+        "target": "n:3",
+        "child": "n:4"
+      },
+      "status": "complete",
+      "result": {
+        "success": true,
+        "agent_name": "critic",
+        "output": {
+          "verdict": "fail",
+          "rationale": "The output lists only two institutes while the query requested a comparison of five; the response is missing three required entries."
+        },
+        "artifacts": [],
+        "successors": [],
+        "cost": 0.0,
+        "elapsed_s": 0.8125419616699219,
+        "provider": "groq",
+        "error": null,
+        "error_code": null
+      },
+      "_result_typed": true,
+      "id": "n:5"
+    },
+    {
+      "skill": "planner",
+      "inputs": [
+        "USER_QUERY"
+      ],
+      "metadata": {
+        "failure_report": "critic failed target=n:3 child=n:4 rationale=The output lists only two institutes while the query requested a comparison of five; the response is missing three required entries.",
+        "recovers": "n:3",
+        "recovery_reason": "critic_fail"
+      },
+      "status": "complete",
+      "result": {
+        "success": true,
+        "agent_name": "planner",
+        "output": {
+          "rationale": "The previous attempt failed to provide 5 institutes; I will use the researcher to perform a comprehensive search for 5 distinct CNC/VMC training institutes in Bangalore and then use a distiller to ensure the output is structured for comparison before formatting.",
+          "nodes": [
+            {
+              "skill": "researcher",
+              "inputs": [
+                "USER_QUERY"
+              ],
+              "metadata": {
+                "label": "r1",
+                "question": "Find 5 reputable CNC/VMC training institutes in Bangalore and provide details for each including course focus and reputation."
+              }
+            },
+            {
+              "skill": "distiller",
+              "inputs": [
+                "n:r1"
+              ],
+              "metadata": {
+                "label": "d1"
+              }
+            },
+            {
+              "skill": "formatter",
+              "inputs": [
+                "USER_QUERY",
+                "n:d1"
+              ],
+              "metadata": {
+                "label": "out"
+              }
+            }
+          ]
+        },
+        "artifacts": [],
+        "successors": [
+          {
+            "skill": "researcher",
+            "inputs": [
+              "USER_QUERY"
+            ],
+            "metadata": {
+              "label": "r1",
+              "question": "Find 5 reputable CNC/VMC training institutes in Bangalore and provide details for each including course focus and reputation."
+            }
+          },
+          {
+            "skill": "distiller",
+            "inputs": [
+              "n:r1"
+            ],
+            "metadata": {
+              "label": "d1"
+            }
+          },
+          {
+            "skill": "formatter",
+            "inputs": [
+              "USER_QUERY",
+              "n:d1"
+            ],
+            "metadata": {
+              "label": "out"
+            }
+          }
+        ],
+        "cost": 0.0,
+        "elapsed_s": 5.899040937423706,
+        "provider": "gemini",
+        "error": null,
+        "error_code": null
+      },
+      "_result_typed": true,
+      "id": "n:6"
+    },
+    {
+      "skill": "researcher",
+      "inputs": [
+        "USER_QUERY"
+      ],
+      "metadata": {
+        "label": "r1",
+        "question": "Find 5 reputable CNC/VMC training institutes in Bangalore and provide details for each including course focus and reputation."
+      },
+      "status": "complete",
+      "result": {
+        "success": true,
+        "agent_name": "researcher",
+        "output": {
+          "question": "Find 5 reputable CNC/VMC training institutes in Bangalore and provide details for each including course focus and reputation.",
+          "sources": [
+            {
+              "url": "https://www.sulekha.com/cnc-programming-training/bangalore",
+              "title": "CNC Programming Training in Bangalore, Classes, Courses, Institutes"
+            },
+            {
+              "url": "https://www.youtube.com/watch?v=jl0l9FcTPbs",
+              "title": "Biggest CAD CAM Training Centre in Bengaluru | RVM CAD Bangalore"
+            },
+            {
+              "url": "https://www.youtube.com/watch?v=PnY-GjSV8Ek",
+              "title": "5 Axis VMC Programming in just 30 Days - 100% Job Assistance"
+            }
+          ],
+          "findings": "Finding specific, independently verified \"top 5\" lists for CNC/VMC training in Bangalore is difficult as the market is highly fragmented, with many small-to-medium vocational training centers. Aggregator platforms like Sulekha list numerous providers across various localities (e.g., Jayanagar, Rajajinagar, Electronic City), but reputation is often localized or anecdotal.\n\nRVM CAD (Rajajinagar) is frequently cited in digital marketing and video content as a prominent training center in Bangalore. They emphasize a \"Skilled-30\" batch model, offering a blend of AutoCAD, CNC/VMC operating, setting, and manual programming, alongside software like Mastercam and Delcam. They claim a strong focus on 100% job assistance and advertise access to industrial setups.\n\nOther notable, frequently mentioned training providers in Bangalore include Cadcenter and EduCADD. These institutes typically operate as broader CAD/CAM/CAE training centers that include CNC/VMC programming modules in their mechanical engineering curriculum. They generally offer both classroom and online training options, with a focus on design tools and industry-relevant software certifications.\n\nBecause most institutes in this sector are private vocational centers, \"reputation\" is best assessed by directly contacting them to verify their current lab facilities (do they have actual CNC/VMC machines on-site?), instructor experience, and asking for verifiable placement records or alumni references. Potential students are advised to visit the centers personally to inspect the practical training equipment rather than relying solely on online listings."
+        },
+        "artifacts": [],
+        "successors": [],
+        "cost": 0.0,
+        "elapsed_s": 21.16084098815918,
+        "provider": "gemini",
+        "error": null,
+        "error_code": null
+      },
+      "_result_typed": true,
+      "id": "n:7"
+    },
+    {
+      "skill": "distiller",
+      "inputs": [
+        "n:7"
+      ],
+      "metadata": {
+        "label": "d1"
+      },
+      "status": "complete",
+      "result": {
+        "success": true,
+        "agent_name": "distiller",
+        "output": {
+          "fields": {
+            "institutes": [
+              "RVM CAD",
+              "Cadcenter",
+              "EduCADD"
+            ],
+            "location": "Bangalore",
+            "focus": "CNC/VMC programming, AutoCAD, Mastercam, Delcam"
+          },
+          "rationale": "The researcher identified RVM CAD, Cadcenter, and EduCADD as notable providers in Bangalore, noting that a definitive 'top 5' list is unavailable due to market fragmentation."
+        },
+        "artifacts": [],
+        "successors": [],
+        "cost": 0.0,
+        "elapsed_s": 1.0868959426879883,
+        "provider": "gemini",
+        "error": null,
+        "error_code": null
+      },
+      "_result_typed": true,
+      "id": "n:8"
+    },
+    {
+      "skill": "formatter",
+      "inputs": [
+        "USER_QUERY",
+        "n:8"
+      ],
+      "metadata": {
+        "label": "out"
+      },
+      "status": "skipped",
+      "id": "n:9"
+    },
+    {
+      "skill": "critic",
+      "inputs": [
+        "USER_QUERY",
+        "n:8"
+      ],
+      "metadata": {
+        "target": "n:8",
+        "child": "n:9"
+      },
+      "status": "complete",
+      "result": {
+        "success": true,
+        "agent_name": "critic",
+        "output": {
+          "verdict": "fail",
+          "rationale": "The output lists only three institutes instead of the requested five, leaving the comparison incomplete and missing required information."
+        },
+        "artifacts": [],
+        "successors": [],
+        "cost": 0.0,
+        "elapsed_s": 0.775698184967041,
+        "provider": "groq",
+        "error": null,
+        "error_code": null
+      },
+      "_result_typed": true,
+      "id": "n:10"
+    },
+    {
+      "skill": "planner",
+      "inputs": [
+        "USER_QUERY"
+      ],
+      "metadata": {
+        "failure_report": "critic failed target=n:8 child=n:9 rationale=The output lists only three institutes instead of the requested five, leaving the comparison incomplete and missing required information.",
+        "recovers": "n:8",
+        "recovery_reason": "critic_fail"
+      },
+      "status": "complete",
+      "result": {
+        "success": true,
+        "agent_name": "planner",
+        "output": {
+          "rationale": "The previous attempt failed to provide 5 institutes; I will perform a broader search to identify 5 distinct CNC/VMC training institutes in Bangalore and then distill them into a structured comparison.",
+          "nodes": [
+            {
+              "skill": "researcher",
+              "inputs": [],
+              "metadata": {
+                "label": "search",
+                "question": "Find a list of at least 5 reputable CNC/VMC training institutes in Bangalore with their key features."
+              }
+            },
+            {
+              "skill": "distiller",
+              "inputs": [
+                "n:search"
+              ],
+              "metadata": {
+                "label": "distill",
+                "question": "Extract 5 CNC/VMC training institutes in Bangalore, including their name, key courses, and highlights."
+              }
+            },
+            {
+              "skill": "formatter",
+              "inputs": [
+                "USER_QUERY",
+                "n:distill"
+              ],
+              "metadata": {
+                "label": "out"
+              }
+            }
+          ]
+        },
+        "artifacts": [],
+        "successors": [
+          {
+            "skill": "researcher",
+            "inputs": [],
+            "metadata": {
+              "label": "search",
+              "question": "Find a list of at least 5 reputable CNC/VMC training institutes in Bangalore with their key features."
+            }
+          },
+          {
+            "skill": "distiller",
+            "inputs": [
+              "n:search"
+            ],
+            "metadata": {
+              "label": "distill",
+              "question": "Extract 5 CNC/VMC training institutes in Bangalore, including their name, key courses, and highlights."
+            }
+          },
+          {
+            "skill": "formatter",
+            "inputs": [
+              "USER_QUERY",
+              "n:distill"
+            ],
+            "metadata": {
+              "label": "out"
+            }
+          }
+        ],
+        "cost": 0.0,
+        "elapsed_s": 8.128267049789429,
+        "provider": "gemini",
+        "error": null,
+        "error_code": null
+      },
+      "_result_typed": true,
+      "id": "n:11"
+    },
+    {
+      "skill": "researcher",
+      "inputs": [],
+      "metadata": {
+        "label": "search",
+        "question": "Find a list of at least 5 reputable CNC/VMC training institutes in Bangalore with their key features."
+      },
+      "status": "complete",
+      "result": {
+        "success": true,
+        "agent_name": "researcher",
+        "output": {
+          "question": "Find a list of at least 5 reputable CNC/VMC training institutes in Bangalore with their key features.",
+          "sources": [
+            {
+              "url": "https://www.youtube.com/watch?v=jl0l9FcTPbs",
+              "title": "RVM CAD Bangalore - Autocad, 3D CAD, CNC VMC Training"
+            },
+            {
+              "url": "https://www.sulekha.com/cnc-programming-training/bangalore",
+              "title": "CNC Programming Training in Bangalore, Classes, Courses, Institutes"
+            },
+            {
+              "url": "https://www.youtube.com/watch?v=Q7JSnrK5GM0",
+              "title": "Learn CNC VMC Programming in just 30 Days"
+            }
+          ],
+          "findings": "Finding specific reputable institutes in Bangalore for CNC/VMC training often involves navigating vocational training centers and CAD/CAM centers. RVM CAD is frequently highlighted as a prominent training center in Bangalore (specifically located in Rajajinagar) that focuses on industrial training for CNC/VMC programming. Their key features include hands-on training on machines, coverage of software like Mastercam, Delcam, and NX CAM, and stated 100% job assistance programs.\n\nOther potential training options in Bangalore are often aggregated on platforms like Sulekha, which list numerous local training providers across various neighborhoods (such as Whitefield, Jayanagar, and Electronic City). These smaller institutions typically offer flexible learning modes (online and in-person) and cater to ITI, diploma, and degree holders. \n\nDue to the nature of vocational training, 'reputable' status is often best verified by checking current placement records, visiting the physical lab facilities to inspect the machinery available for training, and speaking with alumni. Prospective students are advised to verify the specific machine types (3-axis vs 5-axis) and software versions offered at each center to ensure they align with current industry requirements."
+        },
+        "artifacts": [],
+        "successors": [],
+        "cost": 0.0,
+        "elapsed_s": 13.230518102645874,
+        "provider": "gemini",
+        "error": null,
+        "error_code": null
+      },
+      "_result_typed": true,
+      "id": "n:12"
+    },
+    {
+      "skill": "distiller",
+      "inputs": [
+        "n:12"
+      ],
+      "metadata": {
+        "label": "distill",
+        "question": "Extract 5 CNC/VMC training institutes in Bangalore, including their name, key courses, and highlights."
+      },
+      "status": "complete",
+      "result": {
+        "success": true,
+        "agent_name": "distiller",
+        "output": {
+          "fields": {
+            "institutes": [
+              {
+                "name": "RVM CAD",
+                "key_courses": "CNC/VMC programming, Mastercam, Delcam, NX CAM",
+                "highlights": "Hands-on training on machines, 100% job assistance"
+              }
+            ]
+          },
+          "rationale": "The input identifies RVM CAD with specific details but only provides general references for other providers via Sulekha without naming 4 additional specific institutes."
+        },
+        "artifacts": [],
+        "successors": [],
+        "cost": 0.0,
+        "elapsed_s": 1.1103191375732422,
+        "provider": "gemini",
+        "error": null,
+        "error_code": null
+      },
+      "_result_typed": true,
+      "id": "n:13"
+    },
+    {
+      "skill": "formatter",
+      "inputs": [
+        "USER_QUERY",
+        "n:13"
+      ],
+      "metadata": {
+        "label": "out"
+      },
+      "status": "skipped",
+      "id": "n:14"
+    },
+    {
+      "skill": "critic",
+      "inputs": [
+        "USER_QUERY",
+        "n:13"
+      ],
+      "metadata": {
+        "target": "n:13",
+        "child": "n:14"
+      },
+      "status": "complete",
+      "result": {
+        "success": true,
+        "agent_name": "critic",
+        "output": {
+          "verdict": "fail",
+          "rationale": "The output lists only one institute (RVM CAD) while the query asks for a comparison of five CNC/VMC training institutes in Bangalore, missing four required entries."
+        },
+        "artifacts": [],
+        "successors": [],
+        "cost": 0.0,
+        "elapsed_s": 0.9189407825469971,
+        "provider": "groq",
+        "error": null,
+        "error_code": null
+      },
+      "_result_typed": true,
+      "id": "n:15"
+    },
+    {
+      "skill": "planner",
+      "inputs": [
+        "USER_QUERY"
+      ],
+      "metadata": {
+        "failure_report": "critic failed target=n:13 child=n:14 rationale=The output lists only one institute (RVM CAD) while the query asks for a comparison of five CNC/VMC training institutes in Bangalore, missing four required entries.",
+        "recovers": "n:13",
+        "recovery_reason": "critic_fail"
+      },
+      "status": "complete",
+      "result": {
+        "success": true,
+        "agent_name": "planner",
+        "output": {
+          "rationale": "The previous attempt failed to gather enough data; I will use a researcher to perform a broad search for 5 CNC/VMC training institutes in Bangalore, then distill the details for a proper comparison.",
+          "nodes": [
+            {
+              "skill": "researcher",
+              "inputs": [
+                "USER_QUERY"
+              ],
+              "metadata": {
+                "label": "search_institutes",
+                "question": "Find 5 reputable CNC/VMC training institutes in Bangalore, including details like course duration, curriculum focus, and placement support."
+              }
+            },
+            {
+              "skill": "distiller",
+              "inputs": [
+                "n:search_institutes"
+              ],
+              "metadata": {
+                "label": "distill_data"
+              }
+            },
+            {
+              "skill": "formatter",
+              "inputs": [
+                "USER_QUERY",
+                "n:distill_data"
+              ],
+              "metadata": {
+                "label": "out"
+              }
+            }
+          ]
+        },
+        "artifacts": [],
+        "successors": [
+          {
+            "skill": "researcher",
+            "inputs": [
+              "USER_QUERY"
+            ],
+            "metadata": {
+              "label": "search_institutes",
+              "question": "Find 5 reputable CNC/VMC training institutes in Bangalore, including details like course duration, curriculum focus, and placement support."
+            }
+          },
+          {
+            "skill": "distiller",
+            "inputs": [
+              "n:search_institutes"
+            ],
+            "metadata": {
+              "label": "distill_data"
+            }
+          },
+          {
+            "skill": "formatter",
+            "inputs": [
+              "USER_QUERY",
+              "n:distill_data"
+            ],
+            "metadata": {
+              "label": "out"
+            }
+          }
+        ],
+        "cost": 0.0,
+        "elapsed_s": 3.985046863555908,
+        "provider": "gemini",
+        "error": null,
+        "error_code": null
+      },
+      "_result_typed": true,
+      "id": "n:16"
+    },
+    {
+      "skill": "researcher",
+      "inputs": [
+        "USER_QUERY"
+      ],
+      "metadata": {
+        "label": "search_institutes",
+        "question": "Find 5 reputable CNC/VMC training institutes in Bangalore, including details like course duration, curriculum focus, and placement support."
+      },
+      "status": "complete",
+      "result": {
+        "success": true,
+        "agent_name": "researcher",
+        "output": {
+          "question": "Find 5 reputable CNC/VMC training institutes in Bangalore, including details like course duration, curriculum focus, and placement support.",
+          "sources": [
+            {
+              "url": "https://www.nttftrg.com/precision-cnc-machinist-2",
+              "title": "NTTF - Precision CNC Machinist Training"
+            },
+            {
+              "url": "https://www.youtube.com/watch?v=PnY-GjSV8Ek",
+              "title": "RVM CAD - CNC/VMC Training and Placement"
+            },
+            {
+              "url": "http://www.startautomation.in/cnc-machine-program-training-bangalore.html",
+              "title": "Technologics - CNC Machine Programming Training"
+            }
+          ],
+          "findings": "Finding five distinct, highly reputable institutes with granular, comparative data is challenging as many providers operate as local vocational centers or internal industry training bodies. The most prominent options in Bangalore include NTTF (Nettur Technical Training Foundation), RVM CAD, and Technologics. NTTF is widely regarded as a premier technical training institution in India, offering structured, industry-aligned programs with a reported 98%+ placement record and a strong focus on hands-on precision machining.\n\nRVM CAD specializes in CAD/CAM and CNC/VMC programming, offering intensive short-term courses (e.g., 30-day batches). Their curriculum covers AutoCAD, manual programming, and software-based programming (Mastercam, Delcam). They emphasize 100% job assistance and operate with industrial-grade machines. Technologics provides training focused on real-time industrial projects, emphasizing hands-on practical experience in laboratories, and also claims 100% placement assistance.\n\nWhile specific, verified course durations and curriculum breakdowns for all five institutes are not consistently published in a single comparative format, training providers in Bangalore generally follow two models: long-term diploma-style vocational training (like NTTF) or short-term, skill-specific certification courses (like RVM CAD and Technologics). Prospective students are advised to contact these centers directly to verify current batch schedules, as most begin new cycles monthly."
+        },
+        "artifacts": [],
+        "successors": [],
+        "cost": 0.0,
+        "elapsed_s": 9.019466876983643,
+        "provider": "gemini",
+        "error": null,
+        "error_code": null
+      },
+      "_result_typed": true,
+      "id": "n:17"
+    },
+    {
+      "skill": "distiller",
+      "inputs": [
+        "n:17"
+      ],
+      "metadata": {
+        "label": "distill_data"
+      },
+      "status": "complete",
+      "result": {
+        "success": true,
+        "agent_name": "distiller",
+        "output": {
+          "fields": {
+            "institutes": [
+              {
+                "name": "NTTF",
+                "placement_record": "98%+",
+                "focus": "hands-on precision machining"
+              },
+              {
+                "name": "RVM CAD",
+                "course_duration": "30-day batches",
+                "curriculum": "AutoCAD, manual programming, Mastercam, Delcam",
+                "placement_support": "100% job assistance"
+              },
+              {
+                "name": "Technologics",
+                "focus": "real-time industrial projects",
+                "placement_support": "100% placement assistance"
+              }
+            ]
+          },
+          "rationale": "The findings provide details for three reputable CNC/VMC training institutes in Bangalore, noting that data for five distinct institutes is not consistently available."
+        },
+        "artifacts": [],
+        "successors": [],
+        "cost": 0.0,
+        "elapsed_s": 2.8123879432678223,
+        "provider": "gemini",
+        "error": null,
+        "error_code": null
+      },
+      "_result_typed": true,
+      "id": "n:18"
+    },
+    {
+      "skill": "formatter",
+      "inputs": [
+        "USER_QUERY",
+        "n:18"
+      ],
+      "metadata": {
+        "label": "out"
+      },
+      "status": "skipped",
+      "id": "n:19"
+    },
+    {
+      "skill": "critic",
+      "inputs": [
+        "USER_QUERY",
+        "n:18"
+      ],
+      "metadata": {
+        "target": "n:18",
+        "child": "n:19"
+      },
+      "status": "complete",
+      "result": {
+        "success": true,
+        "agent_name": "critic",
+        "output": {
+          "verdict": "fail",
+          "rationale": "The upstream output lists only three institutes while the query requests a comparison of five, and it lacks the additional details needed for a full comparison."
+        },
+        "artifacts": [],
+        "successors": [],
+        "cost": 0.0,
+        "elapsed_s": 0.8483231067657471,
+        "provider": "groq",
+        "error": null,
+        "error_code": null
+      },
+      "_result_typed": true,
+      "id": "n:20"
+    },
+    {
+      "skill": "planner",
+      "inputs": [
+        "USER_QUERY"
+      ],
+      "metadata": {
+        "failure_report": "critic failed target=n:18 child=n:19 rationale=The upstream output lists only three institutes while the query requests a comparison of five, and it lacks the additional details needed for a full comparison.",
+        "recovers": "n:18",
+        "recovery_reason": "critic_fail"
+      },
+      "status": "complete",
+      "result": {
+        "success": true,
+        "agent_name": "planner",
+        "output": {
+          "rationale": "The previous attempt failed to provide 5 institutes; I will use the researcher to perform a broader search for 5 CNC/VMC training institutes in Bangalore and then format the comparison.",
+          "nodes": [
+            {
+              "skill": "researcher",
+              "inputs": [
+                "USER_QUERY"
+              ],
+              "metadata": {
+                "label": "r1",
+                "question": "Find 5 reputable CNC/VMC training institutes in Bangalore and provide details on their courses, duration, and placement support for comparison."
+              }
+            },
+            {
+              "skill": "formatter",
+              "inputs": [
+                "USER_QUERY",
+                "n:r1"
+              ],
+              "metadata": {
+                "label": "out"
+              }
+            }
+          ]
+        },
+        "artifacts": [],
+        "successors": [
+          {
+            "skill": "researcher",
+            "inputs": [
+              "USER_QUERY"
+            ],
+            "metadata": {
+              "label": "r1",
+              "question": "Find 5 reputable CNC/VMC training institutes in Bangalore and provide details on their courses, duration, and placement support for comparison."
+            }
+          },
+          {
+            "skill": "formatter",
+            "inputs": [
+              "USER_QUERY",
+              "n:r1"
+            ],
+            "metadata": {
+              "label": "out"
+            }
+          }
+        ],
+        "cost": 0.0,
+        "elapsed_s": 3.601248025894165,
+        "provider": "gemini",
+        "error": null,
+        "error_code": null
+      },
+      "_result_typed": true,
+      "id": "n:21"
+    },
+    {
+      "skill": "researcher",
+      "inputs": [
+        "USER_QUERY"
+      ],
+      "metadata": {
+        "label": "r1",
+        "question": "Find 5 reputable CNC/VMC training institutes in Bangalore and provide details on their courses, duration, and placement support for comparison."
+      },
+      "status": "complete",
+      "result": {
+        "success": true,
+        "agent_name": "researcher",
+        "output": {
+          "question": "Find 5 reputable CNC/VMC training institutes in Bangalore and provide details on their courses, duration, and placement support for comparison.",
+          "sources": [
+            {
+              "url": "https://www.youtube.com/watch?v=jl0l9FcTPbs",
+              "title": "RVM CAD Bangalore - Autocad, 3D CAD, CNC VMC Training"
+            },
+            {
+              "url": "https://www.nttftrg.com/precision-cnc-machinist-2",
+              "title": "CNC Machine Programming Course - NTTF"
+            },
+            {
+              "url": "http://www.startautomation.in/cnc-machine-program-training-bangalore.html",
+              "title": "CNC Machine Program Training Courses - Industrial Automation"
+            }
+          ],
+          "findings": "Information on reputable CNC/VMC training institutes in Bangalore is available through several specialized vocational and industrial training providers. However, comprehensive, side-by-side comparative data for exactly five institutes is limited, as many providers operate as niche private training centers or industrial training foundations.\n\nRVM CAD (Bangalore) is a prominent private training center focusing on CAD/CAM and CNC/VMC programming. They offer practical training on machines and software (Mastercam, Delcam, NX CAM). Courses often include AutoCAD combined with CNC/VMC modules, with durations typically structured around intensive batches (e.g., 30-day programs). They emphasize 100% placement assistance and report a long history of industrial training.\n\nNTTF (Nettur Technical Training Foundation) provides a more formal, long-term technical education approach. Their Precision CNC Machinist programs are well-regarded for industry-aligned curriculum and hands-on laboratory experience. Unlike short-term private centers, NTTF is a well-established educational institution with a track record of high placement percentages (reported at 98%+) and recognized certification.\n\nTechnologics Global Pvt Ltd is another provider in Bangalore that offers CNC machine programming training as part of a broader industrial automation curriculum. Their training model emphasizes real-time industrial projects at factories, hands-on practical sessions, and placement assistance. Their programs are designed for individuals seeking skills in industrial software and hardware.\n\nOther potential training sources in Bangalore often include ITI (Industrial Training Institutes) and private technical academies, though these vary significantly in their placement support and machine access. Most private institutes in this sector advertise monthly batch start dates, 100% placement support, and a mix of theoretical and practical training, though verification of placement claims is recommended."
+        },
+        "artifacts": [],
+        "successors": [],
+        "cost": 0.0,
+        "elapsed_s": 26.20982313156128,
+        "provider": "gemini",
+        "error": null,
+        "error_code": null
+      },
+      "_result_typed": true,
+      "id": "n:22"
+    },
+    {
+      "skill": "formatter",
+      "inputs": [
+        "USER_QUERY",
+        "n:22"
+      ],
+      "metadata": {
+        "label": "out"
+      },
+      "status": "complete",
+      "result": {
+        "success": true,
+        "agent_name": "formatter",
+        "output": {
+          "final_answer": "While there are many vocational training providers in Bangalore, comprehensive side-by-side data for five distinct institutes is limited. Based on available information, here are three reputable options for CNC/VMC training in Bangalore:\n\n1. NTTF (Nettur Technical Training Foundation): A well-established educational institution known for its formal Precision CNC Machinist programs. It is highly regarded for its industry-aligned curriculum, extensive hands-on laboratory experience, and a strong track record of placement (reported at over 98%).\n\n2. RVM CAD: A prominent private training center specializing in CAD/CAM and CNC/VMC programming. They offer intensive, short-term programs (typically around 30 days) that combine software training (Mastercam, NX CAM) with practical machine operation. They provide 100% placement assistance.\n\n3. Technologics Global Pvt Ltd: This provider focuses on industrial automation, offering CNC programming as part of a broader curriculum. Their model emphasizes real-time industrial projects at factory sites and hands-on practical sessions with placement support.\n\nOther options in the city often include various private technical academies and government-run Industrial Training Institutes (ITI). When evaluating these, it is recommended to verify specific placement claims and ensure the institute provides sufficient hands-on access to actual CNC/VMC machinery."
+        },
+        "artifacts": [],
+        "successors": [],
+        "cost": 0.0,
+        "elapsed_s": 1.9885640144348145,
+        "provider": "gemini",
+        "error": null,
+        "error_code": null
+      },
+      "_result_typed": true,
+      "id": "n:23"
+    },
+    {
+      "skill": "session_reporter",
+      "inputs": [
+        "n:23"
+      ],
+      "metadata": {},
+      "status": "complete",
+      "result": {
+        "success": true,
+        "agent_name": "session_reporter",
+        "output": {
+          "visible_browser_report": {
+            "html": "/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-e8cbf0b6/visible_browser_reports/s8-e8cbf0b6/visible_browser_replay_report_s8-e8cbf0b6.html",
+            "json": "/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-e8cbf0b6/visible_browser_reports/s8-e8cbf0b6/visible_browser_replay_report_s8-e8cbf0b6.json",
+            "artifact_dir": "/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-e8cbf0b6/visible_browser_reports/s8-e8cbf0b6",
+            "session_id": "s8-e8cbf0b6"
+          },
+          "report": {
+            "html": "/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-e8cbf0b6/visible_browser_reports/s8-e8cbf0b6/visible_browser_replay_report_s8-e8cbf0b6.html",
+            "json": "/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-e8cbf0b6/visible_browser_reports/s8-e8cbf0b6/visible_browser_replay_report_s8-e8cbf0b6.json",
+            "artifact_dir": "/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-e8cbf0b6/visible_browser_reports/s8-e8cbf0b6",
+            "session_id": "s8-e8cbf0b6"
+          },
+          "browser_report_alias": {
+            "html": "/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-e8cbf0b6/browser/visible_browser_reports/s8-e8cbf0b6/visible_browser_replay_report_s8-e8cbf0b6.html",
+            "json": "/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-e8cbf0b6/browser/visible_browser_reports/s8-e8cbf0b6/visible_browser_replay_report_s8-e8cbf0b6.json",
+            "artifact_dir": "/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-e8cbf0b6/browser/visible_browser_reports/s8-e8cbf0b6"
+          },
+          "query_analysis_report": {
+            "markdown": "/Users/avi/Documents/SessionNotes/Session9/Query_s8-e8cbf0b6_Analysis.md",
+            "relative_path": "Query_s8-e8cbf0b6_Analysis.md"
+          },
+          "session_id": "s8-e8cbf0b6",
+          "browser_path_chosen": "not_used",
+          "final_answer": "While there are many vocational training providers in Bangalore, comprehensive side-by-side data for five distinct institutes is limited. Based on available information, here are three reputable options for CNC/VMC training in Bangalore:\n\n1. NTTF (Nettur Technical Training Foundation): A well-established educational institution known for its formal Precision CNC Machinist programs. It is highly regarded for its industry-aligned curriculum, extensive hands-on laboratory experience, and a strong track record of placement (reported at over 98%).\n\n2. RVM CAD: A prominent private training center specializing in CAD/CAM and CNC/VMC programming. They offer intensive, short-term programs (typically around 30 days) that combine software training (Mastercam, NX CAM) with practical machine operation. They provide 100% placement assistance.\n\n3. Technologics Global Pvt Ltd: This provider focuses on industrial automation, offering CNC programming as part of a broader curriculum. Their model emphasizes real-time industrial projects at factory sites and hands-on practical sessions with placement support.\n\nOther options in the city often include various private technical academies and government-run Industrial Training Institutes (ITI). When evaluating these, it is recommended to verify specific placement claims and ensure the institute provides sufficient hands-on access to actual CNC/VMC machinery."
+        },
+        "artifacts": [
+          "/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-e8cbf0b6/visible_browser_reports/s8-e8cbf0b6/visible_browser_replay_report_s8-e8cbf0b6.html",
+          "/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-e8cbf0b6/visible_browser_reports/s8-e8cbf0b6/visible_browser_replay_report_s8-e8cbf0b6.json",
+          "/Users/avi/Documents/SessionNotes/Session9/Query_s8-e8cbf0b6_Analysis.md"
+        ],
+        "successors": [],
+        "cost": 0.0,
+        "elapsed_s": 0.061646223068237305,
+        "provider": "local-session-reporter",
+        "error": null,
+        "error_code": null
+      },
+      "_result_typed": true,
+      "id": "n:24"
+    }
+  ],
+  "edges": [
+    {
+      "source": "n:1",
+      "target": "n:2"
+    },
+    {
+      "source": "n:2",
+      "target": "n:3"
+    },
+    {
+      "source": "n:3",
+      "target": "n:5"
+    },
+    {
+      "source": "n:5",
+      "target": "n:4"
+    },
+    {
+      "source": "n:7",
+      "target": "n:8"
+    },
+    {
+      "source": "n:8",
+      "target": "n:10"
+    },
+    {
+      "source": "n:10",
+      "target": "n:9"
+    },
+    {
+      "source": "n:11",
+      "target": "n:12"
+    },
+    {
+      "source": "n:12",
+      "target": "n:13"
+    },
+    {
+      "source": "n:13",
+      "target": "n:15"
+    },
+    {
+      "source": "n:15",
+      "target": "n:14"
+    },
+    {
+      "source": "n:17",
+      "target": "n:18"
+    },
+    {
+      "source": "n:18",
+      "target": "n:20"
+    },
+    {
+      "source": "n:20",
+      "target": "n:19"
+    },
+    {
+      "source": "n:22",
+      "target": "n:23"
+    },
+    {
+      "source": "n:23",
+      "target": "n:24"
+    }
+  ]
+}

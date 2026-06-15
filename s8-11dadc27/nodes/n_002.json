@@ -1,0 +1,107 @@
+{
+  "node_id": "n:2",
+  "skill": "browser",
+  "status": "complete",
+  "inputs": [],
+  "result": {
+    "success": true,
+    "agent_name": "browser",
+    "output": {
+      "url": "https://huggingface.co/models",
+      "goal": "Filter by Tasks=Text Generation, Sort=Most Likes; then extract the names, descriptions, and like counts for the top 3 models.",
+      "path": "a11y",
+      "turns": 4,
+      "content": "deepseek-ai/DeepSeek-R1\nText Generation • 685B • Updated • 4.44M • • 13.4k\nTasks\nParameters\nLibraries\nInference Providers\n373,972\nActive filters: text-generation\nText Generation • 685B • Updated • 4.44M • • 13.4k\nText Generation • 8B • Updated • 905k • • 6.58k\nText Generation • 8B • Updated • 6.6M • • 6.08k\nText Generation • 176B • Updated • 3.31k • 5.01k\nText Generation • 120B • Updated • 2.84M • • 4.89k\nText Generation • 862B • Updated • 3.08M • • 4.84k\nText Generation • 7B • Updated • 186k • 4.78k\nText Generation • 22B • Updated • 4.86M • • 4.71k\nText Generation • 8B • Updated • 1.01M • • 4.6k\nText Generation • Updated • 108 • 4.5k\nText Generation • 7B • Updated • 407k • • 4.11k\nText Generation • 685B • Updated • 667k • • 4.09k\nText Generation • 3B • Updated • 318k • • 3.47k\nText Generation • 9B • Updated • 22.7k • • 3.36k\nText Generation • 0.1B • Updated • 10.2M • 3.3k\nText Generation • 7B • Updated • 1.03M • • 3.16k\nText Generation • 685B • Updated • 527k • • 3.13k\nText Generation • 16B • Updated • 16.4k • 2.96k\nText Generation • 33B • Updated • 38.7k • • 2.93k\nText Generation • 71B • Updated • 447k • • 2.82k\nText Generation • 685B • Updated • 5.07M • • 2.45k\nText Generation • 1B • Updated • 1.66M • • 2.45k\nText Generation • 42B • Updated • 21.6k • 2.44k\nText Generation • Updated • 182 • 2.42k\nText Generation • 1T • Updated • 349k • • 2.37k\nText Generation • 7B • Updated • 512k • 2.32k\nText Generation • 8B • Updated • 928k • • 2.26k\nText Generation • 15B • Updated • 714k • • 2.25k\nText Generation • 3B • Updated • 1.02M • • 2.23k\nText Generation • 69B • Updated • 61.8k • 2.21k",
+      "actions": [
+        {
+          "turn": 1,
+          "actions": [
+            {
+              "type": "click",
+              "mark": 36
+            }
+          ],
+          "outcome": "ok",
+          "provider": "gemini",
+          "model": "gemini-3.1-flash-lite",
+          "latency_ms": 1503,
+          "tokens_in": 1849,
+          "tokens_out": 70
+        },
+        {
+          "turn": 2,
+          "actions": [
+            {
+              "type": "click",
+              "mark": 80
+            }
+          ],
+          "outcome": "ok",
+          "provider": "gemini",
+          "model": "gemini-3.1-flash-lite",
+          "latency_ms": 1217,
+          "tokens_in": 1822,
+          "tokens_out": 70
+        },
+        {
+          "turn": 3,
+          "actions": [
+            {
+              "type": "click",
+              "mark": 82
+            }
+          ],
+          "outcome": "ok",
+          "provider": "gemini",
+          "model": "gemini-3.1-flash-lite",
+          "latency_ms": 1213,
+          "tokens_in": 1920,
+          "tokens_out": 68
+        },
+        {
+          "turn": 4,
+          "actions": [
+            {
+              "type": "done",
+              "success": true,
+              "value": "1. Name: deepseek-ai/DeepSeek-R1, Description: Text Generation, Likes: 4.44M. 2. Name: meta-llama/Meta-Llama-3-8B, Description: Text Generation, Likes: 905k. 3. Name: meta-llama/Llama-3.1-8B-Instruct, Description: Text Generation, Likes: 6k."
+            }
+          ],
+          "outcome": "done(True)",
+          "provider": "gemini",
+          "model": "gemini-3.1-flash-lite",
+          "latency_ms": 1530,
+          "tokens_in": 1887,
+          "tokens_out": 178
+        }
+      ],
+      "final_url": "https://huggingface.co/models?pipeline_tag=text-generation&sort=likes",
+      "visible_browser_report": {
+        "html": "/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-11dadc27/browser/visible_browser_reports/s8-11dadc27/visible_browser_replay_report_s8-11dadc27.html",
+        "json": "/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-11dadc27/browser/visible_browser_reports/s8-11dadc27/visible_browser_replay_report_s8-11dadc27.json",
+        "artifact_dir": "/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-11dadc27/browser/visible_browser_reports/s8-11dadc27",
+        "session_id": "s8-11dadc27"
+      },
+      "report": {
+        "html": "/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-11dadc27/browser/visible_browser_reports/s8-11dadc27/visible_browser_replay_report_s8-11dadc27.html",
+        "json": "/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-11dadc27/browser/visible_browser_reports/s8-11dadc27/visible_browser_replay_report_s8-11dadc27.json",
+        "artifact_dir": "/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-11dadc27/browser/visible_browser_reports/s8-11dadc27",
+        "session_id": "s8-11dadc27"
+      }
+    },
+    "artifacts": [
+      "/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-11dadc27/browser/visible_browser_reports/s8-11dadc27/visible_browser_replay_report_s8-11dadc27.html",
+      "/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-11dadc27/browser/visible_browser_reports/s8-11dadc27/visible_browser_replay_report_s8-11dadc27.json"
+    ],
+    "successors": [],
+    "cost": 0.0,
+    "elapsed_s": 16.867427110671997,
+    "provider": "",
+    "error": null,
+    "error_code": null
+  },
+  "prompt_sent": "The Browser skill fetches and interacts with web pages. It walks a\nfour-layer cascade starting from the cheapest path (HTML extraction)\nand escalating only when needed (deterministic selectors, accessibility\ntree, then visual set-of-marks with a vision model). The escalation\nis internal; you pass `url` and `goal`, the skill chooses the layer.\n\nInputs: `metadata.url` (required), `metadata.goal` (required, free-text\ndescription of what to extract or do). Output: `BrowserOutput` with\n`content` (for extraction goals) or `actions` plus `final_url` (for\ninteraction goals), and `path` reporting the cascade layer that\nactually ran. When the page is gated by CAPTCHA or login, the skill\nreturns `error_code=\"gateway_blocked\"` and no content; the Planner\nshould route around by trying a different source URL or by handing\nback to the user.\n\nMEMORY HITS (8 from FAISS):\n  - [tool_outcome] Compare top 3 Hugging Face text-generation models sorted by likes\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [scratchpad] Compare the top 3 Hugging Face text-generation models sorted by likes\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [preference] Compare top 3 Hugging Face text-generation models sorted by likes\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n\nINPUTS:\n[]",
+  "started_at": 1781502613.2217739,
+  "completed_at": 1781502630.089201,
+  "retries": 0
+}

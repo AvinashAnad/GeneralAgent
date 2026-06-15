@@ -1,0 +1,53 @@
+{
+  "node_id": "n:24",
+  "skill": "session_reporter",
+  "status": "complete",
+  "inputs": [
+    "n:23"
+  ],
+  "result": {
+    "success": true,
+    "agent_name": "session_reporter",
+    "output": {
+      "visible_browser_report": {
+        "html": "/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-e8cbf0b6/visible_browser_reports/s8-e8cbf0b6/visible_browser_replay_report_s8-e8cbf0b6.html",
+        "json": "/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-e8cbf0b6/visible_browser_reports/s8-e8cbf0b6/visible_browser_replay_report_s8-e8cbf0b6.json",
+        "artifact_dir": "/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-e8cbf0b6/visible_browser_reports/s8-e8cbf0b6",
+        "session_id": "s8-e8cbf0b6"
+      },
+      "report": {
+        "html": "/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-e8cbf0b6/visible_browser_reports/s8-e8cbf0b6/visible_browser_replay_report_s8-e8cbf0b6.html",
+        "json": "/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-e8cbf0b6/visible_browser_reports/s8-e8cbf0b6/visible_browser_replay_report_s8-e8cbf0b6.json",
+        "artifact_dir": "/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-e8cbf0b6/visible_browser_reports/s8-e8cbf0b6",
+        "session_id": "s8-e8cbf0b6"
+      },
+      "browser_report_alias": {
+        "html": "/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-e8cbf0b6/browser/visible_browser_reports/s8-e8cbf0b6/visible_browser_replay_report_s8-e8cbf0b6.html",
+        "json": "/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-e8cbf0b6/browser/visible_browser_reports/s8-e8cbf0b6/visible_browser_replay_report_s8-e8cbf0b6.json",
+        "artifact_dir": "/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-e8cbf0b6/browser/visible_browser_reports/s8-e8cbf0b6"
+      },
+      "query_analysis_report": {
+        "markdown": "/Users/avi/Documents/SessionNotes/Session9/Query_s8-e8cbf0b6_Analysis.md",
+        "relative_path": "Query_s8-e8cbf0b6_Analysis.md"
+      },
+      "session_id": "s8-e8cbf0b6",
+      "browser_path_chosen": "not_used",
+      "final_answer": "While there are many vocational training providers in Bangalore, comprehensive side-by-side data for five distinct institutes is limited. Based on available information, here are three reputable options for CNC/VMC training in Bangalore:\n\n1. NTTF (Nettur Technical Training Foundation): A well-established educational institution known for its formal Precision CNC Machinist programs. It is highly regarded for its industry-aligned curriculum, extensive hands-on laboratory experience, and a strong track record of placement (reported at over 98%).\n\n2. RVM CAD: A prominent private training center specializing in CAD/CAM and CNC/VMC programming. They offer intensive, short-term programs (typically around 30 days) that combine software training (Mastercam, NX CAM) with practical machine operation. They provide 100% placement assistance.\n\n3. Technologics Global Pvt Ltd: This provider focuses on industrial automation, offering CNC programming as part of a broader curriculum. Their model emphasizes real-time industrial projects at factory sites and hands-on practical sessions with placement support.\n\nOther options in the city often include various private technical academies and government-run Industrial Training Institutes (ITI). When evaluating these, it is recommended to verify specific placement claims and ensure the institute provides sufficient hands-on access to actual CNC/VMC machinery."
+    },
+    "artifacts": [
+      "/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-e8cbf0b6/visible_browser_reports/s8-e8cbf0b6/visible_browser_replay_report_s8-e8cbf0b6.html",
+      "/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-e8cbf0b6/visible_browser_reports/s8-e8cbf0b6/visible_browser_replay_report_s8-e8cbf0b6.json",
+      "/Users/avi/Documents/SessionNotes/Session9/Query_s8-e8cbf0b6_Analysis.md"
+    ],
+    "successors": [],
+    "cost": 0.0,
+    "elapsed_s": 0.061646223068237305,
+    "provider": "local-session-reporter",
+    "error": null,
+    "error_code": null
+  },
+  "prompt_sent": "You are the Session Reporter skill.\n\nThis skill is implemented directly in Python and does not call an LLM. It\nwrites a session-level Visible Browser Replay Report after the formatter has\nproduced the final answer.\n\nMEMORY HITS (8 from FAISS):\n  - [fact] Population comparison of London, Paris, and Berlin\n      source: user_query\n      raw: Find the populations of London, Paris, and Berlin and tell me which two are closest in size.\n  - [fact] Population comparison of London, Paris, and Berlin\n      source: user_query\n      raw: Find the populations of London, Paris, and Berlin and tell me which two are closest in size.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [preference] Compare top 3 Hugging Face text-generation models sorted by likes\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n\nINPUTS:\n[\n  {\n    \"id\": \"n:23\",\n    \"kind\": \"upstream\",\n    \"skill\": \"formatter\",\n    \"output\": {\n      \"final_answer\": \"While there are many vocational training providers in Bangalore, comprehensive side-by-side data for five distinct institutes is limited. Based on available information, here are three reputable options for CNC/VMC training in Bangalore:\\n\\n1. NTTF (Nettur Technical Training Foundation): A well-established educational institution known for its formal Precision CNC Machinist programs. It is highly regarded for its industry-aligned curriculum, extensive hands-on laboratory experience, and a strong track record of placement (reported at over 98%).\\n\\n2. RVM CAD: A prominent private training center specializing in CAD/CAM and CNC/VMC programming. They offer intensive, short-term programs (typically around 30 days) that combine software training (Mastercam, NX CAM) with practical machine operation. They provide 100% placement assistance.\\n\\n3. Technologics Global Pvt Ltd: This provider focuses on industrial automation, offering CNC programming as part of a broader curriculum. Their model emphasizes real-time industrial projects at factory sites and hands-on practical sessions with placement support.\\n\\nOther options in the city often include various private technical academies and government-run Industrial Training Institutes (ITI). When evaluating these, it is recommended to verify specific placement claims and ensure the institute provides sufficient hands-on access to actual CNC/VMC machinery.\"\n    }\n  }\n]",
+  "started_at": 1781503006.3245478,
+  "completed_at": 1781503006.386194,
+  "retries": 0
+}

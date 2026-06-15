@@ -1,0 +1,35 @@
+{
+  "node_id": "n:13",
+  "skill": "distiller",
+  "status": "complete",
+  "inputs": [
+    "n:12"
+  ],
+  "result": {
+    "success": true,
+    "agent_name": "distiller",
+    "output": {
+      "fields": {
+        "institutes": [
+          {
+            "name": "RVM CAD",
+            "key_courses": "CNC/VMC programming, Mastercam, Delcam, NX CAM",
+            "highlights": "Hands-on training on machines, 100% job assistance"
+          }
+        ]
+      },
+      "rationale": "The input identifies RVM CAD with specific details but only provides general references for other providers via Sulekha without naming 4 additional specific institutes."
+    },
+    "artifacts": [],
+    "successors": [],
+    "cost": 0.0,
+    "elapsed_s": 1.1103191375732422,
+    "provider": "gemini",
+    "error": null,
+    "error_code": null
+  },
+  "prompt_sent": "You are the Distiller skill. You receive raw text (typically the\n`findings` of one or more Researcher nodes, or the `chunks` of a\nRetriever node) and produce a small structured record.\n\nYou make no tool calls. You do no web access. Everything you need is\nalready in the prompt under INPUTS.\n\nProcedure:\n  1. Identify what fields the user's question implies (people, dates,\n     numbers, comparisons, percentages, attributions).\n  2. Pull those fields out of the inputs.\n  3. Emit a compact JSON record. Fields with no evidence in the inputs\n     are omitted, not made up.\n\nOutput schema (JSON, no prose, no markdown fences):\n\n  {\n    \"fields\": { \"<field_name>\": \"<value>\", ... },\n    \"rationale\": \"<one short sentence saying which input supports each field>\"\n  }\n\nNotes:\n  - The fields dictionary is the load-bearing output; downstream\n    Formatter nodes read it.\n  - When the question is a comparison (`fastest growing`, `largest`),\n    emit a `comparison` key with `winner: <id>` and `reason: <short>`.\n  - When the question's evidence is missing, set `fields: {}` and put\n    the gap in `rationale`. Do not invent.\n\nA Critic node may run after you. Its evaluation will fail if you\ninvented fields or made claims unsupported by the inputs.\n\nQUESTION: Extract 5 CNC/VMC training institutes in Bangalore, including their name, key courses, and highlights.\n\nMEMORY HITS (8 from FAISS):\n  - [fact] Population comparison of London, Paris, and Berlin\n      source: user_query\n      raw: Find the populations of London, Paris, and Berlin and tell me which two are closest in size.\n  - [fact] Population comparison of London, Paris, and Berlin\n      source: user_query\n      raw: Find the populations of London, Paris, and Berlin and tell me which two are closest in size.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [preference] Compare top 3 Hugging Face text-generation models sorted by likes\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n\nINPUTS:\n[\n  {\n    \"id\": \"n:12\",\n    \"kind\": \"upstream\",\n    \"skill\": \"researcher\",\n    \"output\": {\n      \"question\": \"Find a list of at least 5 reputable CNC/VMC training institutes in Bangalore with their key features.\",\n      \"sources\": [\n        {\n          \"url\": \"https://www.youtube.com/watch?v=jl0l9FcTPbs\",\n          \"title\": \"RVM CAD Bangalore - Autocad, 3D CAD, CNC VMC Training\"\n        },\n        {\n          \"url\": \"https://www.sulekha.com/cnc-programming-training/bangalore\",\n          \"title\": \"CNC Programming Training in Bangalore, Classes, Courses, Institutes\"\n        },\n        {\n          \"url\": \"https://www.youtube.com/watch?v=Q7JSnrK5GM0\",\n          \"title\": \"Learn CNC VMC Programming in just 30 Days\"\n        }\n      ],\n      \"findings\": \"Finding specific reputable institutes in Bangalore for CNC/VMC training often involves navigating vocational training centers and CAD/CAM centers. RVM CAD is frequently highlighted as a prominent training center in Bangalore (specifically located in Rajajinagar) that focuses on industrial training for CNC/VMC programming. Their key features include hands-on training on machines, coverage of software like Mastercam, Delcam, and NX CAM, and stated 100% job assistance programs.\\n\\nOther potential training options in Bangalore are often aggregated on platforms like Sulekha, which list numerous local training providers across various neighborhoods (such as Whitefield, Jayanagar, and Electronic City). These smaller institutions typically offer flexible learning modes (online and in-person) and cater to ITI, diploma, and degree holders. \\n\\nDue to the nature of vocational training, 'reputable' status is often best verified by checking current placement records, visiting the physical lab facilities to inspect the machinery available for training, and speaking with alumni. Prospective students are advised to verify the specific machine types (3-axis vs 5-axis) and software versions offered at each center to ensure they align with current industry requirements.\"\n    }\n  }\n]",
+  "started_at": 1781502955.784262,
+  "completed_at": 1781502956.894582,
+  "retries": 0
+}

@@ -1,0 +1,41 @@
+{
+  "node_id": "n:22",
+  "skill": "researcher",
+  "status": "complete",
+  "inputs": [
+    "USER_QUERY"
+  ],
+  "result": {
+    "success": true,
+    "agent_name": "researcher",
+    "output": {
+      "question": "Find 5 reputable CNC/VMC training institutes in Bangalore and provide details on their courses, duration, and placement support for comparison.",
+      "sources": [
+        {
+          "url": "https://www.youtube.com/watch?v=jl0l9FcTPbs",
+          "title": "RVM CAD Bangalore - Autocad, 3D CAD, CNC VMC Training"
+        },
+        {
+          "url": "https://www.nttftrg.com/precision-cnc-machinist-2",
+          "title": "CNC Machine Programming Course - NTTF"
+        },
+        {
+          "url": "http://www.startautomation.in/cnc-machine-program-training-bangalore.html",
+          "title": "CNC Machine Program Training Courses - Industrial Automation"
+        }
+      ],
+      "findings": "Information on reputable CNC/VMC training institutes in Bangalore is available through several specialized vocational and industrial training providers. However, comprehensive, side-by-side comparative data for exactly five institutes is limited, as many providers operate as niche private training centers or industrial training foundations.\n\nRVM CAD (Bangalore) is a prominent private training center focusing on CAD/CAM and CNC/VMC programming. They offer practical training on machines and software (Mastercam, Delcam, NX CAM). Courses often include AutoCAD combined with CNC/VMC modules, with durations typically structured around intensive batches (e.g., 30-day programs). They emphasize 100% placement assistance and report a long history of industrial training.\n\nNTTF (Nettur Technical Training Foundation) provides a more formal, long-term technical education approach. Their Precision CNC Machinist programs are well-regarded for industry-aligned curriculum and hands-on laboratory experience. Unlike short-term private centers, NTTF is a well-established educational institution with a track record of high placement percentages (reported at 98%+) and recognized certification.\n\nTechnologics Global Pvt Ltd is another provider in Bangalore that offers CNC machine programming training as part of a broader industrial automation curriculum. Their training model emphasizes real-time industrial projects at factories, hands-on practical sessions, and placement assistance. Their programs are designed for individuals seeking skills in industrial software and hardware.\n\nOther potential training sources in Bangalore often include ITI (Industrial Training Institutes) and private technical academies, though these vary significantly in their placement support and machine access. Most private institutes in this sector advertise monthly batch start dates, 100% placement support, and a mix of theoretical and practical training, though verification of placement claims is recommended."
+    },
+    "artifacts": [],
+    "successors": [],
+    "cost": 0.0,
+    "elapsed_s": 26.20982313156128,
+    "provider": "gemini",
+    "error": null,
+    "error_code": null
+  },
+  "prompt_sent": "You are the Researcher skill. You go to the web for a specific question\nand bring back normalised text the rest of the DAG can work from.\n\nYour tool surface is two MCP tools: `web_search(query, max_results)` and\n`fetch_url(url)`. Use them. Do not narrate; do not invent other tools.\n\nProcedure:\n  1. Read the QUESTION in the prompt.\n  2. Issue ONE `web_search` to get candidate URLs.\n  3. Pick the 1–3 most authoritative-looking URLs and fetch them with\n     `fetch_url` in sequence. Avoid clearly low-signal results (aggregator\n     spam, ad redirects).\n  4. Synthesise the relevant content from the fetched pages.\n\nTime budget: keep tool calls to 4 max per invocation. If a `fetch_url`\nreturns very little usable text, do not retry; move on.\n\nOutput schema (JSON, no prose, no markdown fences):\n\n  {\n    \"question\": \"<the question this run answered>\",\n    \"sources\": [{\"url\": \"<url>\", \"title\": \"<title>\"}, ...],\n    \"findings\": \"<2–6 short paragraphs of normalised text>\"\n  }\n\nYou do NOT produce the final user-facing answer. The downstream\ndistiller or formatter does that. If the question cannot be answered\nfrom the web within your budget, return `\"findings\": \"(not found)\"`\nand let the next node decide.\n\nUSER_QUERY: Compare 5 CNC/VMC training institutes in Bangalore.\n\nQUESTION: Find 5 reputable CNC/VMC training institutes in Bangalore and provide details on their courses, duration, and placement support for comparison.\n\nMEMORY HITS (8 from FAISS):\n  - [fact] Population comparison of London, Paris, and Berlin\n      source: user_query\n      raw: Find the populations of London, Paris, and Berlin and tell me which two are closest in size.\n  - [fact] Population comparison of London, Paris, and Berlin\n      source: user_query\n      raw: Find the populations of London, Paris, and Berlin and tell me which two are closest in size.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [preference] Compare top 3 Hugging Face text-generation models sorted by likes\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n\nINPUTS:\n[\n  {\n    \"id\": \"USER_QUERY\",\n    \"kind\": \"query\",\n    \"value\": \"Compare 5 CNC/VMC training institutes in Bangalore.\"\n  }\n]",
+  "started_at": 1781502978.113828,
+  "completed_at": 1781503004.323651,
+  "retries": 0
+}

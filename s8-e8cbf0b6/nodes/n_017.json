@@ -1,0 +1,41 @@
+{
+  "node_id": "n:17",
+  "skill": "researcher",
+  "status": "complete",
+  "inputs": [
+    "USER_QUERY"
+  ],
+  "result": {
+    "success": true,
+    "agent_name": "researcher",
+    "output": {
+      "question": "Find 5 reputable CNC/VMC training institutes in Bangalore, including details like course duration, curriculum focus, and placement support.",
+      "sources": [
+        {
+          "url": "https://www.nttftrg.com/precision-cnc-machinist-2",
+          "title": "NTTF - Precision CNC Machinist Training"
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=PnY-GjSV8Ek",
+          "title": "RVM CAD - CNC/VMC Training and Placement"
+        },
+        {
+          "url": "http://www.startautomation.in/cnc-machine-program-training-bangalore.html",
+          "title": "Technologics - CNC Machine Programming Training"
+        }
+      ],
+      "findings": "Finding five distinct, highly reputable institutes with granular, comparative data is challenging as many providers operate as local vocational centers or internal industry training bodies. The most prominent options in Bangalore include NTTF (Nettur Technical Training Foundation), RVM CAD, and Technologics. NTTF is widely regarded as a premier technical training institution in India, offering structured, industry-aligned programs with a reported 98%+ placement record and a strong focus on hands-on precision machining.\n\nRVM CAD specializes in CAD/CAM and CNC/VMC programming, offering intensive short-term courses (e.g., 30-day batches). Their curriculum covers AutoCAD, manual programming, and software-based programming (Mastercam, Delcam). They emphasize 100% job assistance and operate with industrial-grade machines. Technologics provides training focused on real-time industrial projects, emphasizing hands-on practical experience in laboratories, and also claims 100% placement assistance.\n\nWhile specific, verified course durations and curriculum breakdowns for all five institutes are not consistently published in a single comparative format, training providers in Bangalore generally follow two models: long-term diploma-style vocational training (like NTTF) or short-term, skill-specific certification courses (like RVM CAD and Technologics). Prospective students are advised to contact these centers directly to verify current batch schedules, as most begin new cycles monthly."
+    },
+    "artifacts": [],
+    "successors": [],
+    "cost": 0.0,
+    "elapsed_s": 9.019466876983643,
+    "provider": "gemini",
+    "error": null,
+    "error_code": null
+  },
+  "prompt_sent": "You are the Researcher skill. You go to the web for a specific question\nand bring back normalised text the rest of the DAG can work from.\n\nYour tool surface is two MCP tools: `web_search(query, max_results)` and\n`fetch_url(url)`. Use them. Do not narrate; do not invent other tools.\n\nProcedure:\n  1. Read the QUESTION in the prompt.\n  2. Issue ONE `web_search` to get candidate URLs.\n  3. Pick the 1–3 most authoritative-looking URLs and fetch them with\n     `fetch_url` in sequence. Avoid clearly low-signal results (aggregator\n     spam, ad redirects).\n  4. Synthesise the relevant content from the fetched pages.\n\nTime budget: keep tool calls to 4 max per invocation. If a `fetch_url`\nreturns very little usable text, do not retry; move on.\n\nOutput schema (JSON, no prose, no markdown fences):\n\n  {\n    \"question\": \"<the question this run answered>\",\n    \"sources\": [{\"url\": \"<url>\", \"title\": \"<title>\"}, ...],\n    \"findings\": \"<2–6 short paragraphs of normalised text>\"\n  }\n\nYou do NOT produce the final user-facing answer. The downstream\ndistiller or formatter does that. If the question cannot be answered\nfrom the web within your budget, return `\"findings\": \"(not found)\"`\nand let the next node decide.\n\nUSER_QUERY: Compare 5 CNC/VMC training institutes in Bangalore.\n\nQUESTION: Find 5 reputable CNC/VMC training institutes in Bangalore, including details like course duration, curriculum focus, and placement support.\n\nMEMORY HITS (8 from FAISS):\n  - [fact] Population comparison of London, Paris, and Berlin\n      source: user_query\n      raw: Find the populations of London, Paris, and Berlin and tell me which two are closest in size.\n  - [fact] Population comparison of London, Paris, and Berlin\n      source: user_query\n      raw: Find the populations of London, Paris, and Berlin and tell me which two are closest in size.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [preference] Compare top 3 Hugging Face text-generation models sorted by likes\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n\nINPUTS:\n[\n  {\n    \"id\": \"USER_QUERY\",\n    \"kind\": \"query\",\n    \"value\": \"Compare 5 CNC/VMC training institutes in Bangalore.\"\n  }\n]",
+  "started_at": 1781502961.8179722,
+  "completed_at": 1781502970.837439,
+  "retries": 0
+}

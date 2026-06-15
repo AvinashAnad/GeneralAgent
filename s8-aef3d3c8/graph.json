@@ -1,0 +1,462 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "skill": "planner",
+      "inputs": [
+        "USER_QUERY"
+      ],
+      "metadata": {},
+      "status": "complete",
+      "result": {
+        "success": true,
+        "agent_name": "planner",
+        "output": {
+          "rationale": "Research 5 popular AI coding tools to extract their free and paid plan details, then format the comparison.",
+          "nodes": [
+            {
+              "skill": "researcher",
+              "inputs": [],
+              "metadata": {
+                "label": "r1",
+                "question": "What are the free and paid plan details for GitHub Copilot?"
+              }
+            },
+            {
+              "skill": "researcher",
+              "inputs": [],
+              "metadata": {
+                "label": "r2",
+                "question": "What are the free and paid plan details for Cursor AI?"
+              }
+            },
+            {
+              "skill": "researcher",
+              "inputs": [],
+              "metadata": {
+                "label": "r3",
+                "question": "What are the free and paid plan details for Claude Dev / Anthropic Claude?"
+              }
+            },
+            {
+              "skill": "researcher",
+              "inputs": [],
+              "metadata": {
+                "label": "r4",
+                "question": "What are the free and paid plan details for Tabnine?"
+              }
+            },
+            {
+              "skill": "researcher",
+              "inputs": [],
+              "metadata": {
+                "label": "r5",
+                "question": "What are the free and paid plan details for Cody by Sourcegraph?"
+              }
+            },
+            {
+              "skill": "formatter",
+              "inputs": [
+                "USER_QUERY",
+                "n:r1",
+                "n:r2",
+                "n:r3",
+                "n:r4",
+                "n:r5"
+              ],
+              "metadata": {
+                "label": "out"
+              }
+            }
+          ]
+        },
+        "artifacts": [],
+        "successors": [
+          {
+            "skill": "researcher",
+            "inputs": [],
+            "metadata": {
+              "label": "r1",
+              "question": "What are the free and paid plan details for GitHub Copilot?"
+            }
+          },
+          {
+            "skill": "researcher",
+            "inputs": [],
+            "metadata": {
+              "label": "r2",
+              "question": "What are the free and paid plan details for Cursor AI?"
+            }
+          },
+          {
+            "skill": "researcher",
+            "inputs": [],
+            "metadata": {
+              "label": "r3",
+              "question": "What are the free and paid plan details for Claude Dev / Anthropic Claude?"
+            }
+          },
+          {
+            "skill": "researcher",
+            "inputs": [],
+            "metadata": {
+              "label": "r4",
+              "question": "What are the free and paid plan details for Tabnine?"
+            }
+          },
+          {
+            "skill": "researcher",
+            "inputs": [],
+            "metadata": {
+              "label": "r5",
+              "question": "What are the free and paid plan details for Cody by Sourcegraph?"
+            }
+          },
+          {
+            "skill": "formatter",
+            "inputs": [
+              "USER_QUERY",
+              "n:r1",
+              "n:r2",
+              "n:r3",
+              "n:r4",
+              "n:r5"
+            ],
+            "metadata": {
+              "label": "out"
+            }
+          }
+        ],
+        "cost": 0.0,
+        "elapsed_s": 2.076601028442383,
+        "provider": "gemini",
+        "error": null,
+        "error_code": null
+      },
+      "_result_typed": true,
+      "id": "n:1"
+    },
+    {
+      "skill": "researcher",
+      "inputs": [],
+      "metadata": {
+        "label": "r1",
+        "question": "What are the free and paid plan details for GitHub Copilot?"
+      },
+      "status": "complete",
+      "result": {
+        "success": true,
+        "agent_name": "researcher",
+        "output": {
+          "question": "What are the free and paid plan details for GitHub Copilot?",
+          "sources": [
+            {
+              "url": "https://docs.github.com/en/copilot/concepts/billing/individual-plans",
+              "title": "About individual GitHub Copilot plans and benefits"
+            },
+            {
+              "url": "https://docs.github.com/en/copilot/get-started/plans",
+              "title": "Plans for GitHub Copilot - GitHub Docs"
+            },
+            {
+              "url": "https://github.com/features/copilot/plans",
+              "title": "GitHub Copilot \u00b7 Plans & pricing"
+            }
+          ],
+          "findings": "GitHub Copilot offers several tiers for individual developers, ranging from a free entry-level plan to advanced paid subscriptions. The Copilot Free plan is intended for personal use and includes up to 2,000 inline code completions and 50 chat requests per month. It is designed for developers to explore basic capabilities without a subscription.\n\nFor students, GitHub Copilot Student provides unlimited code completions and access to additional models at no cost, provided they are verified. Similarly, verified teachers and maintainers of popular open-source projects may be eligible for free access to the Copilot Pro plan.\n\nPaid plans for individuals include Copilot Pro ($10/month), Copilot Pro+ ($39/month), and Copilot Max ($100/month). These plans offer unlimited code completions in IDEs, increased chat and agent interaction limits, and varying levels of GitHub AI Credits for premium model access. Copilot Pro+ and Max are specifically targeted at power users requiring higher request limits and full access to advanced AI capabilities.\n\nFor organizations, GitHub offers Copilot Business ($19/user/month) and Copilot Enterprise ($39/user/month). These business-tier plans include organizational license management, policy controls, and IP indemnity, alongside monthly AI credit allowances to support team-wide usage."
+        },
+        "artifacts": [],
+        "successors": [],
+        "cost": 0.0,
+        "elapsed_s": 12.77384901046753,
+        "provider": "gemini",
+        "error": null,
+        "error_code": null
+      },
+      "_result_typed": true,
+      "id": "n:2"
+    },
+    {
+      "skill": "researcher",
+      "inputs": [],
+      "metadata": {
+        "label": "r2",
+        "question": "What are the free and paid plan details for Cursor AI?"
+      },
+      "status": "complete",
+      "result": {
+        "success": true,
+        "agent_name": "researcher",
+        "output": {
+          "question": "What are the free and paid plan details for Cursor AI?",
+          "sources": [
+            {
+              "url": "https://www.nxcode.io/resources/news/cursor-ai-pricing-plans-guide-2026",
+              "title": "Cursor AI Pricing 2026: Free vs Pro vs Business \u2014 Complete Guide"
+            },
+            {
+              "url": "https://www.lowcode.agency/blog/cursor-ai-pricing",
+              "title": "Cursor AI Pricing Plans (2026): Free, Pro & Business Explained"
+            }
+          ],
+          "findings": "Cursor AI offers three primary tiers: Hobby (Free), Pro, and Business. The Hobby plan is designed for evaluation, offering limited monthly Agent requests, 2,000 code completions (Tab suggestions), and approximately 50 slow premium model requests. It allows users to test the editor's capabilities without a credit card.\n\nThe Pro plan costs $20 per month (or ~$16/month if billed annually) and is intended for individual professional developers. It features unlimited Tab completions and unlimited 'Auto' mode usage. Additionally, it provides a monthly credit pool equal to the plan price ($20) for manually selecting specific 'frontier' AI models. If a user manually selects these premium models for every request, the credit pool may be depleted before the month ends.\n\nThe Business plan costs $40 per seat per month. It provides AI access equivalent to the Pro plan but adds organizational features such as centralized billing, admin controls, and shared team rules. The distinction between Pro and Business is primarily based on organizational and compliance needs rather than differences in AI model access or capability."
+        },
+        "artifacts": [],
+        "successors": [],
+        "cost": 0.0,
+        "elapsed_s": 50.06182599067688,
+        "provider": "gemini",
+        "error": null,
+        "error_code": null
+      },
+      "_result_typed": true,
+      "id": "n:3"
+    },
+    {
+      "skill": "researcher",
+      "inputs": [],
+      "metadata": {
+        "label": "r3",
+        "question": "What are the free and paid plan details for Claude Dev / Anthropic Claude?"
+      },
+      "status": "complete",
+      "result": {
+        "success": true,
+        "agent_name": "researcher",
+        "output": {
+          "question": "What are the free and paid plan details for Claude Dev / Anthropic Claude?",
+          "sources": [
+            {
+              "url": "https://mem0.ai/blog/anthropic-claude-pricing",
+              "title": "Claude Pricing: Every Plan and API Cost (May 2026) - Mem0"
+            },
+            {
+              "url": "https://aionx.co/claude-ai-reviews/claude-pro-free-claude",
+              "title": "Claude Pro: vs free Claude - Complete Guide - AIonX"
+            }
+          ],
+          "findings": "Anthropic offers three primary tiers for individual users: Free, Pro, and Max. The Free plan is available at no cost and includes access to Claude models, Projects, Artifacts, app connectors, and web search, but is subject to daily usage limits that can be restrictive for heavy users. It does not provide access to advanced tools like Claude Code.\n\nClaude Pro costs $20/month, with an annual billing option that reduces the effective cost to $17/month. This tier provides significantly higher usage limits (approximately 5x the capacity of the free tier), priority processing, and access to advanced features including Claude Code (a terminal-based coding agent), file creation, code execution, and Google Workspace integrations.\n\nFor users requiring even higher capacity, Anthropic offers 'Max' tiers. The Max 5x plan costs $100/month and provides 5x the capacity of the Pro plan, while the Max 20x plan costs $200/month and offers 20x the capacity of the Pro plan. These are designed for heavy users, such as those running agent teams or sustained workloads, who wish to avoid the variable costs associated with pay-per-token API billing."
+        },
+        "artifacts": [],
+        "successors": [],
+        "cost": 0.0,
+        "elapsed_s": 49.93911695480347,
+        "provider": "gemini",
+        "error": null,
+        "error_code": null
+      },
+      "_result_typed": true,
+      "id": "n:4"
+    },
+    {
+      "skill": "researcher",
+      "inputs": [],
+      "metadata": {
+        "label": "r4",
+        "question": "What are the free and paid plan details for Tabnine?"
+      },
+      "status": "complete",
+      "result": {
+        "success": true,
+        "agent_name": "researcher",
+        "output": {
+          "question": "What are the free and paid plan details for Tabnine?",
+          "sources": [
+            {
+              "url": "https://checkthat.ai/brands/tabnine/pricing",
+              "title": "Tabnine Pricing: Plans, Costs & Hidden Fees"
+            },
+            {
+              "url": "https://aiflowreview.com/tabnine-review-2025",
+              "title": "Tabnine Review 2025 - AI Flow Review"
+            },
+            {
+              "url": "https://www.saasworthy.com/product/tabnine/pricing",
+              "title": "Tabnine Pricing & Plans (May 2026) | Compare Costs & Features - SaaSworthy"
+            },
+            {
+              "url": "https://www.eesel.ai/blog/tabnine/pricing",
+              "title": "A complete guide to Tabnine pricing in 2025 - eesel AI"
+            }
+          ],
+          "findings": "Tabnine's pricing model is primarily focused on professional and enterprise users, with limited consensus on the availability of a permanent free tier. Some sources indicate there is no public free tier, while others mention historical or limited \"Dev\" versions. For evaluation, Tabnine typically offers a free trial (often 90 days for Pro/Team features) to allow developers to test capabilities before committing to a paid subscription.\n\nPaid plans are generally structured by user per month, with costs typically starting around $39/user/month for team-oriented tiers. These plans are often billed annually and provide advanced features such as multi-line code completion, AI agents for documentation and review, and integration support.\n\nEnterprise plans are available for larger organizations, providing custom pricing. These tiers focus on security and compliance, offering options for VPC, on-premises, or air-gapped deployments, alongside SSO, IP indemnification, and custom model training to meet the needs of regulated industries and large teams.\n\nDue to the evolving nature of SaaS pricing, plan names and costs can vary significantly across different sources and time periods. Users are consistently advised to check the official Tabnine website for the most current tier structure, feature lists, and availability of trial periods."
+        },
+        "artifacts": [],
+        "successors": [],
+        "cost": 0.0,
+        "elapsed_s": 37.16242790222168,
+        "provider": "gemini",
+        "error": null,
+        "error_code": null
+      },
+      "_result_typed": true,
+      "id": "n:5"
+    },
+    {
+      "skill": "researcher",
+      "inputs": [],
+      "metadata": {
+        "label": "r5",
+        "question": "What are the free and paid plan details for Cody by Sourcegraph?"
+      },
+      "status": "complete",
+      "result": {
+        "success": true,
+        "agent_name": "researcher",
+        "output": {
+          "question": "What are the free and paid plan details for Cody by Sourcegraph?",
+          "sources": [
+            {
+              "url": "https://www.augmentcode.com/tools/sourcegraph-cody-vs-continue-enterprise-comparison",
+              "title": "Sourcegraph Cody vs Continue: Enterprise AI Coding Assistant"
+            },
+            {
+              "url": "https://sourcegraph.com/blog/cody-is-generally-available",
+              "title": "Sourcegraph Cody is generally available"
+            }
+          ],
+          "findings": "As of July 2025, Sourcegraph discontinued its standalone Cody Free and Cody Pro plans for individual developers. Cody is now positioned as an enterprise-only AI coding assistant.\n\nCody Enterprise remains fully supported and is available to organizations. Pricing for the enterprise tier is not publicly listed and requires a custom quote from the Sourcegraph sales team. The enterprise offering is integrated into the broader Sourcegraph platform and includes relevant security, compliance certifications, and enterprise-grade controls."
+        },
+        "artifacts": [],
+        "successors": [],
+        "cost": 0.0,
+        "elapsed_s": 44.81800389289856,
+        "provider": "gemini",
+        "error": null,
+        "error_code": null
+      },
+      "_result_typed": true,
+      "id": "n:6"
+    },
+    {
+      "skill": "formatter",
+      "inputs": [
+        "USER_QUERY",
+        "n:2",
+        "n:3",
+        "n:4",
+        "n:5",
+        "n:6"
+      ],
+      "metadata": {
+        "label": "out"
+      },
+      "status": "complete",
+      "result": {
+        "success": true,
+        "agent_name": "formatter",
+        "output": {
+          "final_answer": "Here is a comparison of five popular AI coding tools based on their current free and paid plan structures:\n\n| Tool | Free Plan | Paid Plan(s) | Key Notes |\n| :--- | :--- | :--- | :--- |\n| **GitHub Copilot** | Limited (2k completions/50 chats per month) | $10\u2013$100/mo (Pro/Max); $19\u2013$39/user/mo (Business) | Free access available for students/teachers/maintainers. |\n| **Cursor AI** | Limited (Hobby tier: 2k completions, 50 slow premium requests) | $20/mo (Pro); $40/seat/mo (Business) | Pro includes unlimited tab completions and a monthly credit pool. |\n| **Claude (Anthropic)** | Free tier with daily usage limits | $20/mo (Pro); $100\u2013$200/mo (Max tiers) | Pro/Max offer higher capacity and access to Claude Code. |\n| **Tabnine** | No permanent free tier; offers a trial period | Starts at ~$39/user/mo | Focused on professional/enterprise; offers on-premises/air-gapped options. |\n| **Cody (Sourcegraph)** | None (Discontinued) | Enterprise only (Custom pricing) | Now positioned exclusively as an enterprise-grade tool. |\n\n**Summary of Findings:**\n* **For Personal Use:** GitHub Copilot, Cursor, and Claude offer the most accessible entry points with functional free tiers, though they are subject to usage caps.\n* **For Professional/Enterprise:** Tabnine and Cody focus heavily on security, compliance, and team-based features, with Cody having moved entirely away from individual consumer plans.\n* **Note:** Pricing and availability for SaaS tools change frequently. It is recommended to verify the latest terms directly on the official websites of these providers."
+        },
+        "artifacts": [],
+        "successors": [],
+        "cost": 0.0,
+        "elapsed_s": 20.860889196395874,
+        "provider": "gemini",
+        "error": null,
+        "error_code": null
+      },
+      "_result_typed": true,
+      "id": "n:7"
+    },
+    {
+      "skill": "session_reporter",
+      "inputs": [
+        "n:7"
+      ],
+      "metadata": {},
+      "status": "complete",
+      "result": {
+        "success": true,
+        "agent_name": "session_reporter",
+        "output": {
+          "visible_browser_report": {
+            "html": "/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-aef3d3c8/visible_browser_reports/s8-aef3d3c8/visible_browser_replay_report_s8-aef3d3c8.html",
+            "json": "/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-aef3d3c8/visible_browser_reports/s8-aef3d3c8/visible_browser_replay_report_s8-aef3d3c8.json",
+            "artifact_dir": "/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-aef3d3c8/visible_browser_reports/s8-aef3d3c8",
+            "session_id": "s8-aef3d3c8"
+          },
+          "report": {
+            "html": "/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-aef3d3c8/visible_browser_reports/s8-aef3d3c8/visible_browser_replay_report_s8-aef3d3c8.html",
+            "json": "/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-aef3d3c8/visible_browser_reports/s8-aef3d3c8/visible_browser_replay_report_s8-aef3d3c8.json",
+            "artifact_dir": "/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-aef3d3c8/visible_browser_reports/s8-aef3d3c8",
+            "session_id": "s8-aef3d3c8"
+          },
+          "browser_report_alias": {
+            "html": "/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-aef3d3c8/browser/visible_browser_reports/s8-aef3d3c8/visible_browser_replay_report_s8-aef3d3c8.html",
+            "json": "/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-aef3d3c8/browser/visible_browser_reports/s8-aef3d3c8/visible_browser_replay_report_s8-aef3d3c8.json",
+            "artifact_dir": "/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-aef3d3c8/browser/visible_browser_reports/s8-aef3d3c8"
+          },
+          "query_analysis_report": {
+            "markdown": "/Users/avi/Documents/SessionNotes/Session9/Query_s8-aef3d3c8_Analysis.md",
+            "relative_path": "Query_s8-aef3d3c8_Analysis.md"
+          },
+          "session_id": "s8-aef3d3c8",
+          "browser_path_chosen": "not_used",
+          "final_answer": "Here is a comparison of five popular AI coding tools based on their current free and paid plan structures:\n\n| Tool | Free Plan | Paid Plan(s) | Key Notes |\n| :--- | :--- | :--- | :--- |\n| **GitHub Copilot** | Limited (2k completions/50 chats per month) | $10\u2013$100/mo (Pro/Max); $19\u2013$39/user/mo (Business) | Free access available for students/teachers/maintainers. |\n| **Cursor AI** | Limited (Hobby tier: 2k completions, 50 slow premium requests) | $20/mo (Pro); $40/seat/mo (Business) | Pro includes unlimited tab completions and a monthly credit pool. |\n| **Claude (Anthropic)** | Free tier with daily usage limits | $20/mo (Pro); $100\u2013$200/mo (Max tiers) | Pro/Max offer higher capacity and access to Claude Code. |\n| **Tabnine** | No permanent free tier; offers a trial period | Starts at ~$39/user/mo | Focused on professional/enterprise; offers on-premises/air-gapped options. |\n| **Cody (Sourcegraph)** | None (Discontinued) | Enterprise only (Custom pricing) | Now positioned exclusively as an enterprise-grade tool. |\n\n**Summary of Findings:**\n* **For Personal Use:** GitHub Copilot, Cursor, and Claude offer the most accessible entry points with functional free tiers, though they are subject to usage caps.\n* **For Professional/Enterprise:** Tabnine and Cody focus heavily on security, compliance, and team-based features, with Cody having moved entirely away from individual consumer plans.\n* **Note:** Pricing and availability for SaaS tools change frequently. It is recommended to verify the latest terms directly on the official websites of these providers."
+        },
+        "artifacts": [
+          "/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-aef3d3c8/visible_browser_reports/s8-aef3d3c8/visible_browser_replay_report_s8-aef3d3c8.html",
+          "/Users/avi/Documents/SessionNotes/Session9/S9SharedCodeVisibleAgent/code/state/sessions/s8-aef3d3c8/visible_browser_reports/s8-aef3d3c8/visible_browser_replay_report_s8-aef3d3c8.json",
+          "/Users/avi/Documents/SessionNotes/Session9/Query_s8-aef3d3c8_Analysis.md"
+        ],
+        "successors": [],
+        "cost": 0.0,
+        "elapsed_s": 0.06772971153259277,
+        "provider": "local-session-reporter",
+        "error": null,
+        "error_code": null
+      },
+      "_result_typed": true,
+      "id": "n:8"
+    }
+  ],
+  "edges": [
+    {
+      "source": "n:1",
+      "target": "n:2"
+    },
+    {
+      "source": "n:1",
+      "target": "n:3"
+    },
+    {
+      "source": "n:1",
+      "target": "n:4"
+    },
+    {
+      "source": "n:1",
+      "target": "n:5"
+    },
+    {
+      "source": "n:1",
+      "target": "n:6"
+    },
+    {
+      "source": "n:2",
+      "target": "n:7"
+    },
+    {
+      "source": "n:3",
+      "target": "n:7"
+    },
+    {
+      "source": "n:4",
+      "target": "n:7"
+    },
+    {
+      "source": "n:5",
+      "target": "n:7"
+    },
+    {
+      "source": "n:6",
+      "target": "n:7"
+    },
+    {
+      "source": "n:7",
+      "target": "n:8"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "node_id": "n:3",
+  "skill": "researcher",
+  "status": "complete",
+  "inputs": [],
+  "result": {
+    "success": true,
+    "agent_name": "researcher",
+    "output": {
+      "question": "What are the free and paid plan details for Cursor AI?",
+      "sources": [
+        {
+          "url": "https://www.nxcode.io/resources/news/cursor-ai-pricing-plans-guide-2026",
+          "title": "Cursor AI Pricing 2026: Free vs Pro vs Business — Complete Guide"
+        },
+        {
+          "url": "https://www.lowcode.agency/blog/cursor-ai-pricing",
+          "title": "Cursor AI Pricing Plans (2026): Free, Pro & Business Explained"
+        }
+      ],
+      "findings": "Cursor AI offers three primary tiers: Hobby (Free), Pro, and Business. The Hobby plan is designed for evaluation, offering limited monthly Agent requests, 2,000 code completions (Tab suggestions), and approximately 50 slow premium model requests. It allows users to test the editor's capabilities without a credit card.\n\nThe Pro plan costs $20 per month (or ~$16/month if billed annually) and is intended for individual professional developers. It features unlimited Tab completions and unlimited 'Auto' mode usage. Additionally, it provides a monthly credit pool equal to the plan price ($20) for manually selecting specific 'frontier' AI models. If a user manually selects these premium models for every request, the credit pool may be depleted before the month ends.\n\nThe Business plan costs $40 per seat per month. It provides AI access equivalent to the Pro plan but adds organizational features such as centralized billing, admin controls, and shared team rules. The distinction between Pro and Business is primarily based on organizational and compliance needs rather than differences in AI model access or capability."
+    },
+    "artifacts": [],
+    "successors": [],
+    "cost": 0.0,
+    "elapsed_s": 50.06182599067688,
+    "provider": "gemini",
+    "error": null,
+    "error_code": null
+  },
+  "prompt_sent": "You are the Researcher skill. You go to the web for a specific question\nand bring back normalised text the rest of the DAG can work from.\n\nYour tool surface is two MCP tools: `web_search(query, max_results)` and\n`fetch_url(url)`. Use them. Do not narrate; do not invent other tools.\n\nProcedure:\n  1. Read the QUESTION in the prompt.\n  2. Issue ONE `web_search` to get candidate URLs.\n  3. Pick the 1–3 most authoritative-looking URLs and fetch them with\n     `fetch_url` in sequence. Avoid clearly low-signal results (aggregator\n     spam, ad redirects).\n  4. Synthesise the relevant content from the fetched pages.\n\nTime budget: keep tool calls to 4 max per invocation. If a `fetch_url`\nreturns very little usable text, do not retry; move on.\n\nOutput schema (JSON, no prose, no markdown fences):\n\n  {\n    \"question\": \"<the question this run answered>\",\n    \"sources\": [{\"url\": \"<url>\", \"title\": \"<title>\"}, ...],\n    \"findings\": \"<2–6 short paragraphs of normalised text>\"\n  }\n\nYou do NOT produce the final user-facing answer. The downstream\ndistiller or formatter does that. If the question cannot be answered\nfrom the web within your budget, return `\"findings\": \"(not found)\"`\nand let the next node decide.\n\nQUESTION: What are the free and paid plan details for Cursor AI?\n\nMEMORY HITS (8 from FAISS):\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [fact] Compare top 3 Hugging Face text-generation models sorted by likes.\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [preference] Compare top 3 Hugging Face text-generation models sorted by likes\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [tool_outcome] Compare top 3 Hugging Face text-generation models sorted by likes\n      source: user_query\n      raw: Compare top 3 Hugging Face text-generation models sorted by likes.\n  - [tool_outcome] Comparison of 3 laptops under 80,000 INR from Croma\n      source: user_query\n      raw: Compare 3 laptops under ₹80,000 from Croma.\n\nINPUTS:\n[]",
+  "started_at": 1781502477.2782931,
+  "completed_at": 1781502527.3401191,
+  "retries": 0
+}

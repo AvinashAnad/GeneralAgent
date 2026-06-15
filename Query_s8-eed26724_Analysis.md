@@ -62,6 +62,11 @@ For blocked pages, a11y is still useful evidence: it can show that the rendered 
 | Vision | Screenshot set-of-marks fallback. | Evidence captured. |
 | Final Browser State | Browser node outcome. | blocked |
 
+## Browser Layer Trace
+
+- `n:2`: extract attempted -> no useful content extracted -> deterministic skipped/no selectors -> a11y attempted; captured 12 page-state screenshot(s) -> vision attempted; captured 2 screenshot artifact(s) -> final browser state: blocked/interaction_failed (all layers exhausted; last: step cap reached (12))
+- Recovery: n:5 recovered n:2 via upstream_failure -> researcher gathered replacement data -> formatter produced final answer
+
 ## Final Comparison Table
 
 | Feature | HP Victus | Lenovo LOQ | Apple MacBook Air (M1/M2) |
@@ -124,12 +129,12 @@ Sources: [Gadgets Now](https://gadgetsnow.indiatimes.com/best-products/laptops/b
   "node_result_cost_usd": 0.0,
   "gateway_ledger_cost_usd": 0.0,
   "providers": [
-    "gemini"
+    "gemini",
+    "local-session-reporter"
   ],
   "gateway_cost_by_agent": {
     "browser": [
       {
-        "agent": "browser",
         "provider": "gemini",
         "calls": 13,
         "in_tok": 8618,
@@ -143,7 +148,6 @@ Sources: [Gadgets Now](https://gadgetsnow.indiatimes.com/best-products/laptops/b
     ],
     "formatter": [
       {
-        "agent": "formatter",
         "provider": "gemini",
         "calls": 1,
         "in_tok": 1365,
@@ -157,7 +161,6 @@ Sources: [Gadgets Now](https://gadgetsnow.indiatimes.com/best-products/laptops/b
     ],
     "planner": [
       {
-        "agent": "planner",
         "provider": "gemini",
         "calls": 2,
         "in_tok": 5066,
@@ -171,7 +174,6 @@ Sources: [Gadgets Now](https://gadgetsnow.indiatimes.com/best-products/laptops/b
     ],
     "researcher": [
       {
-        "agent": "researcher",
         "provider": "gemini",
         "calls": 2,
         "in_tok": 3782,
