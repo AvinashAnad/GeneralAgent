@@ -1,0 +1,29 @@
+# secrets / env
+.env*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.venv/
+venv/
+
+# local runtime state
+*.db
+*.sqlite
+*.sqlite3
+logs/
+usage.json
+state/
+sandbox/
+artifacts/
+sessions/
+
+# OS / editor
+.DS_Store
+*.swp
+*.swo

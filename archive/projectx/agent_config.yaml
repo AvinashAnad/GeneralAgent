@@ -1,0 +1,64 @@
+planner:
+  prompt: prompts/planner.md
+  tools_allowed: []
+  temperature: 0.2
+  max_tokens: 1800
+  description: Routes comparison requests into Browser or Researcher plus Browser workflows.
+
+researcher:
+  prompt: prompts/researcher.md
+  tools_allowed: [web_search, fetch_url]
+  temperature: 0.6
+  max_tokens: 3000
+  description: Finds candidate URLs and emits Browser successors for open-ended comparison workflows.
+
+browser:
+  prompt: ../S9SharedCode/code/prompts/browser.md
+  temperature: 0.0
+  max_tokens: 1024
+  description: Existing Session 9 Browser skill.
+
+distiller:
+  prompt: prompts/distiller.md
+  critic: true
+  temperature: 0.1
+  max_tokens: 1800
+  description: Extracts normalized comparison records.
+
+critic:
+  prompt: prompts/critic.md
+  temperature: 0.0
+  max_tokens: 700
+  description: Checks comparison records against upstream evidence.
+
+formatter:
+  prompt: prompts/formatter.md
+  temperature: 0.2
+  max_tokens: 1800
+  description: Renders the final comparison table.
+
+retriever:
+  prompt: ../S9SharedCode/code/prompts/retriever.md
+  tools_allowed: [search_knowledge]
+  temperature: 0.2
+  max_tokens: 1200
+  description: Searches indexed memory.
+
+summariser:
+  prompt: ../S9SharedCode/code/prompts/summariser.md
+  temperature: 0.3
+  max_tokens: 1200
+  description: Condenses long content.
+
+sandbox_executor:
+  prompt: ../S9SharedCode/code/prompts/sandbox_executor.md
+  temperature: 0.0
+  max_tokens: 400
+  description: Existing sandbox executor.
+
+coder:
+  prompt: ../S9SharedCode/code/prompts/coder.md
+  internal_successors: [sandbox_executor]
+  temperature: 0.2
+  max_tokens: 1500
+  description: Existing coder stub.

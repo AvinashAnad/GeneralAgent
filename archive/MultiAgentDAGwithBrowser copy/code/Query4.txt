@@ -1,0 +1,28 @@
+
+══════════════════════════════════════════════════════════════════════════════
+session s8-801a3a63  ─  query: Compare 5 CNC/VMC training institutes in Bangalore.
+══════════════════════════════════════════════════════════════════════════════
+[memory.read] 5 hit(s) visible to every skill this run
+[routing] planner: using nvidia; skipped gemini:cooldown 3.1s
+[n:1] planner            complete (17.5s)
+[n:2] browser            complete (20.6s)
+[n:3] browser            complete (1.6s)
+[n:4] browser            complete (47.2s)
+[n:5] distiller          complete (5.0s)
+[n:7] critic             complete (0.8s)
+  ↪ critic verdict=pass: All provided institute details are consistent with the input and missing fields are correctly identified with an appropriate rationale.
+[n:6] formatter          complete (2.8s)
+
+══════════════════════════════════════════════════════════════════════════════
+FINAL:
+Here is a comparison of 5 CNC/VMC training institutes in Bangalore based on available information. Please note that specific details regarding course duration, fees, and placement assistance were not available for these locations.
+
+| Institute Name | Area | Courses Offered | Website |
+| :--- | :--- | :--- | :--- |
+| V TECH MASTER CAD&CAM | T. Dasarahalli | CNC, CAD, CAM | https://vtechmaster.com/ |
+| RITE CNC CAD CAM | Peenya | CNC, CAD, CAM | https://ritecnc.com/ |
+| Cnc Training Technology | Peenya 2nd Stage | CNC, VMC | https://cnctrainingtechnology.com/ |
+| Makino Technical Training Centre | Sadaramangala | CNC, VMC | https://www.makino.in/ |
+| Cnc Training Centre | Peenya | CNC, VMC | Not listed |
+══════════════════════════════════════════════════════════════════════════════
+
