@@ -1,1 +1,0 @@
-Compare top 3 Hugging Face text-generation models sorted by likes.
