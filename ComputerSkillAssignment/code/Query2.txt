@@ -1,0 +1,45 @@
+[06/15/26 11:18:00] INFO     Processing request of type            server.py:727
+                             CallToolRequest                                    
+[06/15/26 11:18:02] INFO     Processing request of type            server.py:727
+                             ListToolsRequest                                   
+[06/15/26 11:18:03] INFO     Processing request of type            server.py:727
+                             CallToolRequest                                    
+[06/15/26 11:18:06] INFO     Processing request of type            server.py:727
+                             ListToolsRequest                                   
+[06/15/26 11:18:11] INFO     Processing request of type            server.py:727
+                             CallToolRequest                                    
+[06/15/26 11:18:14] INFO     Processing request of type            server.py:727
+                             ListToolsRequest                                   
+[06/15/26 11:18:20] INFO     Processing request of type            server.py:727
+                             CallToolRequest                                    
+[06/15/26 11:18:22] INFO     Processing request of type            server.py:727
+                             ListToolsRequest                                   
+[06/15/26 11:18:25] INFO     Processing request of type            server.py:727
+                             CallToolRequest                                    
+[06/15/26 11:18:27] INFO     Processing request of type            server.py:727
+                             ListToolsRequest                                   
+
+══════════════════════════════════════════════════════════════════════════════
+session s8-aef3d3c8  ─  query: Compare 5 AI coding tools by free plan and paid plan.
+══════════════════════════════════════════════════════════════════════════════
+[memory.read] 8 hit(s) visible to every skill this run
+[n:1] planner            complete (2.1s)
+[n:2] researcher         complete (12.8s)
+[n:3] researcher         complete (50.1s)
+[n:4] researcher         complete (49.9s)
+[n:5] researcher         complete (37.2s)
+[n:6] researcher         complete (44.8s)
+[n:7] formatter          complete (20.9s)
+[session_reporter] analysis: /Users/avi/Documents/SessionNotes/Session9/Query_s8-aef3d3c8_Analysis.md
+[n:8] session_reporter   complete (0.1s)
+
+══════════════════════════════════════════════════════════════════════════════
+FINAL: Here is a comparison of five popular AI coding tools based on their current free and paid plan structures:
+
+| Tool | Free Plan | Paid Plan(s) | Key Notes |
+| :--- | :--- | :--- | :--- |
+| **GitHub Copilot** | Limited (2k completions/50 chats per month) | $10–$100/mo (Pro/Max); $19–$39/user/mo (Business) | Free access available for students/teachers/maintainers. |
+| **Cursor AI** | Limited (Hobby tier: 2k completions, 50 slow premium requests) | $20/mo (Pro); $40/seat/mo (Business) | Pro includes unlimited tab completions and a monthly credit pool. |
+| **Claude (Anthropic)** | Free tier with da
+══════════════════════════════════════════════════════════════════════════════
+

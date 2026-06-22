@@ -1,0 +1,61 @@
+[06/15/26 11:24:55] INFO     Processing request of type            server.py:727
+                             CallToolRequest                                    
+[06/15/26 11:24:59] INFO     Processing request of type            server.py:727
+                             ListToolsRequest                                   
+[06/15/26 11:25:12] INFO     Processing request of type            server.py:727
+                             CallToolRequest                                    
+[06/15/26 11:25:15] INFO     Processing request of type            server.py:727
+                             ListToolsRequest                                   
+[06/15/26 11:25:21] INFO     Processing request of type            server.py:727
+                             CallToolRequest                                    
+[06/15/26 11:25:44] INFO     Processing request of type            server.py:727
+                             CallToolRequest                                    
+[06/15/26 11:25:46] INFO     Processing request of type            server.py:727
+                             ListToolsRequest                                   
+[06/15/26 11:26:04] INFO     Processing request of type            server.py:727
+                             CallToolRequest                                    
+[06/15/26 11:26:07] INFO     Processing request of type            server.py:727
+                             ListToolsRequest                                   
+[06/15/26 11:26:20] INFO     Processing request of type            server.py:727
+                             CallToolRequest                                    
+[06/15/26 11:26:21] INFO     Processing request of type            server.py:727
+                             ListToolsRequest                                   
+
+══════════════════════════════════════════════════════════════════════════════
+session s8-e8cbf0b6  ─  query: Compare 5 CNC/VMC training institutes in Bangalore.
+══════════════════════════════════════════════════════════════════════════════
+[memory.read] 8 hit(s) visible to every skill this run
+[n:1] planner            complete (7.5s)
+[n:2] researcher         complete (7.4s)
+[n:3] distiller          complete (2.9s)
+[n:5] critic             complete (0.8s)
+  ↪ critic-fail recovery: planner node n:6 for n:3
+[n:6] planner            complete (5.9s)
+[n:7] researcher         complete (21.2s)
+[n:8] distiller          complete (1.1s)
+[n:10] critic             complete (0.8s)
+  ↪ critic-fail recovery: planner node n:11 for n:8
+[n:11] planner            complete (8.1s)
+[n:12] researcher         complete (13.2s)
+[n:13] distiller          complete (1.1s)
+[n:15] critic             complete (0.9s)
+  ↪ critic-fail recovery: planner node n:16 for n:13
+[n:16] planner            complete (4.0s)
+[n:17] researcher         complete (9.0s)
+[n:18] distiller          complete (2.8s)
+[n:20] critic             complete (0.8s)
+  ↪ critic-fail recovery: planner node n:21 for n:18
+[n:21] planner            complete (3.6s)
+[n:22] researcher         complete (26.2s)
+[n:23] formatter          complete (2.0s)
+[session_reporter] analysis: /Users/avi/Documents/SessionNotes/Session9/Query_s8-e8cbf0b6_Analysis.md
+[n:24] session_reporter   complete (0.1s)
+
+══════════════════════════════════════════════════════════════════════════════
+FINAL: While there are many vocational training providers in Bangalore, comprehensive side-by-side data for five distinct institutes is limited. Based on available information, here are three reputable options for CNC/VMC training in Bangalore:
+
+1. NTTF (Nettur Technical Training Foundation): A well-established educational institution known for its formal Precision CNC Machinist programs. It is highly regarded for its industry-aligned curriculum, extensive hands-on laboratory experience, and a strong track record of placement (reported at over 98%).
+
+2. RVM CAD: A prominent private training center sp
+══════════════════════════════════════════════════════════════════════════════
+

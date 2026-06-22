@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Session 9 Visible Product Catalog</title>
+  <style>
+    :root {
+      --ink: #172033;
+      --muted: #5d6677;
+      --line: #d8dee8;
+      --paper: #ffffff;
+      --wash: #f4f6f9;
+      --accent: #1f6feb;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--wash);
+    }
+    header {
+      background: var(--ink);
+      color: white;
+      padding: 20px 24px;
+    }
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+    h1, h2, h3 { margin: 0 0 10px; }
+    .toolbar {
+      display: grid;
+      grid-template-columns: minmax(220px, 1fr) 190px 210px;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    label {
+      display: grid;
+      gap: 6px;
+      font-weight: 650;
+      font-size: 14px;
+    }
+    input, select, textarea, button {
+      font: inherit;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 9px 10px;
+      background: white;
+      color: var(--ink);
+    }
+    button, .details-link {
+      cursor: pointer;
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 9px 12px;
+      border-radius: 6px;
+      font-weight: 700;
+    }
+    .results {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+    }
+    .product-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      display: grid;
+      gap: 8px;
+    }
+    .product-card[hidden] { display: none; }
+    .product-name { font-size: 19px; font-weight: 750; }
+    .meta {
+      color: var(--muted);
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      font-size: 14px;
+    }
+    .price { font-size: 22px; font-weight: 800; }
+    .summary { min-height: 44px; }
+    .detail-layout {
+      display: grid;
+      grid-template-columns: minmax(240px, 380px) minmax(0, 1fr);
+      gap: 18px;
+      align-items: start;
+    }
+    .product-photo {
+      aspect-ratio: 4 / 3;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: linear-gradient(135deg, #e6edf7, #ffffff);
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+      font-weight: 750;
+      text-align: center;
+      padding: 16px;
+    }
+    .panel {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .tabs {
+      display: flex;
+      gap: 8px;
+      margin: 14px 0;
+      flex-wrap: wrap;
+    }
+    .tab {
+      color: var(--ink);
+      background: white;
+      border-color: var(--line);
+    }
+    .tab.active {
+      color: white;
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+    .tab-panel[hidden], #compatibility-note[hidden] { display: none; }
+    form {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    #form-status {
+      min-height: 22px;
+      color: #116329;
+      font-weight: 700;
+    }
+    @media (max-width: 760px) {
+      .toolbar, .detail-layout { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Session 9 Product Catalog</h1>
+    <p>Interactive fixture for active browser search, filter, sort, detail, tab, expand, and form actions.</p>
+  </header>
+  <main>
+    <section id="catalog-view">
+      <h2>Products</h2>
+      <div class="toolbar" aria-label="Catalog controls">
+        <label>
+          Search
+          <input id="catalog-search" type="search" placeholder="Search products">
+        </label>
+        <label>
+          Category
+          <select id="category-filter">
+            <option value="all">All categories</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Home">Home</option>
+            <option value="Outdoor">Outdoor</option>
+          </select>
+        </label>
+        <label>
+          Sort
+          <select id="sort-select">
+            <option value="featured">Featured</option>
+            <option value="price-asc">Price low to high</option>
+            <option value="rating-desc">Rating high to low</option>
+          </select>
+        </label>
+      </div>
+      <p id="result-count" aria-live="polite"></p>
+      <div id="results" class="results"></div>
+    </section>
+
+    <section id="detail-view" hidden>
+      <a class="details-link" href="./visible_catalog.html">Back to catalog</a>
+      <div class="detail-layout">
+        <div class="product-photo" id="detail-photo"></div>
+        <div class="panel">
+          <h2 id="detail-title"></h2>
+          <p id="detail-summary"></p>
+          <p id="detail-price" class="price"></p>
+          <div class="tabs" role="tablist" aria-label="Product detail tabs">
+            <button class="tab active" data-tab="overview" type="button">Overview</button>
+            <button class="tab" data-tab="specs" type="button">Specs</button>
+            <button class="tab" data-tab="reviews" type="button">Reviews</button>
+          </div>
+          <section class="tab-panel" id="overview-panel">
+            <h3>Overview</h3>
+            <p id="overview-copy"></p>
+          </section>
+          <section class="tab-panel" id="specs-panel" hidden>
+            <h3>Specs</h3>
+            <ul id="spec-list"></ul>
+            <button id="show-more" type="button">Show more compatibility details</button>
+            <p id="compatibility-note" hidden></p>
+          </section>
+          <section class="tab-panel" id="reviews-panel" hidden>
+            <h3>Reviews</h3>
+            <p id="review-copy"></p>
+          </section>
+          <form id="notify-form">
+            <h3>Get availability alert</h3>
+            <label>Name <input id="buyer-name" name="name" autocomplete="name" required></label>
+            <label>Email <input id="buyer-email" name="email" type="email" autocomplete="email" required></label>
+            <button type="submit">Submit notification request</button>
+            <p id="form-status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script>
+    const products = [
+      {
+        id: "travel-charger",
+        name: "Travel Charger",
+        category: "Electronics",
+        price: 29,
+        rating: 4.7,
+        stock: "In stock",
+        summary: "Portable dual USB-C charger for phones, tablets, and headphones.",
+        specs: ["45W USB-C output", "2 ports", "Foldable plug", "136 grams"],
+        compatibility: "Works with USB-C phones, tablets, earbuds, and small laptops that accept 45W USB-C charging.",
+        review: "Buyers like the compact size and steady charging speed."
+      },
+      {
+        id: "focus-headphones",
+        name: "Focus Headphones",
+        category: "Electronics",
+        price: 89,
+        rating: 4.4,
+        stock: "Only 4 left",
+        summary: "Portable wireless headphones with active noise reduction.",
+        specs: ["32 hour battery", "Bluetooth multipoint", "Travel case included", "250 grams"],
+        compatibility: "Pairs with laptops, tablets, and phones that support Bluetooth audio.",
+        review: "Best rated for office focus and long study sessions."
+      },
+      {
+        id: "solar-desk-lamp",
+        name: "Solar Desk Lamp",
+        category: "Home",
+        price: 42,
+        rating: 4.2,
+        stock: "In stock",
+        summary: "Rechargeable lamp with a small solar panel and dimmable modes.",
+        specs: ["3 brightness modes", "Solar trickle charging", "USB-C backup charging", "Warm LED"],
+        compatibility: "Works as a desk, patio, or emergency lamp.",
+        review: "Popular for backup lighting and compact desks."
+      },
+      {
+        id: "trail-bottle",
+        name: "Trail Bottle",
+        category: "Outdoor",
+        price: 24,
+        rating: 4.6,
+        stock: "In stock",
+        summary: "Insulated bottle with one-hand lid for portable hydration.",
+        specs: ["710 ml", "Leak resistant", "Dishwasher safe lid", "Double-wall steel"],
+        compatibility: "Fits most bike cages and backpack side pockets.",
+        review: "Strong marks for lid design and temperature hold."
+      }
+    ];
+
+    const params = new URLSearchParams(location.search);
+    const productId = params.get("product");
+    const catalogView = document.querySelector("#catalog-view");
+    const detailView = document.querySelector("#detail-view");
+    const results = document.querySelector("#results");
+
+    function money(value) {
+      return "$" + Number(value).toFixed(2);
+    }
+
+    function renderCatalog() {
+      catalogView.hidden = false;
+      detailView.hidden = true;
+      products.forEach(product => {
+        const card = document.createElement("article");
+        card.className = "product-card";
+        card.dataset.productId = product.id;
+        card.dataset.category = product.category;
+        card.dataset.price = product.price;
+        card.dataset.rating = product.rating;
+        card.innerHTML = `
+          <div class="product-name">${product.name}</div>
+          <div class="meta"><span>${product.category}</span><span class="rating">${product.rating.toFixed(1)} rating</span><span class="stock">${product.stock}</span></div>
+          <div class="price">${money(product.price)}</div>
+          <p class="summary">${product.summary}</p>
+          <a class="details-link" target="_blank" href="./visible_catalog.html?product=${product.id}">View details</a>
+        `;
+        results.appendChild(card);
+      });
+      document.querySelector("#catalog-search").addEventListener("input", applyControls);
+      document.querySelector("#category-filter").addEventListener("change", applyControls);
+      document.querySelector("#sort-select").addEventListener("change", applyControls);
+      applyControls();
+    }
+
+    function applyControls() {
+      const term = document.querySelector("#catalog-search").value.toLowerCase().trim();
+      const category = document.querySelector("#category-filter").value;
+      const sort = document.querySelector("#sort-select").value;
+      const visible = [];
+      for (const card of Array.from(results.children)) {
+        const product = products.find(item => item.id === card.dataset.productId);
+        const matchesTerm = !term || [product.name, product.summary, product.category].join(" ").toLowerCase().includes(term);
+        const matchesCategory = category === "all" || product.category === category;
+        const show = matchesTerm && matchesCategory;
+        card.hidden = !show;
+        if (show) visible.push(card);
+      }
+      visible.sort((a, b) => {
+        if (sort === "price-asc") return Number(a.dataset.price) - Number(b.dataset.price);
+        if (sort === "rating-desc") return Number(b.dataset.rating) - Number(a.dataset.rating);
+        return products.findIndex(p => p.id === a.dataset.productId) - products.findIndex(p => p.id === b.dataset.productId);
+      });
+      visible.forEach(card => results.appendChild(card));
+      document.querySelector("#result-count").textContent = `${visible.length} product${visible.length === 1 ? "" : "s"} visible`;
+    }
+
+    function renderDetail(product) {
+      catalogView.hidden = true;
+      detailView.hidden = false;
+      document.title = product.name + " Details";
+      document.querySelector("#detail-photo").textContent = product.name;
+      document.querySelector("#detail-title").textContent = product.name;
+      document.querySelector("#detail-summary").textContent = product.summary;
+      document.querySelector("#detail-price").textContent = money(product.price);
+      document.querySelector("#overview-copy").textContent = `${product.name} is listed in ${product.category} with ${product.stock.toLowerCase()}.`;
+      document.querySelector("#review-copy").textContent = product.review;
+      document.querySelector("#compatibility-note").textContent = product.compatibility;
+      const list = document.querySelector("#spec-list");
+      product.specs.forEach(spec => {
+        const li = document.createElement("li");
+        li.textContent = spec;
+        list.appendChild(li);
+      });
+      document.querySelectorAll(".tab").forEach(tab => {
+        tab.addEventListener("click", () => activateTab(tab.dataset.tab));
+      });
+      document.querySelector("#show-more").addEventListener("click", () => {
+        document.querySelector("#compatibility-note").hidden = false;
+      });
+      document.querySelector("#notify-form").addEventListener("submit", event => {
+        event.preventDefault();
+        const name = document.querySelector("#buyer-name").value.trim();
+        document.querySelector("#form-status").textContent = `Notification request submitted for ${name || "buyer"}.`;
+      });
+    }
+
+    function activateTab(name) {
+      document.querySelectorAll(".tab").forEach(tab => {
+        tab.classList.toggle("active", tab.dataset.tab === name);
+      });
+      document.querySelectorAll(".tab-panel").forEach(panel => {
+        panel.hidden = panel.id !== `${name}-panel`;
+      });
+    }
+
+    const selected = products.find(product => product.id === productId);
+    if (selected) renderDetail(selected);
+    else renderCatalog();
+  </script>
+</body>
+</html>
