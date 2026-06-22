@@ -123,32 +123,48 @@ to be reported in `missing_fields` instead of inventing generic descriptions.
 
 ## Component Interaction Map
 
+The current runtime keeps the S8 growing-DAG orchestrator and S9 Browser
+cascade, then adds the S10 Computer skill for local desktop automation through
+`cua-driver`. The dispatcher routes each node by skill name, while persistence
+records the graph, node JSON, browser artifacts, and computer trajectories under
+the session state directory.
+
 ```mermaid
 sequenceDiagram
     autonumber
     participant User
     participant Flow as flow.py Orchestrator
     participant Persist as persistence.py
-    participant Skills as skills.py Dispatch
     participant Memory as memory.py
+    participant Skills as skills.py Dispatch
+    participant Gateway as llm_gatewayV9
     participant Browser as browser/skill.py
     participant Session as browser/session.py
     participant Drivers as driver/dom/highlight.py
-    participant Client as browser/client.py
-    participant Gateway as llm_gatewayV9
-    participant Replay as replay.py and state
+    participant Computer as computer/skill.py
+    participant CUA as cua-driver
+    participant Vision as computer/vision.py
+    participant State as state and replay artifacts
 
-    User->>Flow: user query
-    Flow->>Persist: read_graph and read_node
-    Persist-->>Flow: restored graph state
-    Flow->>Memory: read relevant context
-    Memory-->>Flow: memory hits
+    User->>Flow: user query or resume session
+    Flow->>Persist: write/read query, graph, and node state
+    Persist-->>Flow: restored graph state when resuming
+    Flow->>Memory: read(query) and remember(user_query)
+    Memory-->>Flow: memory hits visible to every skill prompt
 
-    Flow->>Skills: run ready node
+    Flow->>Skills: run each ready DAG node
 
-    alt normal S8 skill
-        Skills->>Gateway: POST /v1/chat
-        Gateway-->>Skills: skill JSON
+    alt planner or normal LLM-backed skill
+        Skills->>Gateway: POST /v1/chat with rendered prompt
+        Gateway-->>Skills: AgentResult JSON
+    else MCP tool-backed skill
+        Skills->>Gateway: POST /v1/chat with allowed tools
+        Gateway-->>Skills: tool call request
+        Skills->>Skills: mcp_runner executes web_search, fetch_url, or search_knowledge
+        Skills->>Gateway: send tool result back to model
+        Gateway-->>Skills: final AgentResult JSON
+    else sandbox_executor
+        Skills->>Skills: sandbox.run_python(code from coder output)
     else S9 browser skill
         Skills->>Browser: BrowserSkill.run(NodeSpec)
         Browser->>Session: resolve browser_profile / storage_state
@@ -171,30 +187,61 @@ sequenceDiagram
             else accessibility path
                 Browser->>Drivers: enumerate interactive elements
                 Drivers-->>Browser: a11y legend
-                Browser->>Client: action request for /v1/chat
-                Client->>Gateway: POST /v1/chat
-                Gateway-->>Client: text action JSON
-                Client-->>Browser: click / type / done
+                Browser->>Gateway: POST /v1/chat for text action
+                Gateway-->>Browser: click / type / done JSON
                 Browser->>Browser: pack BrowserOutput path=a11y
             else vision path
                 Browser->>Drivers: screenshot + set-of-marks
                 Drivers-->>Browser: marked screenshot + legend
-                Browser->>Client: action request for /v1/vision
-                Client->>Gateway: POST /v1/vision
-                Gateway-->>Client: visual action JSON
-                Client-->>Browser: click / drag / done
+                Browser->>Gateway: POST /v1/vision for visual action
+                Gateway-->>Browser: click / drag / done JSON
                 Browser->>Browser: pack BrowserOutput path=vision
             end
         end
 
         Browser->>Session: save storage_state when requested
         Browser-->>Skills: BrowserOutput or structured error
+    else S10 computer skill
+        Skills->>Computer: ComputerSkill.run(NodeSpec)
+        Computer->>CUA: ensure daemon and start native recording
+        Computer->>CUA: find/launch app, select visible window, bring_to_front
+
+        alt Calculator deterministic key path
+            Computer->>CUA: press expression keys and Return
+            CUA-->>Computer: verified display state
+            Computer->>Computer: pack ComputerOutput path=ax
+        else AX scan-act-verify loop
+            Computer->>CUA: get_window_state(capture_mode=ax)
+            CUA-->>Computer: accessibility tree and element candidates
+            Computer->>Gateway: POST /v1/chat for ComputerAction
+            Gateway-->>Computer: action JSON
+            Computer->>CUA: click, type_text, press_key, hotkey, set_value, wait, or done
+            Computer->>CUA: verify window state
+            Computer->>Computer: append scan-act-verify action ledger entry
+        else Electron/page-mode escape hatch
+            Computer->>CUA: page get_text
+            CUA-->>Computer: page text
+            Computer->>Computer: pack ComputerOutput path=page
+        else vision fallback
+            Computer->>CUA: get_window_state(capture_mode=vision)
+            CUA-->>Computer: screenshot
+            Computer->>Vision: draw numbered grid
+            Vision-->>Computer: marked screenshot and coordinates
+            Computer->>Gateway: POST /v1/vision for coordinate action
+            Gateway-->>Computer: x/y action JSON
+            Computer->>CUA: click selected coordinate and verify
+            Computer->>Computer: pack ComputerOutput path=vision
+        end
+
+        Computer->>CUA: stop native recording
+        Computer-->>Skills: ComputerOutput or structured error
     end
 
     Skills-->>Flow: AgentResult
     Flow->>Persist: write_node and write_graph
-    Persist-->>Replay: graph, node JSON, browser artifacts
-    Flow-->>User: final answer
+    Persist-->>State: graph, node JSON, browser artifacts, computer trajectories
+    Flow->>Flow: extend graph, insert critics, recover failures, queue session_reporter
+    Flow-->>User: formatter final_answer or latest completed output
 ```
 
 ## Run Validation
@@ -211,18 +258,4 @@ Playwright browsers and the V9 gateway running on `localhost:8109`.
 
 
 
-
-
-Query 1
-uv run python flow.py "Compare 3 laptops under ₹80,000." > Query1.txt 2>&1
-
-Query 2
-uv run python flow.py "Compare 5 AI coding tools by free plan and paid plan." > Query2.txt 2>&1
-
-Query 3
-uv run python flow.py "Compare top 3 Hugging Face text-generation models sorted by likes." > Query3.txt 2>&1
-
-Query 4
-uv run python flow.py "Compare 5 CNC/VMC training institutes in Bangalore." > Query4.txt 2>&1
-
-https://youtu.be/JMiSt3qLLxE
+https://youtu.be/40foaNyyISU

@@ -57,7 +57,6 @@ def _render_markdown(
 ) -> str:
     session_id = str(payload.get("session_id") or "no_sessionid")
     query = str(payload.get("original_user_goal") or "")
-    browser_attempts = payload.get("browser_attempts") or []
     final_answer = str(payload.get("final_answer") or "")
     final_table = payload.get("final_comparison_table") or {}
     table_markdown = str(final_table.get("markdown") or "").strip()
@@ -93,10 +92,6 @@ def _render_markdown(
         ]
 
     lines += [
-        "## Short Answer",
-        "",
-        _short_answer(payload),
-        "",
         "## Data Source Summary",
         "",
         _data_source_table(payload),
@@ -104,24 +99,6 @@ def _render_markdown(
         "## Planner DAG Observed",
         "",
         _planner_dag_table(payload),
-        "",
-        "## Browser Attempts",
-        "",
-        _browser_attempt_table(browser_attempts),
-        "",
-        "## Importance of a11y",
-        "",
-        "`a11y` means the accessibility-tree layer of the Browser skill. It is cheaper than full vision and is useful for interactive UI controls such as filters, sort menus, tabs, accordions, product links, and forms when those controls are exposed to assistive technology.",
-        "",
-        "For blocked pages, a11y is still useful evidence: it can show that the rendered page is an access-denied, CAPTCHA, login, geo, or rate-limit state rather than a normal product page.",
-        "",
-        "## Did The Four-Layer Cascade Run?",
-        "",
-        _cascade_table(payload),
-        "",
-        "## Browser Layer Trace",
-        "",
-        _cascade_trace(payload),
         "",
         "## Final Comparison Table",
         "",
@@ -137,19 +114,15 @@ def _render_markdown(
         "",
         _module_map_table(),
         "",
+        "## Trajectory Evidence Requirement",
+        "",
+        _trajectory_requirement_note(payload),
+        "",
         "## Turn Count And Cost Summary",
         "",
         "```json",
         _json_block(payload.get("turn_count_and_cost_summary") or {}),
         "```",
-        "",
-        "## Token Usage Capture",
-        "",
-        _token_usage_note(),
-        "",
-        "## Orchestrator Constraint",
-        "",
-        "This analysis file is generated through the copied agent's `session_reporter` skill path. The original `S9SharedCode` orchestrator remains untouched.",
         "",
     ]
     return "\n".join(lines)
@@ -189,10 +162,16 @@ def _short_answer(payload: dict[str, Any]) -> str:
 def _data_source_table(payload: dict[str, Any]) -> str:
     extracted = payload.get("extracted_data") or {}
     browser_attempts = extracted.get("browser_attempts") or payload.get("browser_attempts") or []
+    computer_runs = _computer_runs(payload)
     researcher_outputs = extracted.get("researcher_outputs") or []
     distiller_outputs = extracted.get("distiller_outputs") or []
     formatter_outputs = extracted.get("formatter_outputs") or []
     rows = [
+        {
+            "Source": "Local Computer",
+            "Status": _computer_status(computer_runs),
+            "Used For Final Table": "Yes" if any(run.get("success") for run in computer_runs) else "No",
+        },
         {
             "Source": "Browser",
             "Status": _attempt_status(browser_attempts),
@@ -246,10 +225,18 @@ def _planner_dag_table(payload: dict[str, Any]) -> str:
                 "Skill": node.get("skill") or node.get("label") or "",
                 "Status": node.get("status") or "",
                 "Success": node.get("success"),
+                "Path": _node_execution_path(node),
                 "Purpose": _node_purpose(node),
             }
         )
-    return _markdown_table(rows, ["Node", "Skill", "Status", "Success", "Purpose"])
+    return _markdown_table(rows, ["Node", "Skill", "Status", "Success", "Path", "Purpose"])
+
+
+def _node_execution_path(node: dict[str, Any]) -> str:
+    out = node.get("output") or {}
+    if isinstance(out, dict) and out.get("path"):
+        return str(out.get("path"))
+    return ""
 
 
 def _node_purpose(node: dict[str, Any]) -> str:
@@ -264,6 +251,7 @@ def _node_purpose(node: dict[str, Any]) -> str:
     purposes = {
         "planner": "Plan or re-plan the DAG.",
         "browser": "Attempt live page extraction or interaction.",
+        "computer": "Drive a local desktop app with cua-driver, scan-act-verify, and trajectory recording.",
         "researcher": "Gather supporting web research.",
         "distiller": "Extract structured fields.",
         "formatter": "Produce the final user-facing answer.",
@@ -454,6 +442,10 @@ def _recovery_trace(payload: dict[str, Any]) -> str:
 
 def _module_map_table() -> str:
     rows = [
+        ("computer/skill.py", "Owns the Local Computer skill, including target resolution, scan-act-verify loops, deterministic app flows, and final state verification."),
+        ("computer/client.py", "Wraps cua-driver daemon calls, start_recording/stop_recording, permission handling, and normalized driver errors."),
+        ("computer/perception.py", "Parses and compacts AX trees for local desktop perception."),
+        ("computer/vision.py", "Provides screenshot/set-of-marks fallback for opaque desktop surfaces."),
         ("browser/skill.py", "Owns the Browser cascade: extract, deterministic selectors, a11y, vision, and blocked/failure handling."),
         ("browser/driver.py", "Implements a11y and vision interaction drivers."),
         ("browser/dom.py", "Builds DOM and clickability context for browser drivers."),
@@ -467,7 +459,7 @@ def _module_map_table() -> str:
     ]
     mapped = [
         {
-            "Module": _markdown_link(path, f"S9SharedCodeVisibleAgent/code/{path}"),
+            "Module": _markdown_link(path, f"ComputerSkill/code/{path}"),
             "Responsibility": desc,
         }
         for path, desc in rows
@@ -475,18 +467,91 @@ def _module_map_table() -> str:
     return _markdown_table(mapped, ["Module", "Responsibility"], escape=False)
 
 
-def _token_usage_note() -> str:
-    return (
-        "Browser a11y/vision turns record per-turn token counts in action/step "
-        "records. Normal LLM skill calls are tagged with `agent` and `session` "
-        "and are captured by the gateway ledger exposed at "
-        "`/v1/cost/by_agent?session=<session-id>`. The session reporter now "
-        "tries to include that gateway rollup in the cost summary. If the "
-        "running gateway endpoint returns no rows, the reporter falls back to "
-        "the local SQLite ledger at `llm_gatewayV9/gateway_v8.db`. If neither "
-        "source has rows for that session, the summary falls back to node-local "
-        "cost fields, which are often `0.0` for text skills."
+def _computer_runs(payload: dict[str, Any]) -> list[dict[str, Any]]:
+    runs = []
+    for node in payload.get("full_dag_nodes") or []:
+        if node.get("skill") != "computer":
+            continue
+        out = node.get("output") or {}
+        runs.append(
+            {
+                "node_id": node.get("node_id") or node.get("id") or "",
+                "status": node.get("status") or "",
+                "success": node.get("success"),
+                "goal": out.get("goal") or (node.get("metadata") or {}).get("goal", ""),
+                "app": out.get("app") or (node.get("metadata") or {}).get("app", ""),
+                "path": out.get("path") or "",
+                "turns": out.get("turns", 0),
+                "recording_dir": _normalise_existing_path(out.get("recording_dir") or ""),
+                "error": node.get("error") or "",
+                "error_code": node.get("error_code") or "",
+            }
+        )
+    return runs
+
+
+def _normalise_existing_path(value: str) -> str:
+    if not value:
+        return ""
+    path = Path(value)
+    if path.exists():
+        return str(path)
+    replacements = (
+        ("ComputerSkillAssignment/code", "ComputerSkill/code"),
+        ("S9SharedCodeVisibleAgent/code", "ComputerSkill/code"),
     )
+    for old, new in replacements:
+        if old in value:
+            candidate = Path(value.replace(old, new))
+            if candidate.exists():
+                return str(candidate)
+    return value
+
+
+def _computer_status(runs: list[dict[str, Any]]) -> str:
+    if not runs:
+        return "not used"
+    if any(run.get("success") for run in runs):
+        labels = []
+        for run in runs:
+            app = str(run.get("app") or "desktop app")
+            path = str(run.get("path") or "ax")
+            turns = int(run.get("turns") or 0)
+            labels.append(f"{app} via {path}, {turns} turn(s)")
+        return "; ".join(labels)
+    codes = sorted({str(run.get("error_code") or "failed") for run in runs})
+    return "failed: " + ", ".join(codes)
+
+
+def _trajectory_requirement_note(payload: dict[str, Any]) -> str:
+    runs = _computer_runs(payload)
+    lines = [
+        "Record every run with `start_recording` and submit the trajectory directory as evidence.",
+    ]
+    if not runs:
+        lines.append("")
+        lines.append("No Local Computer node was used in this session.")
+        return "\n".join(lines)
+    lines += [
+        "",
+        "| Node | App | Path | Turns | Trajectory Directory |",
+        "| --- | --- | --- | --- | --- |",
+    ]
+    for run in runs:
+        lines.append(
+            "| "
+            + " | ".join(
+                [
+                    _md_cell(run.get("node_id", "")),
+                    _md_cell(run.get("app", "")),
+                    _md_cell(run.get("path", "")),
+                    _md_cell(run.get("turns", "")),
+                    _md_cell(run.get("recording_dir", "") or "(missing)"),
+                ]
+            )
+            + " |"
+        )
+    return "\n".join(lines)
 
 
 def _markdown_table(
